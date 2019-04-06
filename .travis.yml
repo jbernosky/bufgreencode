@@ -20,28 +20,29 @@ before_install:
 - gem install bundler
 install:
 - bundle install
-include:
-- stage: Test
-  before_script:
-  - npm i gulp
-  - gulp build:test
-  script:
-  - bundle exec scss-lint _assets/styles/scss/*/*.scss
-  - bundle exec htmlproofer ./_site
-- stage: Deploy
-  script:
-  - npm i gulp
-  - gulp build
-  deploy:
-    provider: pages
-    local-dir: "./_site"
-    target-branch: gh-pages
-    name: Travis Deployment Bot
-    skip-cleanup: true
-    github-token: "$GH_TOKEN"
-    keep-history: true
-    on:
-      branch: master
+jobs:
+  include:
+  - stage: Test
+    before_script:
+    - npm i gulp
+    - gulp build:test
+    script:
+    - bundle exec scss-lint _assets/styles/scss/*/*.scss
+    - bundle exec htmlproofer ./_site
+  - stage: Deploy
+    script:
+    - npm i gulp
+    - gulp build
+    deploy:
+      provider: pages
+      local-dir: "./_site"
+      target-branch: gh-pages
+      name: Travis Deployment Bot
+      skip-cleanup: true
+      github-token: "$GH_TOKEN"
+      keep-history: true
+      on:
+        branch: master
 sudo: false
 notifications:
   email: false
