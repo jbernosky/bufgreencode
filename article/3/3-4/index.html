@@ -59,7 +59,26 @@
 
     const hitTemplate = function(hit) {
 
-        let url = `/bufgreencode${hit.url}#${hit.anchor}`;
+        function getOrigin() {
+            var location = window.location
+            var origin = location.origin
+
+            if (!origin) {
+            var port = location.port ? ':' + location.port : ''
+
+            origin = location.protocol + '//' + location.hostname + port
+            }
+
+            return origin
+        }
+
+        var currentUrl = getOrigin()
+        var liveUrl = 'https://ihiutch.github.io/bufgreencode/'
+        hit.url = currentUrl.indexOf(liveUrl) !== -1 ?
+          hit.url :
+          hit.url.replace(liveUrl, '')
+
+        let url = `${hit.url}#${hit.anchor}`;
 
         const title = hit._highlightResult.title.value;
         const content = hit._snippetResult.content.value
