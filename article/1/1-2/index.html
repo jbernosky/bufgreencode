@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="cache-control" content="public">
+    <meta http-equiv="expires" content="86400">
+    
+    <title>Zoning Map | BufGreenCode</title>
+    
+    <meta name="description" content="1.2.1 Zoning Map Incorporated">
+<!--    <link rel="icon" type="image/png" href="/favicon.png">-->
+    <link rel="canonical" href="https://ihiutch.github.io/bufgreencode//article/1/1-2/">
+
+    <!-- Google Analytics. -->
+    
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    <!-- Load main CSS file asynchronously via loadCSS. -->
+<!--
+    <script>
+        !function(e){"use strict";var t=function(t,n,r){function o(e){return i.body?e():void setTimeout(function(){o(e)})}function l(){d.addEventListener&&d.removeEventListener("load",l),d.media=r||"all"}var a,i=e.document,d=i.createElement("link");if(n)a=n;else{var s=(i.body||i.getElementsByTagName("head")[0]).childNodes;a=s[s.length-1]}var u=i.styleSheets;d.rel="stylesheet",d.href=t,d.media="only x",o(function(){a.parentNode.insertBefore(d,n?a:a.nextSibling)});var f=function(e){for(var t=d.href,n=u.length;n--;)if(u[n].href===t)return e();setTimeout(function(){f(e)})};return d.addEventListener&&d.addEventListener("load",l),d.onloadcssdefined=f,f(l),d};"undefined"!=typeof exports?exports.loadCSS=t:e.loadCSS=t}("undefined"!=typeof global?global:this),function(e){if(e.loadCSS){var t=loadCSS.relpreload={};if(t.support=function(){try{return e.document.createElement("link").relList.supports("preload")}catch(t){}},t.poly=function(){for(var t=e.document.getElementsByTagName("link"),n=0;n<t.length;n++){var r=t[n];"preload"===r.rel&&"style"===r.getAttribute("as")&&(e.loadCSS(r.href,r),r.rel=null)}},!t.support()){t.poly();var n=e.setInterval(t.poly,300);e.addEventListener&&e.addEventListener("load",function(){e.clearInterval(n)})}}}(this);
+    loadCSS('/assets/styles/main.css');
+    loadCSS('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|Roboto+Slab:300,400|Roboto:400,400i,700,700i');
+  </script>
+-->
+
+    <link href="/bufgreencode/assets/styles/main.css" rel='stylesheet' type='text/css'>
+</head>
+
+
+<style>
+    body{
+        position: relative
+    }
+    </style>
+
+<body data-spy="scroll" data-target="#toc-scrollspy"  class="page--glossary" >
+
+    <nav class="col-md-4 col-lg-2 d-none d-md-block bg-light sidebar-left">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.1.1/themes/reset-min.css" integrity="sha256-JQ2nnTmybhOWSjfV3sa8mG0ZVhTCcORER4cyXc5HL10=" crossorigin="anonymous">
+
+<div class="px-3">
+    <input class="form-control" id="search-input" type="search" placeholder='Search...' />
+</div>
+
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+
+<script>
+    var client = algoliasearch('ZXR82DO3QZ', 'af7cc1f834c7c7de6ac6b92670775a89');
+    var index = client.initIndex('bufgreencode');
+
+    const hitTemplate = function(hit) {
+
+        let url = `bufgreencode${hit.url}#${hit.anchor}`;
+
+        const title = hit._highlightResult.title.value;
+        const content = hit._snippetResult.content.value
+
+        let breadcrumbs = '';
+        if (hit._highlightResult.hierarchy) {
+            var array = [];
+            for (const [key, value] of Object.entries(hit._highlightResult.hierarchy)) {
+                if (value) {
+                    array.push(value.value);
+                }
+            }
+            breadcrumbs = array.map(match => {
+                return `<span class="post-breadcrumb">${match}</span>`
+            }).join(' / ')
+        }
+
+        let article = '';
+        if (hit.article) {
+            article = hit.article + '.';
+        }
+
+        let section = '';
+        if (hit.section) {
+            section = hit.section + ' - ';
+        }
+
+        return `
+            <a class="post-link" href="${url}">
+              <h6>${article}${section}${title}</h6>
+              <div class="post-breadcrumbs">${breadcrumbs}</div>
+              <span>${content}</span>
+            </a>
+          `;
+    }
+
+    autocomplete('#search-input', {
+//        debug: true,
+        searchParameters: {
+            attributesToSnippet: ['content']
+        }
+    }, [{
+        source: autocomplete.sources.hits(index, {
+            hitsPerPage: 5
+        }),
+        displayKey: 'title',
+        templates: {
+            //            header: '<div class="aa-suggestions-category">Results</div>',
+            suggestion: hitTemplate,
+            footer: '<div class="aa-suggestions-footer">Algolia Search</div>',
+            empty: '<div class="aa-empty">No matching results</div>',
+        }
+    }]);
+
+</script>
+
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column mb-2">
+            
+            
+            <li class="nav-item">
+                <a class="nav-link active" href="/bufgreencode/article/1/">1. Introductory Provisions</a>
+            </li>
+            <ul>
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="/bufgreencode/article/1/1-1/">1.1 Title, Purpose, and Applicability</a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/bufgreencode/article/1/1-2/">1.2 Zoning Map</a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="/bufgreencode/article/1/1-3/">1.3 Transition Rules</a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/bufgreencode/article/2/">2. Definitions &amp; Measurements</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/bufgreencode/article/3/">3. Neighborhood Zones</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/bufgreencode/article/4/">4. title change</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/bufgreencode/article/5/">5. Section 5</a>
+            </li>
+            
+            
+        </ul>
+    </div>
+</nav>
+
+    <div class="col-md-5 col-lg-10 col-xl-8 ml-sm-auto mx-xl-auto">
+        <main role="main" class="px-md-4">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Zoning Map</h1>
+                </div>
+                <div class="col-12">
+                    <div class="page-content">
+                        <h2 id="121-zoning-map-incorporated">1.2.1 Zoning Map Incorporated</h2>
+
+<p>A.	The Zoning Map is incorporated and made part of this Unified Development Ordinance as if fully set forth and described in this Ordinance.
+B.	The Zoning Map is maintained by the City Clerk.</p>
+
+<h2 id="122-establishment-of-zones">1.2.2 Establishment of Zones</h2>
+
+<p>In order to carry out the purposes of this Ordinance, the City of Buffalo is divided into the following zones, as indicated on the Zoning Map:</p>
+<ol>
+  <li>Neighborhood Zones
+    <ul>
+      <li>N-1D Downtown/Regional Hub N-1C Mixed-Use Core</li>
+      <li>N-1S Secondary Employment Center N-2C Mixed-Use Center</li>
+      <li>N-2E Mixed-Use Edge N-2R Residential</li>
+      <li>N-3C Mixed-Use Center N-3E Mixed-Use Edge N-3R Residential</li>
+      <li>N-4-30 Single-Family N-4-50 Single-Family</li>
+      <li>N-DER Downtown Entertainment Review Overlay</li>
+    </ul>
+  </li>
+  <li>District Zones
+    <ul>
+      <li>D-R Residential Campus D-M Medical Campus</li>
+      <li>D-E Educational Campus D-S Strip Retail</li>
+      <li>D-C Flex Commercial D-IL Light Industrial D-IH Heavy Industrial D-OS Square</li>
+      <li>D-OG Green D-ON Natural</li>
+    </ul>
+  </li>
+  <li>Corridor Zones
+    <ul>
+      <li>C-M Metro Rail C-R Rail</li>
+      <li>C-W Waterfront</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="123-zoning-map-boundaries">1.2.3 Zoning Map Boundaries</h2>
+<ol>
+  <li>The precise location of a zone boundary line on the Zoning Map is determined as follows:
+    <ol>
+      <li>Where a boundary line is shown as coinciding, binding along, or superimposed on a lot line, the boundary is that lot line.</li>
+      <li>Where a boundary line is shown as within or along a public or private right-of-way, the boundary is the centerline of that right-of-way.</li>
+      <li>Where a boundary line is indicated by a designated number of feet, that distance controls.</li>
+      <li>Where a boundary line is shown as a railroad right-of-way line, the boundary is the railroad right-of-way line.</li>
+      <li>Where a boundary line is shown as following the shoreline of a water body, the boundary line is the mean high water line of the water body, as determined by the U.S. Army Corps of Engineers.</li>
+      <li>Where a boundary line is shown as following the centerlines of streams, rivers, or other continuously flowing watercourses, the boundary line follows the channel centerline of the watercourses at mean low water line, as determined by the U.S. Army Corps of Engineers. In the event of change in the location of such streams, rivers, or other watercourses, the boundaries move with the channel centerline.</li>
+      <li>Where a boundary line is shown and its location is not fixed by any of the rules of this section, its precise location is determine by scaling from fixtures, objects, or other structures shown on the map.</li>
+    </ol>
+  </li>
+  <li>In the event that any uncertainty exists with respect to the intended boundaries as shown on the Zoning Map, the Zoning Administrator is
+authorized to interpret the boundaries per Section 11.3.11.</li>
+  <li>In the case of a split lot, in which a zone boundary line runs through a lot, zone standards are applied separately to each portion of the lot.</li>
+</ol>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <nav class="d-none d-xl-block col-xl-2 sidebar-right toc" id="toc-scrollspy">
+        <div class="sidebar-sticky">
+            <div class="border-left"><ul class="nav toc-list">
+<li class="toc-entry toc-h2"><a href="#121-zoning-map-incorporated">1.2.1 Zoning Map Incorporated</a></li>
+<li class="toc-entry toc-h2"><a href="#122-establishment-of-zones">1.2.2 Establishment of Zones</a></li>
+<li class="toc-entry toc-h2"><a href="#123-zoning-map-boundaries">1.2.3 Zoning Map Boundaries</a></li>
+</ul></div>
+        </div>
+    </nav>
+</body>
+
+</html>

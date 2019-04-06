@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="cache-control" content="public">
+    <meta http-equiv="expires" content="86400">
+    
+    <title>Building Types | BufGreenCode</title>
+    
+    <meta name="description" content="All principal buildings in the neighborhood zones must comply with the standards of this section.">
+<!--    <link rel="icon" type="image/png" href="/favicon.png">-->
+    <link rel="canonical" href="https://ihiutch.github.io/bufgreencode//article/3/3-2/">
+
+    <!-- Google Analytics. -->
+    
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    <!-- Load main CSS file asynchronously via loadCSS. -->
+<!--
+    <script>
+        !function(e){"use strict";var t=function(t,n,r){function o(e){return i.body?e():void setTimeout(function(){o(e)})}function l(){d.addEventListener&&d.removeEventListener("load",l),d.media=r||"all"}var a,i=e.document,d=i.createElement("link");if(n)a=n;else{var s=(i.body||i.getElementsByTagName("head")[0]).childNodes;a=s[s.length-1]}var u=i.styleSheets;d.rel="stylesheet",d.href=t,d.media="only x",o(function(){a.parentNode.insertBefore(d,n?a:a.nextSibling)});var f=function(e){for(var t=d.href,n=u.length;n--;)if(u[n].href===t)return e();setTimeout(function(){f(e)})};return d.addEventListener&&d.addEventListener("load",l),d.onloadcssdefined=f,f(l),d};"undefined"!=typeof exports?exports.loadCSS=t:e.loadCSS=t}("undefined"!=typeof global?global:this),function(e){if(e.loadCSS){var t=loadCSS.relpreload={};if(t.support=function(){try{return e.document.createElement("link").relList.supports("preload")}catch(t){}},t.poly=function(){for(var t=e.document.getElementsByTagName("link"),n=0;n<t.length;n++){var r=t[n];"preload"===r.rel&&"style"===r.getAttribute("as")&&(e.loadCSS(r.href,r),r.rel=null)}},!t.support()){t.poly();var n=e.setInterval(t.poly,300);e.addEventListener&&e.addEventListener("load",function(){e.clearInterval(n)})}}}(this);
+    loadCSS('/assets/styles/main.css');
+    loadCSS('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|Roboto+Slab:300,400|Roboto:400,400i,700,700i');
+  </script>
+-->
+
+    <link href="/bufgreencode/assets/styles/main.css" rel='stylesheet' type='text/css'>
+</head>
+
+
+<style>
+    body{
+        position: relative
+    }
+    </style>
+
+<body data-spy="scroll" data-target="#toc-scrollspy"  class="page--glossary" >
+
+    <nav class="col-md-4 col-lg-2 d-none d-md-block bg-light sidebar-left">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.1.1/themes/reset-min.css" integrity="sha256-JQ2nnTmybhOWSjfV3sa8mG0ZVhTCcORER4cyXc5HL10=" crossorigin="anonymous">
+
+<div class="px-3">
+    <input class="form-control" id="search-input" type="search" placeholder='Search...' />
+</div>
+
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+
+<script>
+    var client = algoliasearch('ZXR82DO3QZ', 'af7cc1f834c7c7de6ac6b92670775a89');
+    var index = client.initIndex('bufgreencode');
+
+    const hitTemplate = function(hit) {
+
+        let url = `bufgreencode${hit.url}#${hit.anchor}`;
+
+        const title = hit._highlightResult.title.value;
+        const content = hit._snippetResult.content.value
+
+        let breadcrumbs = '';
+        if (hit._highlightResult.hierarchy) {
+            var array = [];
+            for (const [key, value] of Object.entries(hit._highlightResult.hierarchy)) {
+                if (value) {
+                    array.push(value.value);
+                }
+            }
+            breadcrumbs = array.map(match => {
+                return `<span class="post-breadcrumb">${match}</span>`
+            }).join(' / ')
+        }
+
+        let article = '';
+        if (hit.article) {
+            article = hit.article + '.';
+        }
+
+        let section = '';
+        if (hit.section) {
+            section = hit.section + ' - ';
+        }
+
+        return `
+            <a class="post-link" href="${url}">
+              <h6>${article}${section}${title}</h6>
+              <div class="post-breadcrumbs">${breadcrumbs}</div>
+              <span>${content}</span>
+            </a>
+          `;
+    }
+
+    autocomplete('#search-input', {
+//        debug: true,
+        searchParameters: {
+            attributesToSnippet: ['content']
+        }
+    }, [{
+        source: autocomplete.sources.hits(index, {
+            hitsPerPage: 5
+        }),
+        displayKey: 'title',
+        templates: {
+            //            header: '<div class="aa-suggestions-category">Results</div>',
+            suggestion: hitTemplate,
+            footer: '<div class="aa-suggestions-footer">Algolia Search</div>',
+            empty: '<div class="aa-empty">No matching results</div>',
+        }
+    }]);
+
+</script>
+
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column mb-2">
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/bufgreencode/article/1/">1. Introductory Provisions</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/bufgreencode/article/2/">2. Definitions &amp; Measurements</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link active" href="/bufgreencode/article/3/">3. Neighborhood Zones</a>
+            </li>
+            <ul>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="/bufgreencode/article/3/3-1/">3.1 Zone Descriptions</a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/bufgreencode/article/3/3-2/">3.2 Building Types</a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="/bufgreencode/article/3/3-3/">3.3 Frontage Elements</a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="/bufgreencode/article/3/3-4/">3.4 Overlays</a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/bufgreencode/article/4/">4. title change</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/bufgreencode/article/5/">5. Section 5</a>
+            </li>
+            
+            
+        </ul>
+    </div>
+</nav>
+
+    <div class="col-md-5 col-lg-10 col-xl-8 ml-sm-auto mx-xl-auto">
+        <main role="main" class="px-md-4">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Building Types</h1>
+                </div>
+                <div class="col-12">
+                    <div class="page-content">
+                        <p>All principal buildings in the neighborhood zones must comply with the standards of this section.</p>
+
+<h2 id="321-general">3.2.1 General</h2>
+<ol>
+  <li>
+    <p>An applicant must select which allowed building type corresponds to the building he/she is proposing to construct or alter, and must comply with the standards for that building type as it relates to that new construction or alteration. The applicant may choose to add optional frontage elements that correspond with the building type, per Section 3.3.</p>
+  </li>
+  <li>
+    <p>Table 3A: Building Types identifies the building types allowed by zone, with  cross-references for building type definitions and form and dimensional standards that apply. Each building type may house any use allowed in the zone in which it is located (refer to Article 6, Uses), unless otherwise noted.</p>
+  </li>
+  <li>
+    <p>Requirements for All Building Types</p>
+
+    <ol>
+      <li>
+        <p>All principal buildings must be designed to be permanently erected on a permanent foundation and connected to all required utilities.</p>
+      </li>
+      <li>
+        <p>All principal buildings must be  oriented  to the thoroughfares they face, with all front and corner side facades positioned parallel or radial to right-of-way lines.</p>
+      </li>
+      <li>
+        <p>Where multiple principal buildings are proposed for a single lot, the proposal must include potential lot lines, which conform with this Ordinance, the purpose of which is to determine compliance with building type standards.</p>
+      </li>
+      <li>
+        <p>The standards for building types do not apply to accessory structures, which are addressed by Section 6.2. However, where a carriage house is accessory to another principal building on the site, the building type standards apply to the accessory carriage house.</p>
+      </li>
+      <li>
+        <p>A principal building may not have a building width, measured along the adjacent right- of-way line, which exceeds the maximum lot width, if any, put forth by the building type standards.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Pedestrian-Priority Frontages</p>
+
+    <ol>
+      <li>
+        <p>On the Zoning Map, Pedestrian-Priority Frontages (PPF) may be designated within the N-1D and N-1C zones that apply to specific frontage lines.</p>
+      </li>
+      <li>
+        <p>Along frontage lines designated a PPF, the following standards apply, in addition to the building type standards:</p>
+
+        <ol>
+          <li>
+            <p>Any building that is constructed along a PPF must have a finished ground floor level of between ground level and two feet.</p>
+          </li>
+          <li>
+            <p>The ground floor of any facade that exists along a PPF must have a minimum transparency of 70%.</p>
+          </li>
+          <li>
+            <p>An interior side yard is prohibited along a PPF, except to facilitate a passage designed in accordance with Section 10.2.8.A.</p>
+          </li>
+          <li>
+            <p>Loading berths and vehicular parking entries may not be located along a PPF.</p>
+          </li>
+          <li>
+            <p>A civic building is not required to meet the above standards, except for “d,” which prohibits loading berths and vehicular parking entries for all buildings along a PPF.</p>
+          </li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Residential Density. A property with multiple dwelling units may have a density of no more than one dwelling unit for each 1,250 square feet of lot area in the N-2R zone, and no more than one dwelling unit for each 1,500 square feet of lot area in the N-3R zone. The following are exceptions to this standard:</p>
+
+    <ol>
+      <li>This standard does not apply to parcels which abut Delaware Avenue, between North Street and Gates Circle; Gates Circle; and North Street, between Main Street and Symphony Circle.</li>
+      <li>
+        <p>This standard does not apply to any multiple unit dwelling approved under an adaptive reuse permit.</p>
+      </li>
+      <li>This standard must not be interpreted as applying to an accessory dwelling, single-unit dwelling, or double-unit dwelling.</li>
+    </ol>
+  </li>
+  <li>
+    <p>Transitions to Residential Zones. Where any principal building is proposed on a site that abuts an interior side or rear lot line in an N-2R, N-3R, N-4-30, or N-4- 50 zone, and where the building’s height is greater than the maximum height of building types allowed in the abutting residential zone, the upper stories of the building must be set back from the respective interior side or rear setback line by at least one foot for each additional foot in height above the maximum height allowed for building types in the abutting residential zone. This may be provided with either a setback in the overall building footprint or with upper-story stepbacks above the maximum height allowed for building types in the abutting residential zone.</p>
+  </li>
+  <li>
+    <p>Height Exceptions</p>
+
+    <ol>
+      <li>
+        <p>Irrespective of the provisions in Sections 3.2.2 - 3.2.12, a principal building may be erected to a height of up to six stories and 76 feet on any parcel in the N-2R zone that abuts the following:</p>
+
+        <ol>
+          <li>
+            <p>Delaware Avenue, between North Street and Gates Circle.</p>
+          </li>
+          <li>
+            <p>Gates Circle.</p>
+          </li>
+          <li>
+            <p>North Street, between Main Street and Symphony Circle.</p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>Irrespective of the provisions in Sections 3.2.2 - 3.2.12, a principal building may be erected to a height of up to five stories and 66 feet on any parcel in the N-2C zone, or four stories and 54 feet on any parcel in the N-2E zone, that abuts the following:</p>
+
+        <ol>
+          <li>
+            <p>Delaware Avenue, between Edward Street and North Street.</p>
+          </li>
+          <li>
+            <p>Main Street, between Edward Street and East/West Delavan Avenue.</p>
+          </li>
+          <li>
+            <p>Niagara Street, between Niagara Square and Ontario Street.</p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>In no case may any of the above height exceptions be applied to a carriage house building type.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Exterior Facade Restrictions. Where exterior facade materials are restricted on front and corner side facades, these restrictions also apply to other facades in the following circumstances:</p>
+
+    <ol>
+      <li>
+        <p>Where the principal building contains an interior side yard, the facade material restrictions apply to the interior side facade up to a depth, measured from the building’s nearest corner at the front facade, equal to the width of the interior side yard, plus the distance between the interior side lot line and any adjacent principal building, but need not extend more than 50’ from the front facade.</p>
+      </li>
+      <li>
+        <p>Where an adjacent principal building is set back from the front yard line, the facade material restrictions apply along the interior side facade up to a depth, measured from  the building’s nearest corner at the front facade, equal to the depth of the front yard of the adjacent principal building, but need not extend more than 50’ from the front facade.</p>
+      </li>
+      <li>Where an adjacent lot is undeveloped, the facade material restrictions apply to the interior side facade up to a depth of 50’, measured from the building’s nearest corner at the front facade.</li>
+      <li>Where the City Planning Board finds that any restricted facade material will have an adverse effect upon adjacent properties, the City Planning Board may apply such facade material restrictions to other facades.</li>
+    </ol>
+  </li>
+  <li>
+    <p>Neighborhood Shops. An existing commercial block or shopfront house building in the N-2R or N-3R zones will be considered conforming, irrespective of the provisions of this section. Any alteration to such structures must comply with standards for the applicable building type, as follows:</p>
+
+    <ol>
+      <li>
+        <p>If a commercial block or shopfront house structure exists in the N-2R zone, any alteration to the structure must comply with the standards for the respective building type as applied in the N-2C zone.</p>
+      </li>
+      <li>
+        <p>If a commercial block or shopfront house structure exists in the N-3R zone, any alteration to the structure must comply with the standards for the respective building type as applied in the N-3C zone.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Elmwood Village Standards.</p>
+
+    <ol>
+      <li>
+        <p>The Elmwood Village is defined as the area north of North Street, south of Forest Avenue, east of Richmond Avenue, and west of Delaware Avenue, but not including any parcel that abuts Delaware Avenue or Gates Circle.</p>
+      </li>
+      <li>
+        <p>The following standards apply to all principal buildings in the Elmwood Village that are designed to accommodate one or more commercial establishments:</p>
+
+        <ol>
+          <li>
+            <p>A commercial establishment may have a gross floor area of no more than 3,500 square feet on the ground story and 7,000 square feet overall.</p>
+          </li>
+          <li>
+            <p>At least one main entrance must be provided for each 30 feet of front facade width along any ground story space designed to accommodate a commercial establishment.</p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>No more than two lots in the Elmwood Village, existing at the time of the adoption of this Ordinance, may be combined for the purposes of new construction in an N-2C or N-2E zone.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Demolitions</p>
+
+    <ol>
+      <li>
+        <p>Demolition is prohibited for any principal building in an N-1D, N-1C, N-1S, N-2C, N-2E, N-3C, or N-3E zone; or any building that is listed on the National Register of Historic Places, or is a contributing structure to a National Register historic district, except where:</p>
+
+        <ol>
+          <li>
+            <p>The Commissioner of Permits and Inspection Services determines that an emergency demolition is required for the purpose of public safety.</p>
+          </li>
+          <li>
+            <p>A site plan has been approved for one or more new principal buildings, or another use has been approved by the City on the site of the proposed demolition.</p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>The City Planning Board may waive this prohibition if both of the following criteria are met:</p>
+
+        <ol>
+          <li>
+            <p>The principal building proposed to be demolished does not comply with the form standards of one of the building types allowed in the zone where the demolition is proposed; and</p>
+          </li>
+          <li>
+            <p>The principal building proposed to be demolished is inconsistent with  the intent of the zone where the demolition is proposed.</p>
+          </li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+</ol>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <nav class="d-none d-xl-block col-xl-2 sidebar-right toc" id="toc-scrollspy">
+        <div class="sidebar-sticky">
+            <div class="border-left"><ul class="nav toc-list">
+<li class="toc-entry toc-h2"><a href="#321-general">3.2.1 General</a></li>
+</ul></div>
+        </div>
+    </nav>
+</body>
+
+</html>

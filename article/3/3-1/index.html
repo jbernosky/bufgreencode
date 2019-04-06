@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="cache-control" content="public">
+    <meta http-equiv="expires" content="86400">
+    
+    <title>Zone Descriptions | BufGreenCode</title>
+    
+    <meta name="description" content="3.1.1 N-1D Downtown/Regional Hub  PurposeThe N-1D zone addresses the core of downtown Buffalo to facilitate development of substantial scale with an intense ...">
+<!--    <link rel="icon" type="image/png" href="/favicon.png">-->
+    <link rel="canonical" href="https://ihiutch.github.io/bufgreencode//article/3/3-1/">
+
+    <!-- Google Analytics. -->
+    
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    <!-- Load main CSS file asynchronously via loadCSS. -->
+<!--
+    <script>
+        !function(e){"use strict";var t=function(t,n,r){function o(e){return i.body?e():void setTimeout(function(){o(e)})}function l(){d.addEventListener&&d.removeEventListener("load",l),d.media=r||"all"}var a,i=e.document,d=i.createElement("link");if(n)a=n;else{var s=(i.body||i.getElementsByTagName("head")[0]).childNodes;a=s[s.length-1]}var u=i.styleSheets;d.rel="stylesheet",d.href=t,d.media="only x",o(function(){a.parentNode.insertBefore(d,n?a:a.nextSibling)});var f=function(e){for(var t=d.href,n=u.length;n--;)if(u[n].href===t)return e();setTimeout(function(){f(e)})};return d.addEventListener&&d.addEventListener("load",l),d.onloadcssdefined=f,f(l),d};"undefined"!=typeof exports?exports.loadCSS=t:e.loadCSS=t}("undefined"!=typeof global?global:this),function(e){if(e.loadCSS){var t=loadCSS.relpreload={};if(t.support=function(){try{return e.document.createElement("link").relList.supports("preload")}catch(t){}},t.poly=function(){for(var t=e.document.getElementsByTagName("link"),n=0;n<t.length;n++){var r=t[n];"preload"===r.rel&&"style"===r.getAttribute("as")&&(e.loadCSS(r.href,r),r.rel=null)}},!t.support()){t.poly();var n=e.setInterval(t.poly,300);e.addEventListener&&e.addEventListener("load",function(){e.clearInterval(n)})}}}(this);
+    loadCSS('/assets/styles/main.css');
+    loadCSS('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|Roboto+Slab:300,400|Roboto:400,400i,700,700i');
+  </script>
+-->
+
+    <link href="/bufgreencode/assets/styles/main.css" rel='stylesheet' type='text/css'>
+</head>
+
+
+<style>
+    body{
+        position: relative
+    }
+    </style>
+
+<body data-spy="scroll" data-target="#toc-scrollspy"  class="page--glossary" >
+
+    <nav class="col-md-4 col-lg-2 d-none d-md-block bg-light sidebar-left">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.1.1/themes/reset-min.css" integrity="sha256-JQ2nnTmybhOWSjfV3sa8mG0ZVhTCcORER4cyXc5HL10=" crossorigin="anonymous">
+
+<div class="px-3">
+    <input class="form-control" id="search-input" type="search" placeholder='Search...' />
+</div>
+
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+
+<script>
+    var client = algoliasearch('ZXR82DO3QZ', 'af7cc1f834c7c7de6ac6b92670775a89');
+    var index = client.initIndex('bufgreencode');
+
+    const hitTemplate = function(hit) {
+
+        let url = `bufgreencode${hit.url}#${hit.anchor}`;
+
+        const title = hit._highlightResult.title.value;
+        const content = hit._snippetResult.content.value
+
+        let breadcrumbs = '';
+        if (hit._highlightResult.hierarchy) {
+            var array = [];
+            for (const [key, value] of Object.entries(hit._highlightResult.hierarchy)) {
+                if (value) {
+                    array.push(value.value);
+                }
+            }
+            breadcrumbs = array.map(match => {
+                return `<span class="post-breadcrumb">${match}</span>`
+            }).join(' / ')
+        }
+
+        let article = '';
+        if (hit.article) {
+            article = hit.article + '.';
+        }
+
+        let section = '';
+        if (hit.section) {
+            section = hit.section + ' - ';
+        }
+
+        return `
+            <a class="post-link" href="${url}">
+              <h6>${article}${section}${title}</h6>
+              <div class="post-breadcrumbs">${breadcrumbs}</div>
+              <span>${content}</span>
+            </a>
+          `;
+    }
+
+    autocomplete('#search-input', {
+//        debug: true,
+        searchParameters: {
+            attributesToSnippet: ['content']
+        }
+    }, [{
+        source: autocomplete.sources.hits(index, {
+            hitsPerPage: 5
+        }),
+        displayKey: 'title',
+        templates: {
+            //            header: '<div class="aa-suggestions-category">Results</div>',
+            suggestion: hitTemplate,
+            footer: '<div class="aa-suggestions-footer">Algolia Search</div>',
+            empty: '<div class="aa-empty">No matching results</div>',
+        }
+    }]);
+
+</script>
+
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column mb-2">
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/bufgreencode/article/1/">1. Introductory Provisions</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/bufgreencode/article/2/">2. Definitions &amp; Measurements</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link active" href="/bufgreencode/article/3/">3. Neighborhood Zones</a>
+            </li>
+            <ul>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/bufgreencode/article/3/3-1/">3.1 Zone Descriptions</a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="/bufgreencode/article/3/3-2/">3.2 Building Types</a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="/bufgreencode/article/3/3-3/">3.3 Frontage Elements</a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="/bufgreencode/article/3/3-4/">3.4 Overlays</a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/bufgreencode/article/4/">4. title change</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/bufgreencode/article/5/">5. Section 5</a>
+            </li>
+            
+            
+        </ul>
+    </div>
+</nav>
+
+    <div class="col-md-5 col-lg-10 col-xl-8 ml-sm-auto mx-xl-auto">
+        <main role="main" class="px-md-4">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Zone Descriptions</h1>
+                </div>
+                <div class="col-12">
+                    <div class="page-content">
+                        <h2 id="311-n-1d-downtownregional-hub">3.1.1 N-1D Downtown/Regional Hub</h2>
+<ol>
+  <li>
+    <p>Purpose
+The N-1D zone addresses the core of downtown Buffalo to facilitate development of substantial scale with an intense mix of uses.</p>
+  </li>
+  <li>Building Types 
+The form requirements of the neighborhood zones are tailored to each building type in accordance with Section 3.2. The following building types are permitted in the N-1D zone:
+    <ul>
+      <li>Civic Building</li>
+      <li>Commercial Block</li>
+      <li>Stacked Units</li>
+      <li>Tower</li>
+    </ul>
+  </li>
+  <li>
+    <p>General
+All development in the N-1D zone must comply with the form standards of Section 3.2, as well as any applicable standards in other sections, including the following:</p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>Frontage Elements</td>
+          <td>Section 3.3</td>
+        </tr>
+        <tr>
+          <td>Principal Uses</td>
+          <td>Section 6.1</td>
+        </tr>
+        <tr>
+          <td>Accessory Uses</td>
+          <td>Section 6.2</td>
+        </tr>
+        <tr>
+          <td>Temporary Uses</td>
+          <td>Section 6.3</td>
+        </tr>
+        <tr>
+          <td>Landscape</td>
+          <td>Section 7.1</td>
+        </tr>
+        <tr>
+          <td>Fences and Walls</td>
+          <td>Section 7.2</td>
+        </tr>
+        <tr>
+          <td>Stormwater</td>
+          <td>Section 7.3</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<h2 id="312-n-1c-mixed-use-core">3.1.2 N-1C Mixed Use Core</h2>
+<ol>
+  <li>
+    <p>Purpose
+The N-1C zone addresses mixed-use centers of high intensity, in strategic locations such as on the edges of downtown or proximate to light rail rapid transit, and often featuring mid-rise buildings.</p>
+  </li>
+  <li>Building Types 
+The form requirements of the neighborhood zones are tailored to each building type in accordance with Section 3.2. The following building types are permitted in the N-1C zone:
+    <ul>
+      <li>Attached House</li>
+      <li>Carriage House</li>
+      <li>Civic Building</li>
+      <li>Stacked Units</li>
+    </ul>
+  </li>
+  <li>
+    <p>General
+All development in the N-1C zone must comply with the form standards of Section 3.2, as well as any applicable standards in other sections, including the following:</p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>Frontage Elements</td>
+          <td>Section 3.3</td>
+        </tr>
+        <tr>
+          <td>Principal Uses</td>
+          <td>Section 6.1</td>
+        </tr>
+        <tr>
+          <td>Accessory Uses</td>
+          <td>Section 6.2</td>
+        </tr>
+        <tr>
+          <td>Temporary Uses</td>
+          <td>Section 6.3</td>
+        </tr>
+        <tr>
+          <td>Landscape</td>
+          <td>Section 7.1</td>
+        </tr>
+        <tr>
+          <td>Fences and Walls</td>
+          <td>Section 7.2</td>
+        </tr>
+        <tr>
+          <td>Stormwater</td>
+          <td>Section 7.3</td>
+        </tr>
+        <tr>
+          <td>Outdoor Lighting</td>
+          <td>Section 7.4</td>
+        </tr>
+        <tr>
+          <td>Corner Visibility</td>
+          <td>Section 7.5</td>
+        </tr>
+        <tr>
+          <td>Site Impacts</td>
+          <td>Section 7.6</td>
+        </tr>
+        <tr>
+          <td>Pedestrian Access</td>
+          <td>Section 8.1</td>
+        </tr>
+        <tr>
+          <td>Bicycle Access and Parking</td>
+          <td>Section 8.2</td>
+        </tr>
+        <tr>
+          <td>Vehicle Access and Parking</td>
+          <td>Section 8.3</td>
+        </tr>
+        <tr>
+          <td>Transportation Demand Management</td>
+          <td>Section 8.4</td>
+        </tr>
+        <tr>
+          <td>On-Premise Signs</td>
+          <td>Section 9.2</td>
+        </tr>
+        <tr>
+          <td>Blocks</td>
+          <td>Section 10.1</td>
+        </tr>
+        <tr>
+          <td>Rights-of-Way</td>
+          <td>Section 10.2</td>
+        </tr>
+        <tr>
+          <td>Nonconformities</td>
+          <td>Section 12.1</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<h2 id="313-n-1s-secondary-employment-center">3.1.3 N-1S Secondary Employment Center</h2>
+
+<ol>
+  <li>
+    <p>Purpose
+The N-1S zone addresses mixed-use employment centers primarily located along the New York Central Belt Line, often defined by mid-rise and large-footprint industrial structures.</p>
+  </li>
+  <li>Building Types
+The form requirements of the neighborhood zones are tailored to each building type in accordance with
+Section 3.2. The following building types are permitted in the N-1S zone:
+    <ul>
+      <li>Civic Building</li>
+      <li>Commercial Block</li>
+      <li>Stacked Units</li>
+      <li>Tower</li>
+    </ul>
+  </li>
+  <li>
+    <p>General
+All development in the N-1S zone must comply with the form standards of Section 3.2, as well as any applicable standards in other sections, including the following:</p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>Frontage Elements</td>
+          <td>Section 3.3</td>
+        </tr>
+        <tr>
+          <td>Principal Uses</td>
+          <td>Section 6.1</td>
+        </tr>
+        <tr>
+          <td>Accessory Uses</td>
+          <td>Section 6.2</td>
+        </tr>
+        <tr>
+          <td>Temporary Uses</td>
+          <td>Section 6.3</td>
+        </tr>
+        <tr>
+          <td>Landscape</td>
+          <td>Section 7.1</td>
+        </tr>
+        <tr>
+          <td>Fences and Walls</td>
+          <td>Section 7.2</td>
+        </tr>
+        <tr>
+          <td>Stormwater</td>
+          <td>Section 7.3</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<h2 id="314-n-c2-mixed-use-center">3.1.4 N-C2 Mixed Use Center</h2>
+
+<ol>
+  <li>
+    <p>Purpose
+The N-2C zone addresses mixed-use, walkable centers of Buffalo’s most compact neighborhoods, many of which were fully developed before the automobile became prominent.</p>
+  </li>
+  <li>Building Types
+The form requirements of the neighborhood zones are tailored to each building type in accordance with
+Section 3.2. The following building types are permitted in the N-2C zone:
+    <ul>
+      <li>Carriage House</li>
+      <li>Civic Building</li>
+      <li>Commercial Block</li>
+      <li>Shopfront House</li>
+    </ul>
+  </li>
+  <li>
+    <p>General
+All development in the N-2C zone must comply with the form standards of Section 3.2, as well as any applicable standards in other sections, including the following:</p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>Frontage Elements</td>
+          <td>Section 3.3</td>
+        </tr>
+        <tr>
+          <td>Principal Uses</td>
+          <td>Section 6.1</td>
+        </tr>
+        <tr>
+          <td>Accessory Uses</td>
+          <td>Section 6.2</td>
+        </tr>
+        <tr>
+          <td>Temporary Uses</td>
+          <td>Section 6.3</td>
+        </tr>
+        <tr>
+          <td>Landscape</td>
+          <td>Section 7.1</td>
+        </tr>
+        <tr>
+          <td>Fences and Walls</td>
+          <td>Section 7.2</td>
+        </tr>
+        <tr>
+          <td>Stormwater</td>
+          <td>Section 7.3</td>
+        </tr>
+        <tr>
+          <td>Outdoor Lighting</td>
+          <td>Section 7.4</td>
+        </tr>
+        <tr>
+          <td>Corner Visibility</td>
+          <td>Section 7.5</td>
+        </tr>
+        <tr>
+          <td>Site Impacts</td>
+          <td>Section 7.6</td>
+        </tr>
+        <tr>
+          <td>Pedestrian Access</td>
+          <td>Section 8.1</td>
+        </tr>
+        <tr>
+          <td>Bicycle Access and Parking</td>
+          <td>Section 8.2</td>
+        </tr>
+        <tr>
+          <td>Vehicle Access and Parking</td>
+          <td>Section 8.3</td>
+        </tr>
+        <tr>
+          <td>Transportation Demand Management</td>
+          <td>Section 8.4</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<h2 id="315-n-2e-mixed-use-edge">3.1.5 N-2E Mixed-Use Edge</h2>
+
+<ol>
+  <li>
+    <p>Purpose
+The N-2E zone addresses transitional areas, typically at the edges of more intense mixed-use centers, in Buffalo’s most compact neighborhoods. These areas are defined by a mix of homes and stores.</p>
+  </li>
+  <li>Building Types
+The form requirements of the neighborhood zones are tailored to each building type in accordance with
+Section 3.2. The following building types are permitted in the N-2E zone:
+    <ul>
+      <li>Attached House</li>
+      <li>Carriage House</li>
+      <li>Civic Building</li>
+      <li>Commercial Block</li>
+      <li>Detached House</li>
+      <li>Shopfront House</li>
+      <li>Stacked Units</li>
+    </ul>
+  </li>
+  <li>
+    <p>General
+All development in the N-2E zone must comply with the form standards of Section 3.2, as well as any applicable standards in other sections, including the following:</p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>Frontage Elements</td>
+          <td>Section 3.3</td>
+        </tr>
+        <tr>
+          <td>Principal Uses</td>
+          <td>Section 6.1</td>
+        </tr>
+        <tr>
+          <td>Accessory Uses</td>
+          <td>Section 6.2</td>
+        </tr>
+        <tr>
+          <td>Temporary Uses</td>
+          <td>Section 6.3</td>
+        </tr>
+        <tr>
+          <td>Landscape</td>
+          <td>Section 7.1</td>
+        </tr>
+        <tr>
+          <td>Fences and Walls</td>
+          <td>Section 7.2</td>
+        </tr>
+        <tr>
+          <td>Stormwater</td>
+          <td>Section 7.3</td>
+        </tr>
+        <tr>
+          <td>Outdoor Lighting</td>
+          <td>Section 7.4</td>
+        </tr>
+        <tr>
+          <td>Corner Visibility</td>
+          <td>Section 7.5</td>
+        </tr>
+        <tr>
+          <td>Site Impacts</td>
+          <td>Section 7.6</td>
+        </tr>
+        <tr>
+          <td>Pedestrian Access</td>
+          <td>Section 8.1</td>
+        </tr>
+        <tr>
+          <td>Bicycle Access and Parking</td>
+          <td>Section 8.2</td>
+        </tr>
+        <tr>
+          <td>Vehicle Access and Parking</td>
+          <td>Section 8.3</td>
+        </tr>
+        <tr>
+          <td>Transportation Demand Management</td>
+          <td>Section 8.4</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<h2 id="316-n-2r-residential">3.1.6 N-2R Residential</h2>
+
+<ol>
+  <li>
+    <p>Purpose
+The N-2R zone addresses residential areas adjoining more intensive mixed-use centers, generally defined by compact residential blocks, which occasionally include small mixed use buildings.</p>
+  </li>
+  <li>Building Types
+The form requirements of the neighborhood zones are tailored to each building type in accordance with
+Section 3.2. The following building types are permitted in the N-2R zone:
+    <ul>
+      <li>Attached House</li>
+      <li>Carriage House</li>
+      <li>Civic Building</li>
+      <li>Detached House</li>
+      <li>Stacked Units</li>
+    </ul>
+  </li>
+  <li>
+    <p>General
+All development in the N-2R zone must comply with the form standards of Section 3.2, as well as any applicable standards in other sections, including the following:</p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>Frontage Elements</td>
+          <td>Section 3.3</td>
+        </tr>
+        <tr>
+          <td>Principal Uses</td>
+          <td>Section 6.1</td>
+        </tr>
+        <tr>
+          <td>Accessory Uses</td>
+          <td>Section 6.2</td>
+        </tr>
+        <tr>
+          <td>Temporary Uses</td>
+          <td>Section 6.3</td>
+        </tr>
+        <tr>
+          <td>Landscape</td>
+          <td>Section 7.1</td>
+        </tr>
+        <tr>
+          <td>Fences and Walls</td>
+          <td>Section 7.2</td>
+        </tr>
+        <tr>
+          <td>Stormwater</td>
+          <td>Section 7.3</td>
+        </tr>
+        <tr>
+          <td>Outdoor Lighting</td>
+          <td>Section 7.4</td>
+        </tr>
+        <tr>
+          <td>Corner Visibility</td>
+          <td>Section 7.5</td>
+        </tr>
+        <tr>
+          <td>Site Impacts</td>
+          <td>Section 7.6</td>
+        </tr>
+        <tr>
+          <td>Pedestrian Access</td>
+          <td>Section 8.1</td>
+        </tr>
+        <tr>
+          <td>Bicycle Access and Parking</td>
+          <td>Section 8.2</td>
+        </tr>
+        <tr>
+          <td>Vehicle Access and Parking</td>
+          <td>Section 8.3</td>
+        </tr>
+        <tr>
+          <td>Transportation Demand Management</td>
+          <td>Section 8.4</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<h2 id="317-n-3c-mixed-use-center">3.1.7 N-3C Mixed-Use Center</h2>
+
+<ol>
+  <li>
+    <p>Purpose
+The N-3C zone addresses mixed-use, walkable centers of Buffalo’s moderately compact neighborhoods.
+These neighborhood centers were originally served by Buffalo’s streetcar system, though many developed following the introduction of the automobile.</p>
+  </li>
+  <li>Building Types
+The form requirements of the neighborhood zones are tailored to each building type in accordance with
+Section 3.2. The following building types are permitted in the N-3C zone:
+    <ul>
+      <li>Carriage House</li>
+      <li>Civic Building</li>
+      <li>Commercial Block</li>
+      <li>Shopfront</li>
+      <li>Shopfront House</li>
+    </ul>
+  </li>
+  <li>
+    <p>General
+All development in the N-3C zone must comply with the form standards of Section 3.2, as well as any applicable standards in other sections, including the following:</p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>Frontage Elements</td>
+          <td>Section 3.3</td>
+        </tr>
+        <tr>
+          <td>Principal Uses</td>
+          <td>Section 6.1</td>
+        </tr>
+        <tr>
+          <td>Accessory Uses</td>
+          <td>Section 6.2</td>
+        </tr>
+        <tr>
+          <td>Temporary Uses</td>
+          <td>Section 6.3</td>
+        </tr>
+        <tr>
+          <td>Landscape</td>
+          <td>Section 7.1</td>
+        </tr>
+        <tr>
+          <td>Fences and Walls</td>
+          <td>Section 7.2</td>
+        </tr>
+        <tr>
+          <td>Stormwater</td>
+          <td>Section 7.3</td>
+        </tr>
+        <tr>
+          <td>Outdoor Lighting</td>
+          <td>Section 7.4</td>
+        </tr>
+        <tr>
+          <td>Corner Visibility</td>
+          <td>Section 7.5</td>
+        </tr>
+        <tr>
+          <td>Site Impacts</td>
+          <td>Section 7.6</td>
+        </tr>
+        <tr>
+          <td>Pedestrian Access</td>
+          <td>Section 8.1</td>
+        </tr>
+        <tr>
+          <td>Bicycle Access and Parking</td>
+          <td>Section 8.2</td>
+        </tr>
+        <tr>
+          <td>Vehicle Access and Parking</td>
+          <td>Section 8.3</td>
+        </tr>
+        <tr>
+          <td>Transportation Demand Management</td>
+          <td>Section 8.4</td>
+        </tr>
+        <tr>
+          <td>On-Premise Signs</td>
+          <td>Section 9.2</td>
+        </tr>
+        <tr>
+          <td>Blocks</td>
+          <td>Section 10.1</td>
+        </tr>
+        <tr>
+          <td>Rights-of-Way</td>
+          <td>Section 10.2</td>
+        </tr>
+        <tr>
+          <td>Nonconformities</td>
+          <td>Section 12.1</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<h2 id="318-n-3e-mixed-use-edge">3.1.8 N-3E Mixed-Use Edge</h2>
+
+<ol>
+  <li>
+    <p>Purpose
+The N-3E zone addresses transitional areas in Buffalo’s streetcar neighborhoods, typically located at the edges of more intense mixed-use centers. These areas are defined primarily by a mix of homes and stores.</p>
+  </li>
+  <li>Building Types
+The form requirements of the neighborhood zones are tailored to each building type in accordance with
+Section 3.2. The following building types are permitted in the N-3E zone:
+    <ul>
+      <li>Attached House</li>
+      <li>Carriage House</li>
+      <li>Civic Building</li>
+      <li>Commercial Block</li>
+      <li>Detached House</li>
+      <li>Shopfront</li>
+      <li>Shopfront House</li>
+      <li>Stacked Units</li>
+    </ul>
+  </li>
+  <li>
+    <p>General
+All development in the N-3E zone must comply with the form standards of Section 3.2, as well as any applicable standards in other sections, including the following:</p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>Frontage Elements</td>
+          <td>Section 3.3</td>
+        </tr>
+        <tr>
+          <td>Principal Uses</td>
+          <td>Section 6.1</td>
+        </tr>
+        <tr>
+          <td>Accessory Uses</td>
+          <td>Section 6.2</td>
+        </tr>
+        <tr>
+          <td>Temporary Uses</td>
+          <td>Section 6.3</td>
+        </tr>
+        <tr>
+          <td>Landscape</td>
+          <td>Section 7.1</td>
+        </tr>
+        <tr>
+          <td>Fences and Walls</td>
+          <td>Section 7.2</td>
+        </tr>
+        <tr>
+          <td>Stormwater</td>
+          <td>Section 7.3</td>
+        </tr>
+        <tr>
+          <td>Outdoor Lighting</td>
+          <td>Section 7.4</td>
+        </tr>
+        <tr>
+          <td>Corner Visibility</td>
+          <td>Section 7.5</td>
+        </tr>
+        <tr>
+          <td>Site Impacts</td>
+          <td>Section 7.6</td>
+        </tr>
+        <tr>
+          <td>Pedestrian Access</td>
+          <td>Section 8.1</td>
+        </tr>
+        <tr>
+          <td>Bicycle Access and Parking</td>
+          <td>Section 8.2</td>
+        </tr>
+        <tr>
+          <td>Vehicle Access and Parking</td>
+          <td>Section 8.3</td>
+        </tr>
+        <tr>
+          <td>Transportation Demand Management</td>
+          <td>Section 8.4</td>
+        </tr>
+        <tr>
+          <td>On-Premise Signs</td>
+          <td>Section 9.2</td>
+        </tr>
+        <tr>
+          <td>Blocks</td>
+          <td>Section 10.1</td>
+        </tr>
+        <tr>
+          <td>Rights-of-Way</td>
+          <td>Section 10.2</td>
+        </tr>
+        <tr>
+          <td>Nonconformities</td>
+          <td>Section 12.1</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<h2 id="319-n-3r-residential">3.1.9 N-3R Residential</h2>
+
+<ol>
+  <li>
+    <p>Purpose
+The N-3R zone addresses residential areas adjoining the centers of Buffalo’s streetcar neighborhoods, generally defined by moderately compact residential blocks, which occasionally include small mixed use buildings.</p>
+  </li>
+  <li>Building Types
+The form requirements of the neighborhood zones are tailored to each building type in accordance with
+Section 3.2. The following building types are permitted in the N-3R zone:
+    <ul>
+      <li>Attached House</li>
+      <li>Carriage House</li>
+      <li>Civic Building</li>
+      <li>Detached House</li>
+      <li>Stacked Units</li>
+    </ul>
+  </li>
+  <li>
+    <p>General
+All development in the N-3R zone must comply with the form standards of Section 3.2, as well as any applicable standards in other sections, including the following:</p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>Frontage Elements</td>
+          <td>Section 3.3</td>
+        </tr>
+        <tr>
+          <td>Principal Uses</td>
+          <td>Section 6.1</td>
+        </tr>
+        <tr>
+          <td>Accessory Uses</td>
+          <td>Section 6.2</td>
+        </tr>
+        <tr>
+          <td>Temporary Uses</td>
+          <td>Section 6.3</td>
+        </tr>
+        <tr>
+          <td>Landscape</td>
+          <td>Section 7.1</td>
+        </tr>
+        <tr>
+          <td>Fences and Walls</td>
+          <td>Section 7.2</td>
+        </tr>
+        <tr>
+          <td>Stormwater</td>
+          <td>Section 7.3</td>
+        </tr>
+        <tr>
+          <td>Outdoor Lighting</td>
+          <td>Section 7.4</td>
+        </tr>
+        <tr>
+          <td>Corner Visibility</td>
+          <td>Section 7.5</td>
+        </tr>
+        <tr>
+          <td>Site Impacts</td>
+          <td>Section 7.6</td>
+        </tr>
+        <tr>
+          <td>Pedestrian Access</td>
+          <td>Section 8.1</td>
+        </tr>
+        <tr>
+          <td>Bicycle Access and Parking</td>
+          <td>Section 8.2</td>
+        </tr>
+        <tr>
+          <td>Vehicle Access and Parking</td>
+          <td>Section 8.3</td>
+        </tr>
+        <tr>
+          <td>Transportation Demand Management</td>
+          <td>Section 8.4</td>
+        </tr>
+        <tr>
+          <td>On-Premise Signs</td>
+          <td>Section 9.2</td>
+        </tr>
+        <tr>
+          <td>Blocks</td>
+          <td>Section 10.1</td>
+        </tr>
+        <tr>
+          <td>Rights-of-Way</td>
+          <td>Section 10.2</td>
+        </tr>
+        <tr>
+          <td>Nonconformities</td>
+          <td>Section 12.1</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<h2 id="3110-n-4-30-single-family">3.1.10 N-4-30 Single-Family</h2>
+
+<ol>
+  <li>
+    <p>Purpose
+The N-4-30 zone addresses areas that are composed primarily of single-family homes on moderately compact lots of at least 30 feet in width.</p>
+  </li>
+  <li>Building Types
+The form requirements of the neighborhood zones are tailored to each building type in accordance with
+Section 3.2. The following building types are permitted in the N-4-30 zone:
+    <ul>
+      <li>Civic Building</li>
+      <li>Detached House</li>
+    </ul>
+  </li>
+  <li>
+    <p>General
+All development in the N-4-30 zone must comply with the form standards of Section 3.2, as well as any applicable standards in other sections, including the following:</p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>Frontage Elements</td>
+          <td>Section 3.3</td>
+        </tr>
+        <tr>
+          <td>Principal Uses</td>
+          <td>Section 6.1</td>
+        </tr>
+        <tr>
+          <td>Accessory Uses</td>
+          <td>Section 6.2</td>
+        </tr>
+        <tr>
+          <td>Temporary Uses</td>
+          <td>Section 6.3</td>
+        </tr>
+        <tr>
+          <td>Landscape</td>
+          <td>Section 7.1</td>
+        </tr>
+        <tr>
+          <td>Fences and Walls</td>
+          <td>Section 7.2</td>
+        </tr>
+        <tr>
+          <td>Stormwater</td>
+          <td>Section 7.3</td>
+        </tr>
+        <tr>
+          <td>Outdoor Lighting</td>
+          <td>Section 7.4</td>
+        </tr>
+        <tr>
+          <td>Corner Visibility</td>
+          <td>Section 7.5</td>
+        </tr>
+        <tr>
+          <td>Site Impacts</td>
+          <td>Section 7.6</td>
+        </tr>
+        <tr>
+          <td>Pedestrian Access</td>
+          <td>Section 8.1</td>
+        </tr>
+        <tr>
+          <td>Bicycle Access and Parking</td>
+          <td>Section 8.2</td>
+        </tr>
+        <tr>
+          <td>Vehicle Access and Parking</td>
+          <td>Section 8.3</td>
+        </tr>
+        <tr>
+          <td>Transportation Demand Management</td>
+          <td>Section 8.4</td>
+        </tr>
+        <tr>
+          <td>On-Premise Signs</td>
+          <td>Section 9.2</td>
+        </tr>
+        <tr>
+          <td>Blocks</td>
+          <td>Section 10.1</td>
+        </tr>
+        <tr>
+          <td>Rights-of-Way</td>
+          <td>Section 10.2</td>
+        </tr>
+        <tr>
+          <td>Nonconformities</td>
+          <td>Section 12.1</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<h2 id="3111-n-4-50-single-family">3.1.11 N-4-50 Single-Family</h2>
+
+<ol>
+  <li>
+    <p>Purpose
+The N-4-50 zone addresses areas that are composed primarily of single-family homes on lots of at least 50 feet in width.</p>
+  </li>
+  <li>Building Types
+The form requirements of the neighborhood zones are tailored to each building type in accordance with
+Section 3.2. The following building types are permitted in the N-4-50 zone:
+    <ul>
+      <li>Civic Building</li>
+      <li>Detached House</li>
+    </ul>
+  </li>
+  <li>
+    <p>General
+All development in the N-4-50 zone must comply with the form standards of Section 3.2, as well as any applicable standards in other sections, including the following:</p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>Frontage Elements</td>
+          <td>Section 3.3</td>
+        </tr>
+        <tr>
+          <td>Principal Uses</td>
+          <td>Section 6.1</td>
+        </tr>
+        <tr>
+          <td>Accessory Uses</td>
+          <td>Section 6.2</td>
+        </tr>
+        <tr>
+          <td>Temporary Uses</td>
+          <td>Section 6.3</td>
+        </tr>
+        <tr>
+          <td>Landscape</td>
+          <td>Section 7.1</td>
+        </tr>
+        <tr>
+          <td>Fences and Walls</td>
+          <td>Section 7.2</td>
+        </tr>
+        <tr>
+          <td>Stormwater</td>
+          <td>Section 7.3</td>
+        </tr>
+        <tr>
+          <td>Outdoor Lighting</td>
+          <td>Section 7.4</td>
+        </tr>
+        <tr>
+          <td>Corner Visibility</td>
+          <td>Section 7.5</td>
+        </tr>
+        <tr>
+          <td>Site Impacts</td>
+          <td>Section 7.6</td>
+        </tr>
+        <tr>
+          <td>Pedestrian Access</td>
+          <td>Section 8.1</td>
+        </tr>
+        <tr>
+          <td>Bicycle Access and Parking</td>
+          <td>Section 8.2</td>
+        </tr>
+        <tr>
+          <td>Vehicle Access and Parking</td>
+          <td>Section 8.3</td>
+        </tr>
+        <tr>
+          <td>Transportation Demand Management</td>
+          <td>Section 8.4</td>
+        </tr>
+        <tr>
+          <td>On-Premise Signs</td>
+          <td>Section 9.2</td>
+        </tr>
+        <tr>
+          <td>Blocks</td>
+          <td>Section 10.1</td>
+        </tr>
+        <tr>
+          <td>Rights-of-Way</td>
+          <td>Section 10.2</td>
+        </tr>
+        <tr>
+          <td>Nonconformities</td>
+          <td>Section 12.1</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <nav class="d-none d-xl-block col-xl-2 sidebar-right toc" id="toc-scrollspy">
+        <div class="sidebar-sticky">
+            <div class="border-left"><ul class="nav toc-list">
+<li class="toc-entry toc-h2"><a href="#311-n-1d-downtownregional-hub">3.1.1 N-1D Downtown/Regional Hub</a></li>
+<li class="toc-entry toc-h2"><a href="#312-n-1c-mixed-use-core">3.1.2 N-1C Mixed Use Core</a></li>
+<li class="toc-entry toc-h2"><a href="#313-n-1s-secondary-employment-center">3.1.3 N-1S Secondary Employment Center</a></li>
+<li class="toc-entry toc-h2"><a href="#314-n-c2-mixed-use-center">3.1.4 N-C2 Mixed Use Center</a></li>
+<li class="toc-entry toc-h2"><a href="#315-n-2e-mixed-use-edge">3.1.5 N-2E Mixed-Use Edge</a></li>
+<li class="toc-entry toc-h2"><a href="#316-n-2r-residential">3.1.6 N-2R Residential</a></li>
+<li class="toc-entry toc-h2"><a href="#317-n-3c-mixed-use-center">3.1.7 N-3C Mixed-Use Center</a></li>
+<li class="toc-entry toc-h2"><a href="#318-n-3e-mixed-use-edge">3.1.8 N-3E Mixed-Use Edge</a></li>
+<li class="toc-entry toc-h2"><a href="#319-n-3r-residential">3.1.9 N-3R Residential</a></li>
+<li class="toc-entry toc-h2"><a href="#3110-n-4-30-single-family">3.1.10 N-4-30 Single-Family</a></li>
+<li class="toc-entry toc-h2"><a href="#3111-n-4-50-single-family">3.1.11 N-4-50 Single-Family</a></li>
+</ul></div>
+        </div>
+    </nav>
+</body>
+
+</html>

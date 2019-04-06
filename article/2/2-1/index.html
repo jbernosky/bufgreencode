@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="cache-control" content="public">
+    <meta http-equiv="expires" content="86400">
+    
+    <title>Rules of Interpretation | BufGreenCode</title>
+    
+    <meta name="description" content="2.1.1 Definitions">
+<!--    <link rel="icon" type="image/png" href="/favicon.png">-->
+    <link rel="canonical" href="https://ihiutch.github.io/bufgreencode//article/2/2-1/">
+
+    <!-- Google Analytics. -->
+    
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    <!-- Load main CSS file asynchronously via loadCSS. -->
+<!--
+    <script>
+        !function(e){"use strict";var t=function(t,n,r){function o(e){return i.body?e():void setTimeout(function(){o(e)})}function l(){d.addEventListener&&d.removeEventListener("load",l),d.media=r||"all"}var a,i=e.document,d=i.createElement("link");if(n)a=n;else{var s=(i.body||i.getElementsByTagName("head")[0]).childNodes;a=s[s.length-1]}var u=i.styleSheets;d.rel="stylesheet",d.href=t,d.media="only x",o(function(){a.parentNode.insertBefore(d,n?a:a.nextSibling)});var f=function(e){for(var t=d.href,n=u.length;n--;)if(u[n].href===t)return e();setTimeout(function(){f(e)})};return d.addEventListener&&d.addEventListener("load",l),d.onloadcssdefined=f,f(l),d};"undefined"!=typeof exports?exports.loadCSS=t:e.loadCSS=t}("undefined"!=typeof global?global:this),function(e){if(e.loadCSS){var t=loadCSS.relpreload={};if(t.support=function(){try{return e.document.createElement("link").relList.supports("preload")}catch(t){}},t.poly=function(){for(var t=e.document.getElementsByTagName("link"),n=0;n<t.length;n++){var r=t[n];"preload"===r.rel&&"style"===r.getAttribute("as")&&(e.loadCSS(r.href,r),r.rel=null)}},!t.support()){t.poly();var n=e.setInterval(t.poly,300);e.addEventListener&&e.addEventListener("load",function(){e.clearInterval(n)})}}}(this);
+    loadCSS('/assets/styles/main.css');
+    loadCSS('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|Roboto+Slab:300,400|Roboto:400,400i,700,700i');
+  </script>
+-->
+
+    <link href="/bufgreencode/assets/styles/main.css" rel='stylesheet' type='text/css'>
+</head>
+
+
+<style>
+    body{
+        position: relative
+    }
+    </style>
+
+<body data-spy="scroll" data-target="#toc-scrollspy"  class="page--glossary" >
+
+    <nav class="col-md-4 col-lg-2 d-none d-md-block bg-light sidebar-left">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.1.1/themes/reset-min.css" integrity="sha256-JQ2nnTmybhOWSjfV3sa8mG0ZVhTCcORER4cyXc5HL10=" crossorigin="anonymous">
+
+<div class="px-3">
+    <input class="form-control" id="search-input" type="search" placeholder='Search...' />
+</div>
+
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+
+<script>
+    var client = algoliasearch('ZXR82DO3QZ', 'af7cc1f834c7c7de6ac6b92670775a89');
+    var index = client.initIndex('bufgreencode');
+
+    const hitTemplate = function(hit) {
+
+        let url = `bufgreencode${hit.url}#${hit.anchor}`;
+
+        const title = hit._highlightResult.title.value;
+        const content = hit._snippetResult.content.value
+
+        let breadcrumbs = '';
+        if (hit._highlightResult.hierarchy) {
+            var array = [];
+            for (const [key, value] of Object.entries(hit._highlightResult.hierarchy)) {
+                if (value) {
+                    array.push(value.value);
+                }
+            }
+            breadcrumbs = array.map(match => {
+                return `<span class="post-breadcrumb">${match}</span>`
+            }).join(' / ')
+        }
+
+        let article = '';
+        if (hit.article) {
+            article = hit.article + '.';
+        }
+
+        let section = '';
+        if (hit.section) {
+            section = hit.section + ' - ';
+        }
+
+        return `
+            <a class="post-link" href="${url}">
+              <h6>${article}${section}${title}</h6>
+              <div class="post-breadcrumbs">${breadcrumbs}</div>
+              <span>${content}</span>
+            </a>
+          `;
+    }
+
+    autocomplete('#search-input', {
+//        debug: true,
+        searchParameters: {
+            attributesToSnippet: ['content']
+        }
+    }, [{
+        source: autocomplete.sources.hits(index, {
+            hitsPerPage: 5
+        }),
+        displayKey: 'title',
+        templates: {
+            //            header: '<div class="aa-suggestions-category">Results</div>',
+            suggestion: hitTemplate,
+            footer: '<div class="aa-suggestions-footer">Algolia Search</div>',
+            empty: '<div class="aa-empty">No matching results</div>',
+        }
+    }]);
+
+</script>
+
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column mb-2">
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/bufgreencode/article/1/">1. Introductory Provisions</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link active" href="/bufgreencode/article/2/">2. Definitions &amp; Measurements</a>
+            </li>
+            <ul>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/bufgreencode/article/2/2-1/">2.1 Rules of Interpretation</a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="/bufgreencode/article/2/2-2/">2.2 Glossary of Terms</a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="/bufgreencode/article/2/2-3/">2.3 Measurements and Exceptions</a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/bufgreencode/article/3/">3. Neighborhood Zones</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/bufgreencode/article/4/">4. title change</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/bufgreencode/article/5/">5. Section 5</a>
+            </li>
+            
+            
+        </ul>
+    </div>
+</nav>
+
+    <div class="col-md-5 col-lg-10 col-xl-8 ml-sm-auto mx-xl-auto">
+        <main role="main" class="px-md-4">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Rules of Interpretation</h1>
+                </div>
+                <div class="col-12">
+                    <div class="page-content">
+                        <h2 id="211-definitions">2.1.1 Definitions</h2>
+
+<p>Whenever a defined word appears in the Ordinance, its meaning is as set forth in this article. Words not defined in this Ordinance are interpreted in accord with their usual dictionary meaning and customary usage.</p>
+
+<h2 id="212-current-versions-and-citations">2.1.2 Current Versions and Citations</h2>
+
+<p>All references to other regulations or manuals in this Ordinance refer to the most current version and citation for those regulations or manuals, unless expressly indicated otherwise. When the referenced regulations or documents have been repealed and not replaced by other regulations or manuals, Ordinance requirements for compliance are no longer in effect.</p>
+
+<h2 id="213-delegation-of-authority">2.1.3 Delegation of Authority</h2>
+
+<p>Whenever a provision requires the head of a department or another officer or employee of the City to perform an act or duty, that provision will be interpreted as authorizing the department head or officer to delegate that responsibility to others over whom he or she has authority.</p>
+
+<h2 id="214-text-and-graphics">2.1.4 Text and Graphics</h2>
+
+<p>Illustrations, diagrams, and flowcharts are included in this Ordinance to illustrate the intent and requirements of the text. In the case of a conflict between the text and any illustration, diagram, or flowchart, the text controls.</p>
+
+<h2 id="215-lists-and-examples">2.1.5 Lists and Examples</h2>
+
+<p>Unless otherwise expressly indicated, lists of items or examples that use “including,” “such as,” or similar terms are intended to provide examples only, and must not be construed as being limited to the items or examples listed.</p>
+
+<h2 id="216-time">2.1.6 Time</h2>
+
+<ol>
+  <li>When a number of days is specified as a period from a certain day within which or after or before which an act is authorized or required to be done, time is computed as the number of calendar days excluding the calendar day when the act is authorized or required to be done.</li>
+  <li>In computing any specified period of time from a specified event, the day on which the event happens is deemed the day from which an act is authorized or required to be done.</li>
+  <li>If the period is of two days, Saturday, Sunday, or a public holiday is excluded if it is an intervening day between the day when an act is authorized or required to be done and the last day of the period.</li>
+</ol>
+
+<h2 id="217-fractions">2.1.7 Fractions</h2>
+
+<p>Any fraction greater than or equal to 0.5 will be
+rounded up to nearest whole number. Any fraction
+less than 0.5 will be rounded down to nearest
+whole number.</p>
+
+<h2 id="218-mandatory-prohibitory-and-permissive-terms">2.1.8 Mandatory, Prohibitory, and Permissive Terms</h2>
+
+<ol>
+  <li>“Must,” “will,” and “shall” are mandatory terms that express a requirement or impose a duty.</li>
+  <li>“Must not,” “will not,” “shall not,” “may not,” and “no… may” express a prohibition.</li>
+  <li>“Should” expresses a suggestion or recommendation, and does not express a requirement or impose a duty.</li>
+  <li>“May” is permissive.</li>
+</ol>
+
+<h2 id="219-conjunctions">2.1.9 Conjunctions</h2>
+
+<ol>
+  <li>“And” indicates that all connected words or provisions apply.</li>
+  <li>“Or” indicates that the connected words or provisions may apply singly or in any combination.</li>
+  <li>“Either […] or” indicates that the connected words or provisions apply singly, but not in combination.</li>
+</ol>
+
+<h2 id="2110-common-abbreviations">2.1.10 Common Abbreviations</h2>
+
+<p>The following are abbreviations used within this Ordinance:</p>
+<ol>
+  <li>“DBH” is an abbreviation for “diameter at breast height.”</li>
+  <li>“GFA” is an abbreviation for “gross floor area.”</li>
+  <li>“MAX” is an abbreviation for “maximum.”</li>
+  <li>“MIN” in an abbreviation for “minimum.”</li>
+  <li>“MPH” is an abbreviation for “miles per hour.”</li>
+  <li>“N/A” is an abbreviation for “not applicable.”</li>
+  <li>“SF” is an abbreviation for “square feet.”</li>
+  <li>“TDM” is an abbreviation for “Transportation Demand Management.”</li>
+  <li>“VPD” is an abbreviation for “vehicles per day.”</li>
+  <li>“VLR” is an abbreviation for “visible light reflectance.”</li>
+  <li>“VLT” is an abbreviation for “visible light transmittance.”</li>
+</ol>
+
+<h2 id="2111-gender">2.1.11 Gender</h2>
+
+<p>Words denoting one gender apply to all genders.</p>
+
+<h2 id="2112-number">2.1.12 Number</h2>
+
+<p>The singular includes the plural and vice versa.</p>
+
+<h2 id="2113-tense">2.1.13 Tense</h2>
+
+<p>The present tense includes the past and future tenses, and the future tense includes the present.</p>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <nav class="d-none d-xl-block col-xl-2 sidebar-right toc" id="toc-scrollspy">
+        <div class="sidebar-sticky">
+            <div class="border-left"><ul class="nav toc-list">
+<li class="toc-entry toc-h2"><a href="#211-definitions">2.1.1 Definitions</a></li>
+<li class="toc-entry toc-h2"><a href="#212-current-versions-and-citations">2.1.2 Current Versions and Citations</a></li>
+<li class="toc-entry toc-h2"><a href="#213-delegation-of-authority">2.1.3 Delegation of Authority</a></li>
+<li class="toc-entry toc-h2"><a href="#214-text-and-graphics">2.1.4 Text and Graphics</a></li>
+<li class="toc-entry toc-h2"><a href="#215-lists-and-examples">2.1.5 Lists and Examples</a></li>
+<li class="toc-entry toc-h2"><a href="#216-time">2.1.6 Time</a></li>
+<li class="toc-entry toc-h2"><a href="#217-fractions">2.1.7 Fractions</a></li>
+<li class="toc-entry toc-h2"><a href="#218-mandatory-prohibitory-and-permissive-terms">2.1.8 Mandatory, Prohibitory, and Permissive Terms</a></li>
+<li class="toc-entry toc-h2"><a href="#219-conjunctions">2.1.9 Conjunctions</a></li>
+<li class="toc-entry toc-h2"><a href="#2110-common-abbreviations">2.1.10 Common Abbreviations</a></li>
+<li class="toc-entry toc-h2"><a href="#2111-gender">2.1.11 Gender</a></li>
+<li class="toc-entry toc-h2"><a href="#2112-number">2.1.12 Number</a></li>
+<li class="toc-entry toc-h2"><a href="#2113-tense">2.1.13 Tense</a></li>
+</ul></div>
+        </div>
+    </nav>
+</body>
+
+</html>

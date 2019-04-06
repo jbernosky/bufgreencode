@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="cache-control" content="public">
+    <meta http-equiv="expires" content="86400">
+    
+    <title>Transition Rules | BufGreenCode</title>
+    
+    <meta name="description" content="1.3.1 Illegal Structures and Uses  Any structure or use that was illegal prior to adoption of this Ordinance, but is subsequently made legal by this Ordinanc...">
+<!--    <link rel="icon" type="image/png" href="/favicon.png">-->
+    <link rel="canonical" href="https://ihiutch.github.io/bufgreencode//article/1/1-3/">
+
+    <!-- Google Analytics. -->
+    
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    <!-- Load main CSS file asynchronously via loadCSS. -->
+<!--
+    <script>
+        !function(e){"use strict";var t=function(t,n,r){function o(e){return i.body?e():void setTimeout(function(){o(e)})}function l(){d.addEventListener&&d.removeEventListener("load",l),d.media=r||"all"}var a,i=e.document,d=i.createElement("link");if(n)a=n;else{var s=(i.body||i.getElementsByTagName("head")[0]).childNodes;a=s[s.length-1]}var u=i.styleSheets;d.rel="stylesheet",d.href=t,d.media="only x",o(function(){a.parentNode.insertBefore(d,n?a:a.nextSibling)});var f=function(e){for(var t=d.href,n=u.length;n--;)if(u[n].href===t)return e();setTimeout(function(){f(e)})};return d.addEventListener&&d.addEventListener("load",l),d.onloadcssdefined=f,f(l),d};"undefined"!=typeof exports?exports.loadCSS=t:e.loadCSS=t}("undefined"!=typeof global?global:this),function(e){if(e.loadCSS){var t=loadCSS.relpreload={};if(t.support=function(){try{return e.document.createElement("link").relList.supports("preload")}catch(t){}},t.poly=function(){for(var t=e.document.getElementsByTagName("link"),n=0;n<t.length;n++){var r=t[n];"preload"===r.rel&&"style"===r.getAttribute("as")&&(e.loadCSS(r.href,r),r.rel=null)}},!t.support()){t.poly();var n=e.setInterval(t.poly,300);e.addEventListener&&e.addEventListener("load",function(){e.clearInterval(n)})}}}(this);
+    loadCSS('/assets/styles/main.css');
+    loadCSS('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|Roboto+Slab:300,400|Roboto:400,400i,700,700i');
+  </script>
+-->
+
+    <link href="/bufgreencode/assets/styles/main.css" rel='stylesheet' type='text/css'>
+</head>
+
+
+<style>
+    body{
+        position: relative
+    }
+    </style>
+
+<body data-spy="scroll" data-target="#toc-scrollspy"  class="page--glossary" >
+
+    <nav class="col-md-4 col-lg-2 d-none d-md-block bg-light sidebar-left">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.1.1/themes/reset-min.css" integrity="sha256-JQ2nnTmybhOWSjfV3sa8mG0ZVhTCcORER4cyXc5HL10=" crossorigin="anonymous">
+
+<div class="px-3">
+    <input class="form-control" id="search-input" type="search" placeholder='Search...' />
+</div>
+
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+
+<script>
+    var client = algoliasearch('ZXR82DO3QZ', 'af7cc1f834c7c7de6ac6b92670775a89');
+    var index = client.initIndex('bufgreencode');
+
+    const hitTemplate = function(hit) {
+
+        let url = `bufgreencode${hit.url}#${hit.anchor}`;
+
+        const title = hit._highlightResult.title.value;
+        const content = hit._snippetResult.content.value
+
+        let breadcrumbs = '';
+        if (hit._highlightResult.hierarchy) {
+            var array = [];
+            for (const [key, value] of Object.entries(hit._highlightResult.hierarchy)) {
+                if (value) {
+                    array.push(value.value);
+                }
+            }
+            breadcrumbs = array.map(match => {
+                return `<span class="post-breadcrumb">${match}</span>`
+            }).join(' / ')
+        }
+
+        let article = '';
+        if (hit.article) {
+            article = hit.article + '.';
+        }
+
+        let section = '';
+        if (hit.section) {
+            section = hit.section + ' - ';
+        }
+
+        return `
+            <a class="post-link" href="${url}">
+              <h6>${article}${section}${title}</h6>
+              <div class="post-breadcrumbs">${breadcrumbs}</div>
+              <span>${content}</span>
+            </a>
+          `;
+    }
+
+    autocomplete('#search-input', {
+//        debug: true,
+        searchParameters: {
+            attributesToSnippet: ['content']
+        }
+    }, [{
+        source: autocomplete.sources.hits(index, {
+            hitsPerPage: 5
+        }),
+        displayKey: 'title',
+        templates: {
+            //            header: '<div class="aa-suggestions-category">Results</div>',
+            suggestion: hitTemplate,
+            footer: '<div class="aa-suggestions-footer">Algolia Search</div>',
+            empty: '<div class="aa-empty">No matching results</div>',
+        }
+    }]);
+
+</script>
+
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column mb-2">
+            
+            
+            <li class="nav-item">
+                <a class="nav-link active" href="/bufgreencode/article/1/">1. Introductory Provisions</a>
+            </li>
+            <ul>
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="/bufgreencode/article/1/1-1/">1.1 Title, Purpose, and Applicability</a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="/bufgreencode/article/1/1-2/">1.2 Zoning Map</a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/bufgreencode/article/1/1-3/">1.3 Transition Rules</a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/bufgreencode/article/2/">2. Definitions &amp; Measurements</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/bufgreencode/article/3/">3. Neighborhood Zones</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/bufgreencode/article/4/">4. title change</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/bufgreencode/article/5/">5. Section 5</a>
+            </li>
+            
+            
+        </ul>
+    </div>
+</nav>
+
+    <div class="col-md-5 col-lg-10 col-xl-8 ml-sm-auto mx-xl-auto">
+        <main role="main" class="px-md-4">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Transition Rules</h1>
+                </div>
+                <div class="col-12">
+                    <div class="page-content">
+                        <h2 id="131-illegal-structures-and-uses">1.3.1 Illegal Structures and Uses</h2>
+<ol>
+  <li>Any structure or use that was illegal prior to adoption of this Ordinance, but is subsequently made legal by this Ordinance, is deemed legal as of the effective date of this Ordinance.</li>
+  <li>Any structure or use that was illegal prior to adoption of this Ordinance, and does  not conform to all requirements of this Ordinance, remains illegal. Illegal structures and uses are not considered nonconforming structures or uses.</li>
+</ol>
+
+<h2 id="132-creation-of-nonconformities">1.3.2 Creation of Nonconformities</h2>
+<p>A legal structure, use, or lot that conformed to all prior requirements of the zoning ordinance, subdivision ordinance, and other referenced ordinances in force prior to the effective date of this Ordinance, but no longer meets all the standards of this Ordinance,
+is deemed nonconforming and is controlled by the provisions of Section 12.1.</p>
+
+<h2 id="133-previously-granted-approvals">1.3.3 Previously Granted Approvals</h2>
+<ol>
+  <li>If any approval was lawfully issued prior to  the effective date of this Ordinance, the action
+authorized by the approval that was issued may be undertaken, except as follows:
+    <ol>
+      <li>If a required approval from the Planning Board, Zoning Board of Appeals, or Common Council is not received prior to the effective date of this Ordinance, then all applications for the proposed project, including those for which an approval has previously  been granted, will be considered pending applications pursuant to Section 1.3.4.</li>
+    </ol>
+  </li>
+  <li>If the applicant fails to act before any approval expires, including any periods of extension granted, the provisions of this Ordinance govern and the previous approval is revoked.</li>
+</ol>
+
+<h2 id="134-pending-applications">1.3.4 Pending Applications</h2>
+<ol>
+  <li>An application that has been submitted and determined to be complete (per Section 11.2.1.D) prior to the effective date of this Ordinance is deemed to be a pending application.</li>
+  <li>Any pending application for a proposed project, for which all approvals required under the previous Ordinance (i.e., Chapter 511 of the City Code of the City of Buffalo) from the Planning Board, Zoning Board of Appeals, and Common Council, were not granted prior to the effective date of this Ordinance, will be governed by this Ordinance.</li>
+  <li>Any pending application for a proposed project, for which all approvals required under the previous Ordinance (i.e., Chapter 511 of the City Code of the City of Buffalo) from the Planning Board, Zoning Board of Appeals, and Common Council, have been granted prior to the effective date of this Ordinance, will be governed by the ordinance in effect at the time all approvals were effective.</li>
+  <li>For a proposed project that has been determined to be a pending application governed under this Ordinance:
+    <ol>
+      <li>A new application is not required unless the appropriate ordinance administrator or review body determines that additional information is necessary.</li>
+      <li>If the provision of parking was required under the previous ordinance, a Transportation Demand Management Plan will only be required if the project was determined to be deficient in parking and, therefore, would have required a variance.</li>
+    </ol>
+  </li>
+</ol>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <nav class="d-none d-xl-block col-xl-2 sidebar-right toc" id="toc-scrollspy">
+        <div class="sidebar-sticky">
+            <div class="border-left"><ul class="nav toc-list">
+<li class="toc-entry toc-h2"><a href="#131-illegal-structures-and-uses">1.3.1 Illegal Structures and Uses</a></li>
+<li class="toc-entry toc-h2"><a href="#132-creation-of-nonconformities">1.3.2 Creation of Nonconformities</a></li>
+<li class="toc-entry toc-h2"><a href="#133-previously-granted-approvals">1.3.3 Previously Granted Approvals</a></li>
+<li class="toc-entry toc-h2"><a href="#134-pending-applications">1.3.4 Pending Applications</a></li>
+</ul></div>
+        </div>
+    </nav>
+</body>
+
+</html>
