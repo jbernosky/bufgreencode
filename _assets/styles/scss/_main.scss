@@ -1,0 +1,28 @@
+body{
+    position: relative;
+}
+
+.toc{
+    font-size: .875rem;
+}
+
+.toc-list{
+    list-style: none;
+    padding: 0;
+    display: block;
+}
+
+.toc-entry {
+  display: block;
+
+  a {
+    display: block;
+    padding: .125rem 1.5rem;
+    color: #77757a;
+
+    &:hover {
+      color: $blue;
+      text-decoration: none;
+    }
+  }
+}

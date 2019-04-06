@@ -1,0 +1,33 @@
+<nav class="col-md-4 col-lg-2 d-none d-md-block bg-light sidebar-left">
+    {% include search3.html %}
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column mb-2">
+            {% for article in site.articles %}
+            {% if article.article == page.article %}
+            <li class="nav-item">
+                <a class="nav-link active" href="{{ site.baseurl }}/{{ article.url }}">{{ article.article }}. {{ article.title }}</a>
+            </li>
+            <ul>
+                {% for section in site.sections %}
+                {% if section.article == page.article %}
+                {% if section.section == page.section %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ site.baseurl }}/{{ section.url }}">{{ article.article }}.{{ section.section }} {{ section.title }}</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ site.baseurl }}/{{ section.url }}">{{ article.article }}.{{ section.section }} {{ section.title }}</a>
+                </li>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+            </ul>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="{{ site.baseurl }}/{{ article.url }}">{{ article.article }}. {{ article.title }}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</nav>

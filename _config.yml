@@ -1,0 +1,130 @@
+# Basic Info
+title: BufGreenCode
+description: >
+  We design digital products that users love
+# Base URL is used in the manner that is specified by this guide
+# (http://jekyllrb.com/docs/github-pages/) which is to say, it's
+# not used at all.
+baseurl: "/bufgreencode"
+url: "https://ihiutch.github.io/bufgreencode/"
+
+# Used to determine if Google Analytics should be tracking
+is_production: 1
+
+# Build settings
+markdown: kramdown
+
+kramdown:
+  parse_block_html: true
+
+plugins:
+  - jekyll-feed
+  - jekyll-toc
+  
+toc:
+  list_class: nav toc-list
+  item_class: toc-entry
+
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+exclude:
+  - vendor
+  - _assets
+  - Gemfile
+  - Gemfile.lock
+  - gulpfile.js
+  - node_modules
+  - package.json
+  
+# Include static pages.
+include: ["_pages"]
+
+#Algolia
+algolia:
+  application_id: 'ZXR82DO3QZ'
+  index_name: 'bufgreencode'
+  search_only_api_key: 'af7cc1f834c7c7de6ac6b92670775a89'
+  
+collections:
+  articles:
+    output: true
+    permalink: /article/:path/
+  sections:
+    output: true
+    permalink: /article/:path/
+
+# Picture element presets
+picture:
+  source: "assets/img"
+  output: "assets/processed-img"
+  markup: "picture"
+  presets:
+    team_square:
+      attr:
+        class: "image--team-square"
+        itemprop: "image"
+      ppi: [1, 2]
+      source_400:
+        media: "(min-width: 400px)"
+        width: "334"
+      source_default:
+        width: "254"
+    team_individual:
+      attr:
+        class: "image--team-individual"
+        itemprop: "image"
+      ppi: [1, 2]
+      source_400:
+        media: "(min-width: 400px)"
+        width: "350"
+      source_default:
+        width: "288"
+    team_square_small:
+      attr:
+        class: "image--team-square-small"
+        itemprop: "image"
+      ppi: [1, 2]
+      source_default:
+        width: "288"
+    team_blog_tile:
+      attr:
+        class: "image--team-blog-tile"
+        itemprop: "image"
+      ppi: [1, 2]
+      source_default:
+        width: "60"
+    partner_square:
+      attr:
+        class: "image--partner-square"
+        itemprop: "image"
+      ppi: [1, 2]
+      source_default:
+        width: "223"
+    post_featured_image:
+      attr:
+        class: "image--post-featured-image"
+        itemprop: "image"
+      ppi: [1, 2]
+      source_1120:
+        media: "(min-width: 1120px)"
+        width: "1000"
+      source_860:
+        media: "(min-width: 860px)"
+        width: "746"
+      source_640:
+        media: "(min-width: 640px)"
+        width: "860"
+      source_400:
+        media: "(min-width: 400px)"
+        width: "640"
+      source_default:
+        width: "400"
+
+# Add for default for og:image meta tag
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: "/assets/img/logo.svg"
+
