@@ -1,63 +1,51 @@
 language: node_js
-
 branches:
   except:
   - gh_pages
-  
 node_js:
- - "node"
-  
+- node
 cache:
-  - directories:
-      - "bundler"
-      - "node_modules"
-      - "vendor"
-      
+- directories:
+  - bundler
+  - node_modules
+  - vendor
 addons:
   apt:
     packages:
-      - libcurl4-openssl-dev
-
+    - libcurl4-openssl-dev
 rvm:
 - 2.4.1
-
 before_install:
 - gem update --system
 - gem install bundler
-
 install:
 - bundle install
-
-  include:
-    - stage: Test
-      before_script: 
-        - npm i gulp
-        - gulp build:test
-      script: 
-        - bundle exec scss-lint _assets/styles/scss/*/*.scss
-        - bundle exec htmlproofer ./_site
-        
-    - stage: Deploy
-      script:
-        - npm i gulp
-        - gulp build
-      deploy:
-        provider: pages
-        local-dir: ./_site
-        target-branch: gh-pages
-        name: Travis Deployment Bot
-        skip-cleanup: true
-        github-token: $GH_TOKEN
-        keep-history: true
-        on:
-          branch: master
-    
+include:
+- stage: Test
+  before_script:
+  - npm i gulp
+  - gulp build:test
+  script:
+  - bundle exec scss-lint _assets/styles/scss/*/*.scss
+  - bundle exec htmlproofer ./_site
+- stage: Deploy
+  script:
+  - npm i gulp
+  - gulp build
+  deploy:
+    provider: pages
+    local-dir: "./_site"
+    target-branch: gh-pages
+    name: Travis Deployment Bot
+    skip-cleanup: true
+    github-token: "$GH_TOKEN"
+    keep-history: true
+    on:
+      branch: master
 sudo: false
-
 notifications:
   email: false
-  
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
-  - secure: T2PbX+q5yFUOkhoe1BP0pknC+honHsChnpiPN8gQY3Zg+FvLhO/6F1RwbERi9qmgJoa2lAYuJbMVXX6gCWQdF/ffTJzqxZD7sTRuyAAJQcLaqI9yrSPmu914zL1038S4AGEoIFm0eBmmVArLqyzBgcGJGOTuu41wy2pOndiLwI//LdKs4QxwvQbhyvi6/+5sgS4ytQj9e7CSyvLGi/uVEALDMwXglVIhV/Kfr7oR27CTct2EW6JTxyP6lwAfYTqs6xrvx4DVazkhb/2NxG4xPQCESTBT2cX9rydF6DjxJamvAWRozeAGukq4AnUQsCvLW598nAMaO+ccr4xovc5UcBQK6AjDfQuUX3pkxBab23bPVhTJ9bXW/xK9BuaBvTBdPTGX85HlF+68tybSmtPMu75dTRyoD3zpntB7AkElMtuF0RQyD+/36+EMpVu1UnTW1guMG3WfPFdtip0VRbfd4A+JpOUsO9l2l2ZAWGr5oaSJjCA+SJQ8v7XBKBFQcy9yXAXn6DELnXm8kTHTz/8wBR4zvcdGmt8hz3RX1dgk+99DCO5POEBCZ21k3Cm8cf8pxupCf+h1JHTGfIhD/SkH46xpi/TwlosMxV7Td9aKHTnoAIrw9mhFy3/9kFYPs3Gs1hpeo2tiyPeGnHMPhD+4kC4uRei7Lae1EcY9QmwXk3k=
+  - secure: I6IVeZmfbF51kYxE30IcVKctUykffG/0Hcfp31wmqHOebPMWAyIhYu3I0ZyjNwv80jkfMCkSc+UNKsrb0mmlXyggVlIo4HpAD/figHbtFuh429WoemaGhDaSEYfmmBDE+QXb6I0/pT0HiyBoJHiBj4HsHb0C+WGwpzjWqCyrh35U7e4ekGPYXMQIjPKs8x+K2i0RS360SBXDyL8owtT4AU1fnhbEcoIhIR12wPZjzrummcf8shY6uTjEuNIXPDp/QnKWLPyNt/pGnlohgzMOQjWJT1vOj6853yxKdb82PRteZOXsvIrjQHkn5/D0eMlG8hsJfixijl5DgSZTlJtprkzILThqbLkRbdHPO/+XIpTE9Ay5ps+d4a/8Uf+r1xOLademgWc683lXqfqUOTLVnaA9gmtIeGTZ6ULcR3cPfpRNGxQgtrOWRppMxVl8LOEqKYpEirMnTdeJ0nuDowGePX8ipl/z6Ep6RmVwZa5u/0WTewUfprmDOH1fqk8NtSpkWs2mKDuWtoF97BcKdLPNWTdJQHkxo6gvWqibqSeOCUD1ZtwW2omAppkm7Mx+upQR4Hff8XlnsWS8DfOI+3HZKfaYmoPG7pzbt0FE2q3H5YweKxzdB3w/gVcdaXPuefBmcSYYknlU+G5yhnuCoVPLFHPmEcChnslG2gQOTb5e+ZY=
