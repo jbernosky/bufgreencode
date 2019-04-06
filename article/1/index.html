@@ -68,10 +68,13 @@
 
         var currentUrl = getOrigin()
         var liveUrl = 'https://ihiutch.github.io/bufgreencode/'
+
+        var url = '';
+
         if(currentUrl.indexOf(liveUrl) !== -1){
-            let url = `/bufgreencode${hit.url}#${hit.anchor}`;
+            url = `/bufgreencode${hit.url}#${hit.anchor}`;
         }else{
-            let url = `${hit.url}#${hit.anchor}`;
+            url = `${hit.url}#${hit.anchor}`;
         }
 
         const title = hit._highlightResult.title.value;
