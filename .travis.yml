@@ -44,7 +44,7 @@ install:
       deploy:
         provider: pages
         local-dir: ./_site
-        target-branch: gh-pages
+        target-branch: gh_pages
         name: Travis Deployment Bot
         skip-cleanup: true
         github-token: $GH_TOKEN
