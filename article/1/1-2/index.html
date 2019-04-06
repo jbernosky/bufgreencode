@@ -59,7 +59,7 @@
 
     const hitTemplate = function(hit) {
 
-        let url = `${hit.url}#${hit.anchor}`;
+        let url = `/bufgreencode${hit.url}#${hit.anchor}`;
 
         const title = hit._highlightResult.title.value;
         const content = hit._snippetResult.content.value
@@ -97,7 +97,7 @@
     }
 
     autocomplete('#search-input', {
-//        debug: true,
+        debug: true,
         searchParameters: {
             attributesToSnippet: ['content']
         }
