@@ -28,7 +28,7 @@ jobs:
     - gulp build:test
     script:
     - bundle exec scss-lint _assets/styles/scss/*/*.scss
-    - bundle exec htmlproofer ./_site
+#    - bundle exec htmlproofer ./_site
   - stage: Deploy
     script:
     - npm i gulp
