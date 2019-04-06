@@ -1,77 +1,71 @@
-<div id="search-searchbar"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.1.1/themes/reset-min.css" integrity="sha256-JQ2nnTmybhOWSjfV3sa8mG0ZVhTCcORER4cyXc5HL10=" crossorigin="anonymous">
 
-<div class="post-list" id="search-hits">
-    {% for post in site.posts %}
-    <div class="post-item">
-        {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
-
-        <h2>
-            <a class="post-link" href="{{ post.url | relative_url }}">
-                {{ post.title | escape }}
-            </a>
-        </h2>
-
-        <div class="post-snippet">{{ post.excerpt }}</div>
-    </div>
-    {% endfor %}
+<div class="px-3">
+    <input class="form-control" id="search-input" type="search" placeholder='Search...' />
 </div>
 
-<!-- Including InstantSearch.js library and styling -->
-<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
 
 <script>
-    // Instanciating InstantSearch.js with Algolia credentials
-    const search = instantsearch({
-        appId: '{{ site.algolia.application_id }}',
-        indexName: '{{ site.algolia.index_name }}',
-        apiKey: '{{ site.algolia.search_only_api_key }}'
-    });
+    var client = algoliasearch('{{ site.algolia.application_id }}', '{{ site.algolia.search_only_api_key }}');
+    var index = client.initIndex('{{ site.algolia.index_name }}');
 
     const hitTemplate = function(hit) {
 
-        let url = `{{ site.baseurl }}${hit.url}#${hit.anchor}`;
+        let url = `${hit.url}#${hit.anchor}`;
 
         const title = hit._highlightResult.title.value;
+        const content = hit._snippetResult.content.value
 
         let breadcrumbs = '';
-        if (hit._highlightResult.headings) {
-            breadcrumbs = hit._highlightResult.headings.map(match => {
-                return `<span class="post-breadcrumb">${match.value}</span>`
-            }).join(' > ')
+        if (hit._highlightResult.hierarchy) {
+            var array = [];
+            for (const [key, value] of Object.entries(hit._highlightResult.hierarchy)) {
+                if (value) {
+                    array.push(value.value);
+                }
+            }
+            breadcrumbs = array.map(match => {
+                return `<span class="post-breadcrumb">${match}</span>`
+            }).join(' / ')
         }
 
-        const content = hit._highlightResult.html.value;
+        let article = '';
+        if (hit.article) {
+            article = hit.article + '.';
+        }
+
+        let section = '';
+        if (hit.section) {
+            section = hit.section + ' - ';
+        }
 
         return `
-            <div class="post-item">
-              <h2><a class="post-link" href="${url}">${title}</a></h2>
-              {{#breadcrumbs}}<a href="${url}" class="post-breadcrumbs">${breadcrumbs}</a>{{/breadcrumbs}}
-              <div class="post-snippet">${content}</div>
-            </div>
+            <a class="post-link" href="${url}">
+              <h6>${article}${section}${title}</h6>
+              {{#breadcrumbs}}<div class="post-breadcrumbs">${breadcrumbs}</div>{{/breadcrumbs}}
+              <span>${content}</span>
+            </a>
           `;
     }
 
-    // Adding searchbar and results widgets
-    search.addWidget(
-        instantsearch.widgets.searchBox({
-            container: '#search-searchbar',
-            placeholder: 'Search into posts...',
-            poweredBy: true, // This is required if you're on the free Community plan
-        })
-    );
-    search.addWidget(
-        instantsearch.widgets.hits({
-            container: '#search-hits',
-            templates: {
-                item: hitTemplate
-            }
-        })
-    );
-
-    // Starting the search
-    search.start();
+    autocomplete('#search-input', {
+//        debug: true,
+        searchParameters: {
+            attributesToSnippet: ['content']
+        }
+    }, [{
+        source: autocomplete.sources.hits(index, {
+            hitsPerPage: 5
+        }),
+        displayKey: 'title',
+        templates: {
+            //            header: '<div class="aa-suggestions-category">Results</div>',
+            suggestion: hitTemplate,
+            footer: '<div class="aa-suggestions-footer">Algolia Search</div>',
+            empty: '<div class="aa-empty">No matching results</div>',
+        }
+    }]);
 
 </script>
