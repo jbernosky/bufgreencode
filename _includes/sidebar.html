@@ -5,18 +5,18 @@
             {% for article in site.articles %}
             {% if article.article == page.article %}
             <li class="nav-item">
-                <a class="nav-link active" href="{{ site.baseurl }}/{{ article.url }}">{{ article.article }}. {{ article.title }}</a>
+                <a class="nav-link active" href="{{ site.baseurl }}{{ article.url }}">{{ article.article }}. {{ article.title }}</a>
             </li>
             <ul>
                 {% for section in site.sections %}
                 {% if section.article == page.article %}
                 {% if section.section == page.section %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ site.baseurl }}/{{ section.url }}">{{ article.article }}.{{ section.section }} {{ section.title }}</a>
+                    <a class="nav-link" href="{{ site.baseurl }}{{ section.url }}">{{ article.article }}.{{ section.section }} {{ section.title }}</a>
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a class="nav-link text-secondary" href="{{ site.baseurl }}/{{ section.url }}">{{ article.article }}.{{ section.section }} {{ section.title }}</a>
+                    <a class="nav-link text-secondary" href="{{ site.baseurl }}{{ section.url }}">{{ article.article }}.{{ section.section }} {{ section.title }}</a>
                 </li>
                 {% endif %}
                 {% endif %}
@@ -24,7 +24,7 @@
             </ul>
             {% else %}
             <li class="nav-item">
-                <a class="nav-link text-secondary" href="{{ site.baseurl }}/{{ article.url }}">{{ article.article }}. {{ article.title }}</a>
+                <a class="nav-link text-secondary" href="{{ site.baseurl }}{{ article.url }}">{{ article.article }}. {{ article.title }}</a>
             </li>
             {% endif %}
             {% endfor %}

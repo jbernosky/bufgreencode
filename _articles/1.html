@@ -9,7 +9,7 @@ article: 1
 {% for section in site.sections %}
     {% if section.article == page.article %}
         <ul>
-            <li><a href="{{ site.baseurl }}/{{ section.url}}">{{ section.title }} - {{section.article}}.{{section.section}}</a></li>
+            <li><a href="{{ site.baseurl }}{{ section.url}}">{{ section.title }} - {{section.article}}.{{section.section}}</a></li>
         </ul>
     {% endif %}
 {% endfor %}

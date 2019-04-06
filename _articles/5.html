@@ -10,7 +10,7 @@ article: 5
 <ul>
     {% if section.article == page.article %}
     <li>
-        <a href="{{ site.baseurl }}/{{ section.url}}">{{ section.title }} - {{section.article}}.{{section.section}}</a>
+        <a href="{{ site.baseurl }}{{ section.url}}">{{ section.title }} - {{section.article}}.{{section.section}}</a>
     </li>
     {% endif %}
 </ul>

@@ -5,7 +5,7 @@ description: >
 # Base URL is used in the manner that is specified by this guide
 # (http://jekyllrb.com/docs/github-pages/) which is to say, it's
 # not used at all.
-baseurl: "/bufgreencode"
+baseurl: "/bufgreencode/"
 url: "https://ihiutch.github.io/bufgreencode/"
 
 # Used to determine if Google Analytics should be tracking
