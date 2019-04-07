@@ -1,0 +1,3401 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="cache-control" content="public">
+    <meta http-equiv="expires" content="86400">
+    
+    <title>Principal Uses | BufGreenCode</title>
+    
+    <meta name="description" content="6.1.1 General">
+<!--    <link rel="icon" type="image/png" href="/favicon.png">-->
+    <link rel="canonical" href="https://ihiutch.github.io/bufgreencode//article/6/6-1/">
+
+    <!-- Google Analytics. -->
+    
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    <!-- Load main CSS file asynchronously via loadCSS. -->
+<!--
+    <script>
+        !function(e){"use strict";var t=function(t,n,r){function o(e){return i.body?e():void setTimeout(function(){o(e)})}function l(){d.addEventListener&&d.removeEventListener("load",l),d.media=r||"all"}var a,i=e.document,d=i.createElement("link");if(n)a=n;else{var s=(i.body||i.getElementsByTagName("head")[0]).childNodes;a=s[s.length-1]}var u=i.styleSheets;d.rel="stylesheet",d.href=t,d.media="only x",o(function(){a.parentNode.insertBefore(d,n?a:a.nextSibling)});var f=function(e){for(var t=d.href,n=u.length;n--;)if(u[n].href===t)return e();setTimeout(function(){f(e)})};return d.addEventListener&&d.addEventListener("load",l),d.onloadcssdefined=f,f(l),d};"undefined"!=typeof exports?exports.loadCSS=t:e.loadCSS=t}("undefined"!=typeof global?global:this),function(e){if(e.loadCSS){var t=loadCSS.relpreload={};if(t.support=function(){try{return e.document.createElement("link").relList.supports("preload")}catch(t){}},t.poly=function(){for(var t=e.document.getElementsByTagName("link"),n=0;n<t.length;n++){var r=t[n];"preload"===r.rel&&"style"===r.getAttribute("as")&&(e.loadCSS(r.href,r),r.rel=null)}},!t.support()){t.poly();var n=e.setInterval(t.poly,300);e.addEventListener&&e.addEventListener("load",function(){e.clearInterval(n)})}}}(this);
+    loadCSS('/assets/styles/main.css');
+    loadCSS('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|Roboto+Slab:300,400|Roboto:400,400i,700,700i');
+  </script>
+-->
+
+    <link href="/bufgreencode/assets/styles/main.css" rel='stylesheet' type='text/css'>
+</head>
+
+
+<style>
+    body{
+        position: relative
+    }
+    </style>
+
+<body data-spy="scroll" data-target="#toc-scrollspy"  class="page--glossary" >
+
+    <nav class="col-md-4 col-lg-2 d-none d-md-block bg-light sidebar-left">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.1.1/themes/reset-min.css" integrity="sha256-JQ2nnTmybhOWSjfV3sa8mG0ZVhTCcORER4cyXc5HL10=" crossorigin="anonymous">
+
+<div class="px-3">
+    <input class="form-control" id="search-input" type="search" placeholder='Search...' />
+</div>
+
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+
+<script>
+    var client = algoliasearch('ZXR82DO3QZ', 'af7cc1f834c7c7de6ac6b92670775a89');
+    var index = client.initIndex('bufgreencode');
+
+    const hitTemplate = function(hit) {
+
+        function getOrigin() {
+            var location = window.location
+            var origin = location.origin
+
+            if (!origin) {
+            var port = location.port ? ':' + location.port : ''
+
+            origin = location.protocol + '//' + location.hostname + port
+            }
+
+            return origin
+        }
+
+        var currentUrl = getOrigin()
+        var liveUrl = 'https://ihiutch.github.io'
+
+        var url = '';
+
+        if(currentUrl.indexOf(liveUrl) !== -1){
+            url = `/bufgreencode${hit.url}#${hit.anchor}`;
+        }else{
+            url = `${hit.url}#${hit.anchor}`;
+        }
+
+        const title = hit._highlightResult.title.value;
+        const content = hit._snippetResult.content.value
+
+        let breadcrumbs = '';
+        if (hit._highlightResult.hierarchy) {
+            var array = [];
+            for (const [key, value] of Object.entries(hit._highlightResult.hierarchy)) {
+                if (value) {
+                    array.push(value.value);
+                }
+            }
+            breadcrumbs = array.map(match => {
+                return `<span class="post-breadcrumb">${match}</span>`
+            }).join(' / ')
+        }
+
+        let article = '';
+        if (hit.article) {
+            article = hit.article + '.';
+        }
+
+        let section = '';
+        if (hit.section) {
+            section = hit.section + ' - ';
+        }
+
+        return `
+            <a class="post-link" href="${url}">
+              <h6>${article}${section}${title}</h6>
+              <div class="post-breadcrumbs">${breadcrumbs}</div>
+              <span>${content}</span>
+            </a>
+          `;
+    }
+
+    autocomplete('#search-input', {
+        debug: true,
+        searchParameters: {
+            attributesToSnippet: ['content']
+        }
+    }, [{
+        source: autocomplete.sources.hits(index, {
+            hitsPerPage: 5
+        }),
+        displayKey: 'title',
+        templates: {
+            //            header: '<div class="aa-suggestions-category">Results</div>',
+            suggestion: hitTemplate,
+            footer: '<div class="aa-suggestions-footer">Algolia Search</div>',
+            empty: '<div class="aa-empty">No matching results</div>',
+        }
+    }]);
+
+</script>
+
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column mb-2">
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/bufgreencode/article/1/">1. Introductory Provisions</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/bufgreencode/article/2/">2. Definitions &amp; Measurements</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/bufgreencode/article/3/">3. Neighborhood Zones</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/bufgreencode/article/4/">4. District Zones</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/bufgreencode/article/5/">5. Section 5</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link active" href="/bufgreencode/article/6/">6. Uses</a>
+            </li>
+            <ul>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/bufgreencode/article/6/6-1/">6.1 Principal Uses</a>
+                </li>
+                
+                
+                
+            </ul>
+            
+            
+        </ul>
+    </div>
+</nav>
+
+    <div class="col-md-5 col-lg-10 col-xl-8 ml-sm-auto mx-xl-auto">
+        <main role="main" class="px-md-4">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Principal Uses</h1>
+                </div>
+                <div class="col-12">
+                    <div class="page-content">
+                        <h2 id="611-general">6.1.1 General</h2>
+
+<ol>
+  <li>All principal uses must comply with the standards of this section.</li>
+  <li>Table 6A: Principal Uses identifies the uses allowed by zone, with cross-references for use definitions and use-specific standards that may apply. The key for the use table is as follows:
+    <ol>
+      <li>Permitted (4) indicates that the use is permitted by right in the zone.</li>
+      <li>Special Use (2) indicates that the use requires a special use permit.</li>
+      <li>If a cell is blank, this indicates that the use is not permitted in the zone.</li>
+    </ol>
+  </li>
+  <li>Overlay Zones. Overlay zones (i.e., N-DER, Downtown Entertainment Review Overlay; C-M, Metro Rail; and C-W, Waterfront) are not listed in Table 6A. Whether a use is allowed, allowed with a special use permit, or not allowed is addressed by the underlying zone. For any use standards
+or restrictions that may apply to an overlay zone, refer to the applicable overlay zone section of this Ordinance.</li>
+  <li>Unlisted Uses
+    <ol>
+      <li>If a use is not listed but is similar in nature and impact to a use that is listed in Table 6A, the Zoning Administrator may interpret the use as permitted in accordance with Section 11.3.11.</li>
+      <li>If a use is not listed and cannot be interpreted as similar in nature and impact to a use that is listed in Table 6A, the use is deemed prohibited.</li>
+    </ol>
+  </li>
+  <li>Multiple Principal Uses. A site may contain more than one principal use, so long as each principal use is allowed in the zone.</li>
+  <li>Neighborhood Shops. An applicant is eligible  to apply for a special use permit to establish or expand a commercial use in the N-2R or N-3R zone where the below criteria are met, irrespectiveof the limitations of Table 6A: Principal Uses. These criteria are intended to allow existing commercial buildings in residential zones to be utilized to incubate small businesses and artisans in order to serve as catalysts for neighborhood revitalization, as a tool for economic development, and as an important component of the walkability of a neighborhood.
+    <ol>
+      <li>The use is limited to any of the following:
+        <ol>
+          <li>Restaurant.</li>
+          <li>Retail and service, general.</li>
+          <li>Tavern.</li>
+          <li>Industrial, artisan.</li>
+          <li>Professional offices.</li>
+        </ol>
+      </li>
+      <li>The use does not include the sale, transfer, or lease of firearms and/or firearm accessories, including ammunition.</li>
+      <li>The use will not exceed 2,500 square feet in gross floor area.</li>
+      <li>The use will occupy a principal building built prior to the year 1953; which was built or modified to include a ground-floor commercial space that faces, and is directly accessible from, the adjacent public right-of- way; and where it can be shown that a lawful commercial use occupies, or previously occupied, the ground-floor commercial space.</li>
+      <li>The use will be conducted wholly within a fully-enclosed building.</li>
+      <li>The use will occupy a principal structure that will conform to the transparency  and pedestrian access standards of the commercial block, shopfront, or shopfront house building type, whichever is most applicable.</li>
+      <li>Any nonconforming sign, outdoor lighting, fence, or parking lot will be brought into conformance with this Ordinance prior to the issuance of a certificate of occupancy.</li>
+    </ol>
+  </li>
+  <li>Delaware Avenue and North Street Exceptions. The use of a property as a residential care facility, lodge/private club, funeral services facility, medical clinic, or professional office is allowed by right on any parcel which abuts North Street, between Main Street and Symphony Circle, and Delaware Avenue, between North Street and Gates Circle, irrespective of the limitations of Table 6A: Principal Uses.</li>
+  <li>Industrial/Non-Industrial Land Use Compatibility
+    <ol>
+      <li>This section is intended to ensure a wide range of industrial land uses, encourage employment opportunities, limit the encroachment of incompatible uses into areas adjacent to lands zoned for heavy industrial use, and protect other uses from the impacts and hazards which could result if such uses were established near areas zoned for heavy industrial use.</li>
+      <li>Any use that occupies any portion of a parcel that is located within 500 feet of a D-IH zone and that is not listed below, but is otherwise allowed by right or with a special use permit per Table 6A, requires a special use permit subject to the additional approval criteria of this section.
+        <ol>
+          <li>Dwelling, caretaker.</li>
+          <li>Public safety facility.</li>
+          <li>Vehicle repair, major.</li>
+          <li>Industrial, artisan, light, and heavy.</li>
+          <li>Recycling facility.</li>
+          <li>Research/laboratory facility.</li>
+          <li>Storage yard.</li>
+          <li>Warehouse/distribution.</li>
+          <li>Freight terminal.</li>
+          <li>Railway facilities.</li>
+          <li>Truck stop.</li>
+          <li>District energy system.</li>
+          <li>Solar farm.</li>
+          <li>Utilities and services, major and minor.</li>
+          <li>Wind farm.</li>
+          <li>Wireless communications.</li>
+        </ol>
+      </li>
+      <li>A special use permit for a project which includes a use other than those uses listed above, may be granted only where the use is found to be consistent with the general criteria of Section 11.3.3 and the following additional criteria:
+        <ol>
+          <li>The proposed use will avoid, minimize, or offset any potential adverse impact upon, or conflict with the operations of, adjacent industrial uses.</li>
+          <li>The proposed use will not reasonably be expected to increase the risk or danger to life or property due to the proximity to adjacent industrial uses.</li>
+          <li>The proposed use will be screened and buffered, where necessary, to mitigate against any potential impact upon site users due to the proximity of adjacent industrial uses, including, but not limited to, noise, heat, glare, dust, smoke, fumes, odors, and vibration.</li>
+          <li>The proposed use will be served by,  or provide, safe and adequate access to and within the site for pedestrians, cyclists, transit riders, the mobility impaired, and motorists.</li>
+          <li>The proposed use be will established, maintained, and operated so as to avoid, minimize, or offset any potential conflicts with adjacent industrial uses due to  traffic congestion, dangerous traffic movements, or interference with the safe and efficient movement of freight.</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li>All uses must meet any applicable federal, state, and local requirements, including, but not limited to, licensing, health, safety, and building and fire code requirements.</li>
+</ol>
+
+<h3 id="residential">Residential</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>N-1D</th>
+      <th>N-1C</th>
+      <th>N-1S</th>
+      <th>N-2C</th>
+      <th>N-2E</th>
+      <th>N-2R</th>
+      <th>N-3C</th>
+      <th>N-3E</th>
+      <th>N-3R</th>
+      <th>N-4-30</th>
+      <th>N-4-50</th>
+      <th>D-R</th>
+      <th>D-M</th>
+      <th>D-E</th>
+      <th>D-S</th>
+      <th>D-C</th>
+      <th>D-IL</th>
+      <th>D-IH</th>
+      <th>D-OS</th>
+      <th>D-OG</th>
+      <th>D-ON</th>
+      <th>C-R</th>
+      <th>Definitions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Dormitory</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.2.A</td>
+    </tr>
+    <tr>
+      <td>Dwelling, Ancillary</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.2.B</td>
+    </tr>
+    <tr>
+      <td>Dwelling, Caretaker</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.2.C</td>
+    </tr>
+    <tr>
+      <td>Dwelling, Double Unit</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.2.D</td>
+    </tr>
+    <tr>
+      <td>Dwelling, Multiple Unit</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.2.E</td>
+    </tr>
+    <tr>
+      <td>Dwelling, Single Unit</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.2.F</td>
+    </tr>
+    <tr>
+      <td>Emergency Shelter</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.2.G</td>
+    </tr>
+    <tr>
+      <td>Fraternity/Sorority House</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td> </td>
+      <td>4</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.2.H</td>
+    </tr>
+    <tr>
+      <td>Group Home</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.2.I</td>
+    </tr>
+    <tr>
+      <td>Halfway House</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.2.J</td>
+    </tr>
+    <tr>
+      <td>Residential Care Facility</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.2.K</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="civic">Civic</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>N-1D</th>
+      <th>N-1C</th>
+      <th>N-1S</th>
+      <th>N-2C</th>
+      <th>N-2E</th>
+      <th>N-2R</th>
+      <th>N-3C</th>
+      <th>N-3E</th>
+      <th>N-3R</th>
+      <th>N-4-30</th>
+      <th>N-4-50</th>
+      <th>D-R</th>
+      <th>D-M</th>
+      <th>D-E</th>
+      <th>D-S</th>
+      <th>D-C</th>
+      <th>D-IL</th>
+      <th>D-IH</th>
+      <th>D-OS</th>
+      <th>D-OG</th>
+      <th>D-ON</th>
+      <th>C-R</th>
+      <th>Definitions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Assembly</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.3.A</td>
+    </tr>
+    <tr>
+      <td>Cemetary</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.3.B</td>
+    </tr>
+    <tr>
+      <td>College/University</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.3.C</td>
+    </tr>
+    <tr>
+      <td>Cultural Facility</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td>Sec. 6.1.3.D</td>
+    </tr>
+    <tr>
+      <td>Government Offices</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>Sec. 6.1.3.E</td>
+    </tr>
+    <tr>
+      <td>Hospital</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.3.F</td>
+    </tr>
+    <tr>
+      <td>Lodge or Private Club</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.3.G</td>
+    </tr>
+    <tr>
+      <td>Open Space</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>Sec. 6.1.3.H</td>
+    </tr>
+    <tr>
+      <td>Primary/Secondary School</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.3.I</td>
+    </tr>
+    <tr>
+      <td>Public Safety Facility</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>Sec. 6.1.3.J</td>
+    </tr>
+    <tr>
+      <td>Zoo</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.3.K</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="lodging">Lodging</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>N-1D</th>
+      <th>N-1C</th>
+      <th>N-1S</th>
+      <th>N-2C</th>
+      <th>N-2E</th>
+      <th>N-2R</th>
+      <th>N-3C</th>
+      <th>N-3E</th>
+      <th>N-3R</th>
+      <th>N-4-30</th>
+      <th>N-4-50</th>
+      <th>D-R</th>
+      <th>D-M</th>
+      <th>D-E</th>
+      <th>D-S</th>
+      <th>D-C</th>
+      <th>D-IL</th>
+      <th>D-IH</th>
+      <th>D-OS</th>
+      <th>D-OG</th>
+      <th>D-ON</th>
+      <th>C-R</th>
+      <th>Definitions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bed &amp; Breakfast</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.4.A</td>
+    </tr>
+    <tr>
+      <td>Hotel/Hostel</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.4.B</td>
+    </tr>
+    <tr>
+      <td>Rooming House/S.R.O.</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.4.C</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="retail--service">Retail &amp; Service</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>N-1D</th>
+      <th>N-1C</th>
+      <th>N-1S</th>
+      <th>N-2C</th>
+      <th>N-2E</th>
+      <th>N-2R</th>
+      <th>N-3C</th>
+      <th>N-3E</th>
+      <th>N-3R</th>
+      <th>N-4-30</th>
+      <th>N-4-50</th>
+      <th>D-R</th>
+      <th>D-M</th>
+      <th>D-E</th>
+      <th>D-S</th>
+      <th>D-C</th>
+      <th>D-IL</th>
+      <th>D-IH</th>
+      <th>D-OS</th>
+      <th>D-OG</th>
+      <th>D-ON</th>
+      <th>C-R</th>
+      <th>Definitions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Adult Establishment</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.5.A</td>
+    </tr>
+    <tr>
+      <td>Alcohol Sales</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.5.B</td>
+    </tr>
+    <tr>
+      <td>Amusement Facility, Indoor</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.5.C</td>
+    </tr>
+    <tr>
+      <td>Amusement Facility, Outdoor</td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.5.D</td>
+    </tr>
+    <tr>
+      <td>Animal Care Establishment</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.5.E</td>
+    </tr>
+    <tr>
+      <td>Car Wash</td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.5.F</td>
+    </tr>
+    <tr>
+      <td>Commercial School</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.5.G</td>
+    </tr>
+    <tr>
+      <td>Day Care Center</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.5.H</td>
+    </tr>
+    <tr>
+      <td>Drive-Through Facility</td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.5.I</td>
+    </tr>
+    <tr>
+      <td>Food Center/Supply Pantry</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.5.J</td>
+    </tr>
+    <tr>
+      <td>Funeral Service</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.5.K</td>
+    </tr>
+    <tr>
+      <td>Garden Center</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.5.L</td>
+    </tr>
+    <tr>
+      <td>Gas Station</td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.5.M</td>
+    </tr>
+    <tr>
+      <td>Human Service Facility</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.5.N</td>
+    </tr>
+    <tr>
+      <td>Kennel</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.5.O</td>
+    </tr>
+    <tr>
+      <td>Live Entertainment</td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.5.P</td>
+    </tr>
+    <tr>
+      <td>Medical Clinic</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.5.Q</td>
+    </tr>
+    <tr>
+      <td>Open Air Market</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.5.R</td>
+    </tr>
+    <tr>
+      <td>Restaurant</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.5.S</td>
+    </tr>
+    <tr>
+      <td>Retail &amp; Service, General</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.5.T</td>
+    </tr>
+    <tr>
+      <td>Retail &amp; Service, Heavy</td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.5.U</td>
+    </tr>
+    <tr>
+      <td>Self-Storage Facility</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.5.V</td>
+    </tr>
+    <tr>
+      <td>Stables/Riding Center</td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td>Sec. 6.1.5.W</td>
+    </tr>
+    <tr>
+      <td>Tavern</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.5.X</td>
+    </tr>
+    <tr>
+      <td>Tobacco/Hookah/Vaping Est.</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.5.Y</td>
+    </tr>
+    <tr>
+      <td>Vehicle Rental or Sales</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.5.Z</td>
+    </tr>
+    <tr>
+      <td>Vehicle Repair, Major</td>
+      <td> </td>
+      <td>2</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.5.AA</td>
+    </tr>
+    <tr>
+      <td>Vehicle Repair, Minor</td>
+      <td> </td>
+      <td>2</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.5.AB</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="employment">Employment</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>N-1D</th>
+      <th>N-1C</th>
+      <th>N-1S</th>
+      <th>N-2C</th>
+      <th>N-2E</th>
+      <th>N-2R</th>
+      <th>N-3C</th>
+      <th>N-3E</th>
+      <th>N-3R</th>
+      <th>N-4-30</th>
+      <th>N-4-50</th>
+      <th>D-R</th>
+      <th>D-M</th>
+      <th>D-E</th>
+      <th>D-S</th>
+      <th>D-C</th>
+      <th>D-IL</th>
+      <th>D-IH</th>
+      <th>D-OS</th>
+      <th>D-OG</th>
+      <th>D-ON</th>
+      <th>C-R</th>
+      <th>Definitions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Industrial, Artisan</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.6.A</td>
+    </tr>
+    <tr>
+      <td>Industrial, Heavy</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.6.B</td>
+    </tr>
+    <tr>
+      <td>Industrial, Light</td>
+      <td> </td>
+      <td>2</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.6.C</td>
+    </tr>
+    <tr>
+      <td>Junk/Salvage Yard</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.6.D</td>
+    </tr>
+    <tr>
+      <td>Professional Offices</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.6.E</td>
+    </tr>
+    <tr>
+      <td>Recycling Facility</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.6.F</td>
+    </tr>
+    <tr>
+      <td>Research/Laboratory Facility</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.6.G</td>
+    </tr>
+    <tr>
+      <td>Storage Yard</td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.6.H</td>
+    </tr>
+    <tr>
+      <td>Warehouse/Distribution</td>
+      <td> </td>
+      <td>2</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.6.I</td>
+    </tr>
+    <tr>
+      <td>Waste Transfer Station</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.6.J</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="agriculture">Agriculture</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>N-1D</th>
+      <th>N-1C</th>
+      <th>N-1S</th>
+      <th>N-2C</th>
+      <th>N-2E</th>
+      <th>N-2R</th>
+      <th>N-3C</th>
+      <th>N-3E</th>
+      <th>N-3R</th>
+      <th>N-4-30</th>
+      <th>N-4-50</th>
+      <th>D-R</th>
+      <th>D-M</th>
+      <th>D-E</th>
+      <th>D-S</th>
+      <th>D-C</th>
+      <th>D-IL</th>
+      <th>D-IH</th>
+      <th>D-OS</th>
+      <th>D-OG</th>
+      <th>D-ON</th>
+      <th>C-R</th>
+      <th>Definitions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Community Garden</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>Sec. 6.1.7.A</td>
+    </tr>
+    <tr>
+      <td>Market Garden</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.7.B</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="transportation">Transportation</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>N-1D</th>
+      <th>N-1C</th>
+      <th>N-1S</th>
+      <th>N-2C</th>
+      <th>N-2E</th>
+      <th>N-2R</th>
+      <th>N-3C</th>
+      <th>N-3E</th>
+      <th>N-3R</th>
+      <th>N-4-30</th>
+      <th>N-4-50</th>
+      <th>D-R</th>
+      <th>D-M</th>
+      <th>D-E</th>
+      <th>D-S</th>
+      <th>D-C</th>
+      <th>D-IL</th>
+      <th>D-IH</th>
+      <th>D-OS</th>
+      <th>D-OG</th>
+      <th>D-ON</th>
+      <th>C-R</th>
+      <th>Definitions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bicycle Parking Station</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td> </td>
+      <td>Sec. 6.1.8.A</td>
+    </tr>
+    <tr>
+      <td>Dispatch Facility</td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.8.B</td>
+    </tr>
+    <tr>
+      <td>Freight Terminal</td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>Sec. 6.1.8.C</td>
+    </tr>
+    <tr>
+      <td>Heliport</td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.8.D</td>
+    </tr>
+    <tr>
+      <td>Helistop</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.8.E</td>
+    </tr>
+    <tr>
+      <td>Marina, Dry Storage</td>
+      <td> </td>
+      <td>2</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.8.F</td>
+    </tr>
+    <tr>
+      <td>Marina, Recreational</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.8.G</td>
+    </tr>
+    <tr>
+      <td>Metro Rail Station</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>Sec. 6.1.8.H</td>
+    </tr>
+    <tr>
+      <td>Parking Lot, Commercial</td>
+      <td> </td>
+      <td>2</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.8.I</td>
+    </tr>
+    <tr>
+      <td>Parking Lot, Neighborhood</td>
+      <td> </td>
+      <td>2</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.8.J</td>
+    </tr>
+    <tr>
+      <td>Parking Structure</td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.8.K</td>
+    </tr>
+    <tr>
+      <td>Passenger Terminal</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td> </td>
+      <td>4</td>
+      <td>Sec. 6.1.8.L</td>
+    </tr>
+    <tr>
+      <td>Pedestrian or Bicycle Path</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>Sec. 6.1.8.M</td>
+    </tr>
+    <tr>
+      <td>Railway Facilities</td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>Sec. 6.1.8.N</td>
+    </tr>
+    <tr>
+      <td>Truck Stop</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.8.O</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="infrastructure">Infrastructure</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>N-1D</th>
+      <th>N-1C</th>
+      <th>N-1S</th>
+      <th>N-2C</th>
+      <th>N-2E</th>
+      <th>N-2R</th>
+      <th>N-3C</th>
+      <th>N-3E</th>
+      <th>N-3R</th>
+      <th>N-4-30</th>
+      <th>N-4-50</th>
+      <th>D-R</th>
+      <th>D-M</th>
+      <th>D-E</th>
+      <th>D-S</th>
+      <th>D-C</th>
+      <th>D-IL</th>
+      <th>D-IH</th>
+      <th>D-OS</th>
+      <th>D-OG</th>
+      <th>D-ON</th>
+      <th>C-R</th>
+      <th>Definitions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>District Energy System</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td>4</td>
+      <td>Sec. 6.1.9.A</td>
+    </tr>
+    <tr>
+      <td>Solar Farm</td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.9.B</td>
+    </tr>
+    <tr>
+      <td>Utilities &amp; Services, Major</td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td>2</td>
+      <td> </td>
+      <td>2</td>
+      <td>Sec. 6.1.9.C</td>
+    </tr>
+    <tr>
+      <td>Utilities &amp; Services, Minor</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>4</td>
+      <td>Sec. 6.1.9.D</td>
+    </tr>
+    <tr>
+      <td>Wind Farm</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>2</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>Sec. 6.1.9.E</td>
+    </tr>
+    <tr>
+      <td>Wireless Communications</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>4</td>
+      <td>Sec. 6.1.9.F</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="612-residential">6.1.2 Residential</h2>
+
+<ol>
+  <li>Dormitory. A building with sleeping accommodations, without in-room cooking facilities, for residents affiliated with an educational, religious, or other institution.
+    <ol>
+      <li>A dormitory is permitted only within 1,320 feet of the institution with which it is affiliated. This restriction does not apply if the dormitory is located in an N-1D, N-1C, N-1S, D-M, or D-E zone.</li>
+    </ol>
+  </li>
+  <li>Dwelling, Ancillary. A dwelling unit associated with and incidental to a principal dwelling on the same lot.
+    <ol>
+      <li>A detached ancillary dwelling must have a lower height in feet and smaller footprint than the principal building on the lot. No ancillary dwelling may exceed 1,000 square feet in gross floor area.</li>
+      <li>A detached ancillary dwelling, if located  in any neighborhood zone, must comply with the standards for a carriage house in accordance with Section 3.2.3.</li>
+    </ol>
+  </li>
+  <li>Dwelling, Caretaker. A dwelling unit for employees who are responsible for maintenance and security in association with a principal on-site use.</li>
+  <li>Dwelling, Double Unit. A structure that contains two dwelling units.
+    <ol>
+      <li>In a D-S or D-C zone, a double unit dwelling is allowed only in the upper stories of a building. A lobby or other entrance is allowed on the ground floor.</li>
+    </ol>
+  </li>
+  <li>Dwelling, Multiple Unit. A structure that contains three or more dwelling units.
+    <ol>
+      <li>In an N-2R or N-3R zone, a multiple unit dwelling of 25 or more units may contain ancillary retail and service uses without separate approval, so long as such uses are primarily intended to serve the residents of the site, are accessible only from a lobby, and are not visible or apparent from the adjacent public right-of-way.</li>
+      <li>In a D-S or D-C zone, a multiple unit dwelling is allowed only in the upper stories of a building. A lobby or other entrance is allowed on the ground floor.</li>
+    </ol>
+  </li>
+  <li>Dwelling, Single Unit. A structure that contains only one dwelling unit.
+    <ol>
+      <li>In a D-S or D-C zone, a single unit dwelling is allowed only in the upper stories of a building. A lobby or other entrance is allowed on the ground floor.</li>
+    </ol>
+  </li>
+  <li>Emergency Shelter. A facility that provides temporary short-term housing for individuals displaced by reasons of abuse, domestic violence, weather, homelessness, or other factors.
+    <ol>
+      <li>No more than 300 beds are allowed for any emergency shelter in the N-1D, N-1C, and D-M zones, and no more than 15 beds are allowed for any emergency shelter in the N-1S, N-2C, N-2E, N-3C, and N-3E zones.</li>
+    </ol>
+  </li>
+  <li>Fraternity/Sorority House. A building used as group living quarters for students of a college, university, or religious school, who are members of a fraternity or sorority that has been officially recognized by the college, university, or religious school.
+    <ol>
+      <li>A fraternity/sorority house is permitted only within 1,320 feet of the institution with which it is affiliated. This restriction does not apply if the fraternity/sorority house is located in an N-1D, N-1C, N-1S, D-M, or D-E zone.</li>
+    </ol>
+  </li>
+  <li>Group Home. A dwelling licensed, certified, or accredited by the appropriate local, state, or federal agencies, in which unrelated persons with disabilities, including those who have
+undergone treatment for alcohol or drug addiction, function as a single housekeeping unit and share responsibilities, meals, recreation, social activities, and other aspects of residential living. A group home does not include a residence that services persons as an alternative to incarceration, or that services persons transitioning from incarceration.</li>
+  <li>Halfway House. A dwelling licensed, certified, or accredited by the appropriate local, state, or federal agencies, in which unrelated persons who are on probation, parole, or early release from correctional institutions, or other persons found guilty of criminal offenses, are provided housing, food, treatment, and supportive services.
+    <ol>
+      <li>No more than 15 occupants are allowed for any halfway house.</li>
+    </ol>
+  </li>
+  <li>Residential Care Facility. A licensed care facility that provides 24-hour medical or non-medical care to persons in need of personal services, supervision, protection, or assistance essential for sustaining the activities of daily living. Residential care facilities include nursing homes, independent living, assisted living, continuum of care, and hospice facilities.</li>
+</ol>
+
+<h2 id="613-civic-uses">6.1.3 Civic Uses</h2>
+
+<ol>
+  <li>Assembly. A facility that has organized services, meetings, events, or programs to benefit, educate, entertain, or promote discourse in
+a public or private setting. Examples include community centers, places of worship, meeting  or lecture halls, exhibition rooms, or auditoria. If an assembly use is ancillary to another principal use, and has a gross floor area of less than 5,000
+square feet, it is considered part of that use and is not considered a separate principal use.</li>
+  <li>Cemetery. Land or structures dedicated for the internment of human or animal remains.</li>
+  <li>College/University. A post-secondary institution for higher learning that grants associate, bachelor, masters, or doctoral degrees, and theological schools. College/university includes related ancillary facilities, such as cafeterias, restaurants, retail sales, indoor or outdoor recreational facilities, research facilities, and similar uses.</li>
+  <li>Cultural Facility. A facility open to the public for cultural services and exhibitions including, but not limited to, museums, cultural centers, historical societies, and libraries operated by a government or non-profit establishment. A cultural facility may include ancillary assembly, retail, or restaurant uses.</li>
+  <li>Government Offices. Offices owned, operated, or occupied by a government agency, including government officials and departments, social service facilities, public works facilities, and courthouses.
+    <ol>
+      <li>Government offices should be  located within 1,320 feet of a transit stop or station, measured by closest walking distance along public rights-of-way from the main entrance
+of the government offices to the transit stop or station. This does not apply in the C-W zone or for public works facilities.</li>
+    </ol>
+  </li>
+  <li>Hospital. A facility that provides health, medical, or surgical care to the sick or injured. Hospitals include related ancillary facilities, such as laboratories, outpatient clinics, cafeterias, gift shops, training facilities, classrooms, central service facilities, and offices integral to function of the facility.</li>
+  <li>Lodge or Private Club. A facility for the use of a membership organization or association with elected officers and directors, pursuant to a charter or bylaws, that excludes the general public from its premises and holds property for the common benefit of its members.
+    <ol>
+      <li>A lodge or private club may not charge a temporary membership fee in order to allow non-members to enter or use the premises.</li>
+      <li>A lodge or private club may serve meals and alcohol on the premises for members and their guests only.</li>
+    </ol>
+  </li>
+  <li>Open Space. A site reserved for active or passive recreation or natural resources protection.</li>
+  <li>Primary/Secondary School. A public, private, or parochial institution offering instruction at the elementary through high school levels with a full range of curricular programs.</li>
+  <li>Public Safety Facility. A facility operated by a public safety agency, including fire stations and firefighting facilities, police and sheriff substations and headquarters, emergency medical services substations, border protection facilities, and military facilities, which may include interim incarceration facilities.</li>
+  <li>Zoo. A facility for the exhibition and viewing of animals. A zoo may include ancillary retail or restaurant uses.</li>
+</ol>
+
+<h2 id="614-lodging">6.1.4 Lodging</h2>
+
+<ol>
+  <li>Bed and Breakfast. A dwelling that provides temporary lodging for compensation in guest rooms with no in-room cooking facilities. A bed and breakfast may include dining facilities and meeting rooms.
+    <ol>
+      <li>The owner or manager must be a resident of the dwelling.</li>
+      <li>No more than five guest rooms, and no more than ten guests at any one time, are permitted. Only habitable rooms originally designed as bedrooms may be used for lodging.</li>
+      <li>Hourly rate lodging is not permitted.</li>
+      <li>Guest stays are limited to a maximum of 30 consecutive days.</li>
+    </ol>
+  </li>
+  <li>Hotel/Hostel. A facility that provides temporary lodging for compensation and may include dining facilities, meeting rooms, and other incidental services.
+    <ol>
+      <li>Rooms accessed individually from the outside of the structure are permitted only in D-S, D-C, and D-IL zone.</li>
+      <li>Hourly rate lodging is not permitted.</li>
+      <li>Guest stays are limited to 30 consecutive days.</li>
+    </ol>
+  </li>
+  <li>Rooming House/S.R.O. A structure with two or more rooming units occupied, designed, or intended to be occupied by individuals who may share common areas and facilities, but do not form a single housekeeping unit, and do not provide compensation under a single lease for occupancy. A rooming unit provides sleeping accommodations, but no in-room cooking facilities.
+    <ol>
+      <li>One on-site supervisor is required at all  times for any rooming house with ten or more rooming units.</li>
+      <li>Hourly rate lodging is not permitted. Lodging must be arranged on a week-to-week or longer basis.</li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="615-retail-and-service">6.1.5 Retail and Service</h2>
+
+<ol>
+  <li>Adult Establishment. A business that sells or disseminates explicit sexual material, and at which access to the public display of explicit sexual material is restricted by law to persons 18 years of age or older.
+    <ol>
+      <li>For the purposes of this section, the following terms have the following meanings:
+        <ol>
+          <li>Adult Bookstore. A business having five percent or more of its floor area devoted to sale or rent of, or five percent or more of its stock-in-trade in, publications, books, magazines, periodicals, photographs, films, motion pictures, video cassettes or video reproductions, or other visual representations that  depict or describe specified sexual activities or specified anatomical areas, or instruments, devices, or paraphernalia that are designed for use in connection with specified sexual activities.</li>
+          <li>Adult Booth. A small enclosed or partitioned area inside an adult establishment which is designed or used for the viewing of material that is distinguished or characterized by an emphasis on matter depicting, describing, or relating to specified sexual activities or specified anatomical areas.</li>
+          <li>Adult Cabaret. A business that features dancers, go-go dancers, exotic dancers or similar entertainers, or live entertainment, in which persons regularly appear in a state of nudity, or where liveperformances are characterized by the exposure of specified anatomical areas or by specified sexual activities. Adult cabaret establishments specifically exclude minors, or minors are specifically prohibited by statute or ordinance, regardless of whether any such business is licensed to sell alcoholic beverages.</li>
+          <li>Adult Massage Parlor. A business having a source of income or compensation derived from the practice of any method of pressure on or friction against, or stroking, kneading, rubbing, tapping, pounding, vibrating, or stimulation of, external parts of the human body with the hands or with the aid of any mechanical, electric apparatus or appliances with or without such supplementary aids as rubbing alcohol, liniments, antiseptics, oils, powders, creams, lotion, ointment, or other similar preparations commonly used in the practice of massage, under such circumstances that it is reasonably expected that the person to whom the treatment is provided or some third person on his or her behalf will pay money or give any other consideration or gratuity. The term “adult massage parlor” does not include any establishment operated by a medical practitioner, professional physical therapist, or massage therapist licensed by the state.</li>
+          <li>Adult Motion Picture Theater. A business used for presenting motion pictures that are distinguished or  characterized by an emphasis on matter depicting, describing, or relating to specified sexual activities or specified anatomical areas for observation by patrons.</li>
+          <li>Sexually Oriented Devices. Any artificial or simulated specified anatomical area or other device or paraphernalia that is designed in whole or part for specified sexual activities.</li>
+          <li>Specified Anatomical Area. Less than completely and opaquely covered genitals, pubic region, buttock, and female breast below a point immediately above the top of the areola, or human male genitals in a discernible turgid state, even if completely and opaquely covered.</li>
+          <li>Specified Sexual Activities. Any activity that includes human genitals in a state  of sexual stimulation or arousal; acts of human masturbation, sexual intercourse, or sodomy; or fondling or erotic touching of human genitals, pubic regions, buttocks, or female breasts, even if completely and opaquely covered.</li>
+        </ol>
+      </li>
+      <li>An adult establishment must not be located:
+        <ol>
+          <li>Within 750 feet of any other adult establishment.</li>
+          <li>Within 750 feet of an N-2R, N-3R, N-4-30, N-4-50, or D-R zone.</li>
+          <li>In a C-W zone.</li>
+          <li>Within 750 feet of any assembly use established as a community center or place of worship.</li>
+          <li>Within 750 feet of any primary/secondary school.</li>
+          <li>Within 750 feet of any day care center which serves children under the age of 18.</li>
+          <li>Within 750 feet of any public park.</li>
+        </ol>
+      </li>
+      <li>An adult establishment may be only one type of adult establishment: adult bookstore, adult cabaret, adult massage parlor, or adult motion picture theater. An adult establishment may not combine these uses.</li>
+      <li>An adult establishment must not display obscene or indecent lights, posters, photographs, sketches, painted signs, laminated signs, or similar materials that are visible from the exterior of the building or visible through windows adjacent to a public right-of-way.</li>
+      <li>Adult establishments which offer private viewing of movies, tapes, slides, pictures, computer-generated images of any kind, or live performance of any kind must comply with the following:
+        <ol>
+          <li>Each adult booth must be totally accessible to and from aisles and public areas of the establishment. Access to
+ a booth must be unrestricted by doors, locks, or other control-type devices.</li>
+          <li>Each adult booth must be separated from adjacent booths and any nonpublic areas by a solid wall, without openings, that extends from the floor to a height of not less than six feet.</li>
+          <li>Each adult booth must be well-lit and have at least one side totally open to a public, lighted aisle so that there is an unobstructed view at all times of anyone occupying the booth.</li>
+          <li>Only one individual may occupy an adult booth at any time.</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li>Alcohol Sales. An establishment which sells alcoholic beverages for consumption off- premises.</li>
+  <li>Amusement Facility, Indoor. A facility for spectator and participatory uses conducted within an enclosed building, such as movie theaters, sports arenas, bowling alleys, tumbling centers, skating centers, roller rinks, and pool halls.</li>
+  <li>Amusement Facility, Outdoor. A facility for spectator and participatory uses conducted outdoors or within partially enclosed structures, such as fairgrounds, campgrounds, batting  cages, drive-in movie theater, recreational vehicle parks, petting zoos, golf courses, miniature golf courses, and amusement parks.</li>
+  <li>Animal Care Establishment. A business which provides care for domestic animals, including veterinary offices for the immunization, diagnosis,or treatment of animals, where animals may be boarded during their convalescence; pet grooming facilities; and pet boarding facilities, where animals are boarded during the day or for overnight stays.
+    <ol>
+      <li>Animal boarding facilities must be located indoors.</li>
+      <li>Exterior exercise areas must be located to the rear or interior side of the principal building  on the lot.</li>
+      <li>Any exterior exercise areas must be designed to provide shelter against weather.</li>
+      <li>Fencing of exterior exercise areas is required. Fencing must be between six and seven feet in height to prevent escape, and must be buried a minimum of one foot to prevent escape by digging beneath the fence.</li>
+    </ol>
+  </li>
+  <li>Car Wash. An establishment for the washing of motor vehicles, which may employ production-line methods, mechanical devices, staffed hand wash facilities, or unstaffed self-wash facilities.
+    <ol>
+      <li>For unstaffed self-wash facilities, a security system must be installed and maintained, including a security camera to monitor all areas of the car wash. The security camera must have a minimum recording capacity of 24 hours and must archive footage for a minimum of 30 days.</li>
+      <li>A type C buffer yard, designed per Section 7.1.6, is required along interior side and rear lot lines that abut any lot in an N-2R, N-3R, N-4-30, N-4-50, D-R, D-OS, D-OG, or D-ON zone.</li>
+      <li>A car wash may be located in a C-W zone only with a special use permit and where the City Planning Board finds that the use will not adversely affect the water quality of any adjacent water body.</li>
+      <li>A car wash must be located at least 150 feet from a Historic Olmsted Park or Parkway. This requirement does not apply to any car wash in the D-S, D-C, D-IL, or D-IH zone.</li>
+    </ol>
+  </li>
+  <li>Commercial School. A school that teaches industrial, clerical, managerial, commercial, artistic, or other select skills; conducts a commercial enterprise, such as a driving school; or a privately operated school that does not offer a complete educational curriculum.</li>
+  <li>Day Care Center. A business that provides licensed care in a protective setting for seven or more children or elderly or functionally-impaired adults for less than 24 hours per day.</li>
+  <li>Drive-Through Facility. A facility that dispenses goods through an attendant window or automated machine to persons remaining in vehicles in a designated drive aisle.
+    <ol>
+      <li>Stacking spaces and drive aisles must be provided in accordance with Section 8.3.6.</li>
+      <li>A Type C buffer yard, designed per Section 7.1.6, is required along interior side and rear lot lines that abut any lot in an N-2R, N-3R, N-4-30, N-4-50, D-R, D-OS, D-OG, or D-ON zone.</li>
+      <li>Menu boards, loudspeakers, stacking spaces, and drive-through windows may be located only in interior side or rear yards. No service may be rendered, deliveries made, or sales conducted in a front or corner side yard.</li>
+      <li>Audible electronic devices such as loudspeakers, automobile service order devices, and similar instruments must not be located within 50 feet of any lot used for dwelling purposes, where practicable. On sites that do not allow for such separation, specific design considerations must be employed to effectively buffer adjacent residential properties from the noise generated from such devices.</li>
+      <li>A drive-through menu board must comply with the standards of Section 9.4.1.L.</li>
+      <li>A drive-through for a pharmacy, defined as a business engaged in the retail sales and dispensing of prescription and non- prescription drugs, may be allowed with a special use permit in the N-2C, N-2E, N-3C, and N-3E zones, irrespective of the limitations of Table 6A, so long as any loudspeakers, stacking spaces, drive-through windows, and related signage are located only in the rear yard.</li>
+      <li>A drive-through ATM or teller for a financial institution, defined as a bank, savings and loan, credit union, or similar institution that provides retail banking services to individuals and businesses, may be allowed with a special use permit in the N-2C, N-2E, N-3C, and N-3E zones, irrespective of the limitations of Table 6A, so long as any loudspeakers, stacking spaces, drive-through windows, and related signage are located only in the rear yard.</li>
+    </ol>
+  </li>
+  <li>Food Center/Supply Pantry. A not-for-profit use that distributes or facilitates the giving of food, clothing, and/or other essential items at no charge or for less than fair market value to persons in need of assistance. Examples include soup kitchens and regularly staffed drop-off centers for clothing, household goods, and food.
+    <ol>
+      <li>A food center or supply pantry is allowed as an accessory use to a place of worship or an emergency shelter, regardless of zone. A
+special use permit for such an accessory use is not required.</li>
+      <li>A food center or supply pantry must provide indoor, fully enclosed waiting areas on the premises, which are adequate to accommodate the maximum number of persons to be served at any one time. The owner/operator must ensure that persons receiving assistance do not block public access to sidewalks, rights-of-way, or private property, and that emergency access points are clearly identified and maintained.</li>
+    </ol>
+  </li>
+  <li>Funeral Services. A facility where the deceased are prepared for burial display and for rituals before burial or cremation. Such facilities may include chapels, crematoriums, and showrooms for the display and sale of caskets, vaults, urns, and other items related to burial services.
+    <ol>
+      <li>A crematorium is considered a light industrial use and must comply with Table 6A and Section 6.1.6.C.</li>
+    </ol>
+  </li>
+  <li>Garden Center. An establishment that includes indoor and/or outdoor retail sales of plants not grown on the site, lawn furniture, and garden supplies.
+    <ol>
+      <li>An outdoor retail sales area for a garden center in the N-1C, N-2C, N-2E, N-3C, and N-3E zones may not exceed 10,000 square feet.</li>
+    </ol>
+  </li>
+  <li>Gas Station. A business engaged in the sale of vehicle fuel.
+    <ol>
+      <li>Gas stations in an N-1C, N-1S, N-2C, or
+N-3C zone are limited to a maximum of eight individual filling pumps.</li>
+      <li>A Type C buffer yard, designed per Section 7.1.6, is required along interior side and rear lot lines that abut any lot in an N-2R, N-3R, N-4-30, N-4-50, D-R, D-OS, D-OG, or D-ON zone.</li>
+      <li>A gas station may be located in a C-W zone only with a special use permit and where the City Planning Board finds that the gas station use will not adversely affect the water quality of an adjacent water body.</li>
+      <li>A gas station must be located at least 150 feet from a Historic Olmsted Park or Parkway. This requirement does not apply to any gas station in the D-S, D-C, D-IL, or D-IH zone, or to any gas station that engages in the sale of fuel principally for watercraft.</li>
+    </ol>
+  </li>
+  <li>Human Service Facility. An establishment that provides services to persons in need of assistance due to age, physical or mental disability, addiction, illness, or injury. Services include supervision of self-administered medication; rehabilitative or recovery assistance; counseling, self-help, education or referrals, or other treatment or assistance; aid in personal hygiene, dressing, and eating and drinking; day shelter; or any combination of same.
+    <ol>
+      <li>A human service facility is allowed as an accessory use to a hospital or an emergency shelter. A special use permit for such an accessory use is not required.</li>
+      <li>A special use permit application for a  human service facility must document the community’s need for the proposed facility and provide a detailed description of the proposed use, including an estimation of the number of individuals to be served at the facility over a stated time period, activities and programs anticipated at the facility, hours of operation, degree of supervision
+at the facility, and any other information as may reasonably be necessary to ascertain the impact of the proposed facility on public safety, health, and welfare.</li>
+      <li>A special use permit for a human service facility may be granted only where the use is found to be consistent with the general criteria of Section 11.3.3 and the following additional criteria:
+        <ol>
+          <li>The proposed use will not alter the essential nature and character of the community.</li>
+          <li>The proposed use will not result in a duplication of services, in relation to need, cost, and service efficiency, that would hinder the community integration goals of the facility and create service capacity in excess of the overall need in the community. Considerations relevant for this determination are the distance between the proposed facility and other facilities which offer the same services, the capacity of the proposed facility and total capacity of all similar human service facilities in the community, the success or failure of other such facilities operated by the individual or group seeking approval, and the ability of the community to meet the special needs, if any, of the applicant facility.</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li>Kennel. An establishment where four or more dogs over six months of age are boarded, bred, raised, and trained.
+    <ol>
+      <li>Any exterior boarding quarters and exercise areas located outside must be designed to provide shelter against weather.</li>
+      <li>Fencing of exterior exercise areas and  any animals boarding quarters is required. Fencing surrounding exterior exercise areas must be between six and seven feet in height to prevent escape, and must be buried a minimum of one foot to prevent escape by digging beneath the fence.</li>
+    </ol>
+  </li>
+  <li>Live Entertainment. A venue for one or more of any of the following activities performed live by one or more persons, whether or not done for compensation and whether or not admission is charged: musical or disc jockey performance, live theater, stand-up comedy, dance, magic acts, or similar activities.</li>
+  <li>Medical Clinic. A facility for physicians, dentists, chiropractors, physical therapists, alternative medical practitioners, or other licensed healthcare practitioners to examine and treat persons on an outpatient basis.</li>
+  <li>Open-Air Market. An outdoor site where individual stalls or spaces are provided for vendors to display, buy, sell, exchange, or deal retail goods.</li>
+  <li>Restaurant. A business where food and beverages are prepared for and served to patrons for consumption either on-premises or off-premises.
+    <ol>
+      <li>The sale of alcohol for on-premises consumption requires separate approval as a tavern. The sale of alcohol for off-premises consumption requires separate approval for an alcohol sales establishment.</li>
+      <li>A restaurant may include ancillary live entertainment without a separate approval, except in the N-2R and N-3R zones, so long as all of the following conditions are met:
+        <ol>
+          <li>No permanent space is dedicated for live entertainment.</li>
+          <li>No admission is charged for live entertainment.</li>
+          <li>When live entertainment is offered, it is clearly incidental and subordinate to the restaurant use.</li>
+        </ol>
+      </li>
+      <li>Ventilation systems may not be installed on any front or corner side facade unless the applicant can prove that no other feasible alternative is available. To the maximum extent feasible, ventilation systems must be directed away from adjacent residential properties.</li>
+    </ol>
+  </li>
+  <li>Retail and Service, General. A business that provides goods or services directly to the consumer, and where such goods or services are available for immediate purchase on the premises by the purchaser.</li>
+  <li>Retail and Service, Heavy. A retail and service business with permanent outdoor display, service, and storage areas, such as vendors of lumber  and building supplies, landscaping supplies and equipment, industrial equipment, commercial and recreational vehicles, watercraft, and outdoor structures such as prefabricated sheds, decks and patios, swimming pools, and play equipment. This does not include a garden center, which is addressed by Section 6.1.5.L.
+    <ol>
+      <li>A Type C buffer yard, designed per Section 7.1.6, is required along interior side and rear lot lines that abut any lot in an N-2R, N-3R, N-4-30, N-4-50, D-R, D-OS, D-OG, or D-ON zone.</li>
+      <li>Any materials stored that exceed the height of the screening must be located a minimum of 25 feet from any lot line.</li>
+    </ol>
+  </li>
+  <li>Self-Storage Facility. A business that leases individual storage units for the storage of personal property, and that may include ancillary retail sales of packing, moving, and storage supplies.
+    <ol>
+      <li>The individual storage units of a self-storage facility in the N-1C, N-1S, N-2C, N-2E, N-3C, and N-3E zones must be located only in the upper stories of a fully-enclosed building, with access to individual storage units provided from common areas located indoors.</li>
+      <li>The individual storage units of a self-storage facility in the D-S and D-C zones must be located in a fully-enclosed building, with access to individual storage units provided from common areas located indoors.</li>
+      <li>Storage units accessed individually from outside a structure are permitted only in the D-IL and D-IH zones. A self-storage facility that offers outdoor storage pods is permitted only in the D-IL and D-IH zones.</li>
+      <li>Where the individual storage units of a self- storage facility are accessed from outside a structure, such a facility must include a Type C buffer yard, designed per Section 7.1.6, along interior side and rear lot lines that abut any lot in an N-2R, N-3R, N-4-30, N-4-50, D-R, D-OS, D-OG, or D-ON zone.</li>
+    </ol>
+  </li>
+  <li>Stables/Riding Center. A structure or land used, designed, and arranged for the care and shelter of equines, or for rentals, riding, shows, or training, which may include horses not boarded on-site.</li>
+  <li>Tavern. A business that serves alcoholic beverages for on-premises consumption, and may or may not serve food.
+    <ol>
+      <li>A tavern may include ancillary live entertainment without a separate approval, except in the N-2R and N-3R zones, so long as all of the following conditions are met:
+        <ol>
+          <li>No permanent space is dedicated for live entertainment.</li>
+          <li>No admission is charged for live entertainment.</li>
+          <li>When live entertainment is offered, it is clearly incidental and subordinate to the tavern use.</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li>Tobacco/Hookah/Vaping Establishment. An establishment which sells tobacco products or related accessories, hookah products or related accessories, other smoking products or related accessories, or electronic nicotine delivery systems or related accessories, for on- or off- premise use.</li>
+  <li>Vehicle Rental or Sales. A business that sells, leases, or rents automobiles, vans, three- wheelers, motorcycles, scooters, or other powered personal transportation or conveyance, and which may include on-site facilities for the repair and service of vehicles sold, leased, or rented. This does not include the sale, lease, or rental of recreational vehicles, commercial vehicles, or watercraft, which is considered a heavy retail and service use.
+    <ol>
+      <li>In the N-1D, N-1C, N-2C, N-2E, N-3C, and N-3E zones, vehicle rental and sales must be located within a fully enclosed building. In the N-1S zone, vehicle rental and sales facilities may be located outdoors, so long as it is in a rear yard and not visible from a public right-of-way other than an alley.</li>
+      <li>Any repair and service operations must be performed within a fully enclosed building. Bay doors may be open during hours of operation.</li>
+      <li>A vehicle rental or sales establishment must screen any outdoor display area, as follows:
+        <ol>
+          <li>A Type C buffer yard, designed per Section 7.1.6, is required along interior side and rear lot lines that abut any lot in an N-2R, N-3R, N-4-30, N-4-50, D-R, D-OS, D-OG, or D-ON zone.</li>
+          <li>A Type D buffer yard, designed per Section 7.1.6. is required along front or corner side lot lines. In lieu of a Type D buffer yard, a solid masonry wall may  be installed at the right-of-way line of between two feet and three and one-half feet in height.</li>
+        </ol>
+      </li>
+      <li>No partially dismantled, wrecked, or unregistered vehicle may be stored outdoors on the premises.</li>
+    </ol>
+  </li>
+  <li>Vehicle Repair, Major. A business that offers repair services such as engine rebuilding; major
+reconditioning of worn or damaged motor vehicles or trailers; towing and collision service, including body, frame, or fender straightening or repair; painting of motor vehicles; or repair to commercial vehicles, recreational vehicles, or watercraft.
+    <ol>
+      <li>Any repair and service operations must be performed within a fully enclosed building. Bay doors may be open during hours of operation.</li>
+      <li>No partially dismantled, wrecked, or unregistered vehicle may be stored outdoors for more than 30 days. Temporary storage
+of such vehicles are not allowed in any yard within the N-1C, N-2C, and N-3C zones, and otherwise are allowed within the interior side and rear yards only, so long as they are not visible from a public right-of-way other than an alley.</li>
+      <li>A Type C buffer yard, designed per Section 7.1.6, is required along interior side and rear lot lines of an outdoor storage area that abuts any lot in an N-2R, N-3R, N-4-30, N-4-50,
+D-R, D-OS, D-OG, or D-ON zone.</li>
+      <li>A major vehicle repair establishment must be located at least 150 feet from an Historic Olmsted Park or Parkway. This requirement does not apply to any establishment that offers repair services for watercraft in the C-W zone.</li>
+    </ol>
+  </li>
+  <li>Vehicle Repair, Minor. A business that offers minor repairs to motor vehicles, including, but not limited to, repair or replacement of cooling, electrical,  fuel, and exhaust systems; brake adjustments, relining, and repairs; wheel servicing, alignment, and balancing; repair and replacement of shock absorbers; detailing; and replacement or adjustment of muffler systems, hoses, belts, fuses, windshield wipers, and the like. Minor vehicle repair also includes repairs to two-wheeled and three-wheeled motor vehicles, and may include incidental, ancillary towing and collision service.
+    <ol>
+      <li>Any repair and service operations must be performed within a fully enclosed building. Bay doors may be open during hours of operation.</li>
+      <li>A minor vehicle repair use may not include vehicle dismantling.</li>
+      <li>No partially dismantled, wrecked, or unregistered vehicle may be stored on-site.</li>
+      <li>A minor vehicle repair establishment must be located at least 150 feet from an Historic Olmsted Park or Parkway. This requirement does not apply to any minor vehicle repair establishment in the D-S, D-C, D-IL, or D-IH zone.</li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="616-employment">6.1.6 Employment</h2>
+
+<ol>
+  <li>Industrial, Artisan. A manufacturing use involving small-scale production or assembly with no noxious by-products, and which may include a showroom or ancillary sales of products.
+    <ol>
+      <li>No processes or equipment may  be  used that creates heat, glare, dust, smoke, fumes, odors, or vibration detectable off the property.</li>
+      <li>Outdoor storage is prohibited, except as follows:
+        <ol>
+          <li>Outdoor storage is allowed in the D-IL and D-IH zones.</li>
+          <li>Outdoor storage is allowed in the N-1S and D-C zones, so long as it is in a rear or interior side yard and not visible from a public right-of-way other than an alley.</li>
+        </ol>
+      </li>
+      <li>Deliveries or pick-ups in connection with the use are limited to parcel and small freight carriers, except in the N-1S, D-C, D-IL, and D-IH zones.</li>
+    </ol>
+  </li>
+  <li>Industrial, Heavy. The processing, manufacturing, or compounding of materials, products, or energy, or any industrial activities which because of their scale or method of operation regularly produce noise, heat, glare, dust, smoke, fumes, odors, vibration, or other external impacts detectable beyond the lot lines of the property. Heavy industrial uses may regularly employ hazardous material or procedures or produce hazardous by-products, include outdoor storage areas, and may have activities that take place outside of structures.
+    <ol>
+      <li>A plan for the prevention and control of petroleum and chemical facility discharges is required for all major petroleum and chemical facilities, and must be submitted to the City Emergency Management Services Office.</li>
+      <li>A Type A buffer yard, designed per Section 7.1.6, is required along interior side and rear lot lines that abut any lot in an N-2R, N-3R, N-4-30, N-4-50, D-R, D-OS, D-OG, or D-ON zone.</li>
+    </ol>
+  </li>
+  <li>Industrial, Light. The processing or manufacturing of finished products or parts from previously prepared materials including processing, fabrication, assembly, treatment, and packaging of such products, and incidental storage, sales, and distribution of such products, provided that all manufacturing processes are contained entirely within a fully enclosed building. Any heat, glare, dust, smoke, fumes, odors, or vibration are confined to the building. A light industrial use may include a showroom or ancillary sales of products related to the items manufactured on-site.
+    <ol>
+      <li>A Type B buffer yard, designed per Section 7.1.6, is required along interior side and rear lot lines that abut any lot in an N-2R, N-3R, N-4-30, N-4-50, D-R, D-OS, D-OG, or D-ON zone.</li>
+    </ol>
+  </li>
+  <li>Junk/Salvage Yard. A facility where used vehicles, appliances, building fixtures, and similar commodities are sorted and dismantled, and may be offered for sale.
+    <ol>
+      <li>The minimum lot area for a junk/salvage yard is two acres.</li>
+      <li>Junk/salvage yards must be located at least 500 feet from a lot in any zone other than a D-IL, D-IH, or C-R zone.</li>
+      <li>A Type A buffer yard, designed per Section 7.1.6, is required along the entire perimeter of any outdoor storage and/or operations of the junk/salvage yard. Outdoor storage or operations of any kind is prohibited outside the fenced or walled area.</li>
+      <li>A junk/salvage yard must not be located in a C-W zone.</li>
+    </ol>
+  </li>
+  <li>Professional Offices. A facility for the processing, manipulation, or application of business information or professional expertise, and which may or may not offer services to the public. An office is not materially involved in fabricating, assembling, or warehousing of physical products for the retail or wholesale market, or engaged
+in the repair of products or retail services. Professional offices do not include government offices.</li>
+  <li>Recycling Facility. A facility that accepts materials, such as dry paper, glass, cans, or plastics,
+for storage and processing by power-driven equipment for the subsequent reuse in the secondary materials market.
+    <ol>
+      <li>A Type A buffer yard, designed per Section 7.1.6, is required along the entire perimeter of any outdoor storage and/or operations  of the recycling facility. Outdoor storage or operations of any kind is prohibited outside the fenced or walled area.</li>
+      <li>Recycling drop-off facilities, manned or unmanned, must be located within the interior side or rear yard.</li>
+      <li>A recycling facility must not be located in a C-W zone, unless the recycling facility is water-dependent (must be conducted on, in, over, or adjacent to a waterway).</li>
+    </ol>
+  </li>
+  <li>Research/Laboratory Facility. A facility where research and development is conducted in industries including, but are not limited to, biotechnology, pharmaceuticals, medical instrumentation or supplies, communication and information technology, electronics and instrumentation, and computer hardware and software. A research/laboratory facility does not involve the manufacture, fabrication, processing, or sale of products, with the exception of prototype development.</li>
+  <li>Storage Yard. The use of land to store material, equipment, or vehicles for a period greater than 24 hours, and any structures associated with the outdoor storage.
+    <ol>
+      <li>A Type B buffer yard, designed per Section 7.1.6, is required along the entire perimeter of any outdoor storage area in all zones except for a D-IL or D-IH zone, where a Type C buffer yard is required. Outdoor storage of any kind is prohibited outside the fenced or walled area.</li>
+      <li>Storage of materials that exceed the height of the required fence or wall must be located at least 25 feet from the fence or wall.</li>
+      <li>Outdoor storage must be located outside of the front yard and must not be placed between the principal building and the principal thoroughfare. This standard does not apply to storage yards in a D-IH zone.</li>
+      <li>In an N-1S or D-C zone, the storage of materials may only be located in a rear or interior side yard and may not visible from a public right-of-way other than an alley.</li>
+    </ol>
+  </li>
+  <li>Warehouse/Distribution. A facility for the storage, wholesaling, and distribution of goods. If a warehouse/distribution use is ancillary to another principal use, and has a floor area of less than 10,000 square feet, it is considered part of the principal use and is not considered a separate principal use.
+    <ol>
+      <li>A Type B buffer yard, designed per Section 7.1.6, is required along interior side and rear lot lines that abut any lot in an N-2R, N-3R, N-4-30, N-4-50, D-R, D-OS, D-OG, or D-ON zone.</li>
+    </ol>
+  </li>
+  <li>Waste Transfer Station. A facility for the collection, storage, and transference of solid waste, which may include the collection, storage, processing, and transference of recyclables, and organic and yard waste. A waste transfer facility does not include industrial or sanitary landfills, or waste incineration facilities.
+    <ol>
+      <li>The following must not be accepted at a waste transfer facility: mixed solid waste, hazardous wastes, industrial wastes, medical wastes, liquid wastes, and asbestos. A special use permit may further restrict what may be accepted.</li>
+      <li>The facility must post signs showing hours  of operation and indicating that mixed solid waste, hazardous wastes, industrial wastes, medical wastes, liquid wastes, and asbestos are prohibited from being accepted at the site. The signs must be visible to any vehicle or person approaching the facility entrance.</li>
+      <li>A Type A buffer yard, designed per Section 7.1.6, is required along the entire perimeter of any outdoor storage and/or operations of the waste transfer facility. Outdoor storage or operations of any kind is prohibited outside the fenced or walled area.</li>
+      <li>A waste transfer station must not be located in a C-W zone, unless the waste transfer facility is water-dependent (i.e., must be conducted on, in, over, or adjacent to a waterway).</li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="617-agriculture">6.1.7 Agriculture</h2>
+
+<ol>
+  <li>Community Garden. A site where food, ornamental crops, or trees are grown for group, shareholder, or lessee use, or for donation.
+    <ol>
+      <li>Seed, fertilizer, and feed must be stored in sealed, rodent-proof containers.</li>
+      <li>No equipment, process, or other practice may be employed at a community garden that creates dust or odors detectable off the property, or any other effect determined by the Commissioner of Permit and Inspection Services to be detrimental to the public health, safety, or welfare.</li>
+    </ol>
+  </li>
+  <li>Market Garden. A site where food, ornamental crops, or trees are grown for sale to the general public.
+    <ol>
+      <li>A special use permit for a market garden may be granted in an N-4-30 or N-4-50 zone only  if located east of Jefferson Avenue, south of Best Street/Walden Avenue, west of Bailey Avenue, and north of Clinton Street.</li>
+      <li>Seed, fertilizer, and feed must be stored in sealed, rodent-proof containers.</li>
+      <li>No equipment, process, or other practice may be employed at a market garden that creates dust or odors detectable off the property, or any other effect determined by the Commissioner of Permit and Inspection Services to be detrimental to the public health, safety, or welfare.</li>
+      <li>Agricultural products, plants, eggs, and honey grown or produced on or within the subject property or within the City of Buffalo may be sold on the premises if the market garden use is the only use of the subject property or occupies at least 50% of the area of the property. In addition, foods prepared on site or off site may be sold if the principal ingredients are grown or produced on the subject property or within the City of Buffalo.</li>
+      <li>On-site sales within an N-2R, N-3R, N-4-30, or N-4-50 zone must comply with the following:
+        <ol>
+          <li>No structure or building except for a maximum of one market stand may be used to sell produce or other goods.</li>
+          <li>On-site sales are limited to 10 hours per week.</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="618-transportation">6.1.8 Transportation</h2>
+
+<ol>
+  <li>Bicycle Parking Station. A structure designed for use as a long-term bicycle parking facility, and which may include ancillary uses, such as
+bicycle repairs and showers or lockers for bicycle commuters.</li>
+  <li>Dispatch Facility. A dispatch facility is  a facility where ambulances, taxis, limousines, armored cars, tow trucks, and similar vehicles for specialized transportation are stored, and from which they are dispatched, and/or where ambulance vehicles and crews not based at a hospital or fire department stand by for
+emergency calls. A dispatch facility may include ancillary professional offices and vehicle repair.
+    <ol>
+      <li>The storage of vehicles must be within a fully- enclosed structure. This requirement does not apply in the D-IL and D-IH zones. In addition, outside storage of vehicles is allowed in the N-1S and D-C zones within interior side and rear yards only, so long as it is not visible from any public right-of-way other than an alley.</li>
+    </ol>
+  </li>
+  <li>Freight Terminal. A facility for freight pick-up, transfer, or distribution by rail, truck, or water.</li>
+  <li>Heliport. A designated landing area for discharging and picking up  passengers  or goods by helicopter or similar vertical lift aircraft,
+including terminal facilities for passengers, aircraft servicing, or storage or basing of aircraft.</li>
+  <li>Helistop. An area of land or a structure used for the landing and take-off of helicopters with no terminal facilities for passengers, aircraft servicing, or permanent storage or basing of aircraft.</li>
+  <li>Marina, Dry Storage. A site used for the long-term dry storage of recreational watercraft in racks or other storage systems, and which may include ancillary repair facilities for watercraft.
+    <ol>
+      <li>In the N-2C, N-2E, N-3C, and N-3E zones, this use is allowed with a special use permit only on sites that are also located within a C-W zone.</li>
+    </ol>
+  </li>
+  <li>Marina, Recreational. A site used for docking and storage of pleasure boats or services for pleasure boaters, including minor repair of boats while in the water, sale of fuel and supplies, or provision of food, beverages, and entertainment.
+    <ol>
+      <li>In the N-2C, N-2E, N-3C, and N-3E zones, this use is permitted only on sites that are also located within a C-W zone.</li>
+    </ol>
+  </li>
+  <li>Metro Rail Station. A Metro rail station is a facility that is part of the Metro Rail system that is used for the boarding, departure, or transfer of public transit passengers.</li>
+  <li>Parking Lot, Commercial. A non-accessory parking lot made available to the general public in exchange for a fee.
+    <ol>
+      <li>No commercial parking lot in the N-1C zone may be established on or extended to a corner lot.</li>
+      <li>All commercial parking lots must be designed in accordance with Section 8.3.3.</li>
+    </ol>
+  </li>
+  <li>Parking Lot, Neighborhood. A non-accessory parking lot operated by a government or nonprofit organization as a service to the general public.
+    <ol>
+      <li>No neighborhood parking lot in an N-1C, N-2C, N-2E, N-3C, or N-3E zone may be established on or extended to a corner lot.</li>
+      <li>All neighborhood parking lots must be designed in accordance with Section 8.3.3.</li>
+    </ol>
+  </li>
+  <li>Parking Structure. A structure of one or more levels, whether underground, at ground level, or above ground level, in which more than 50% of the gross floor area is used for parking vehicles.
+    <ol>
+      <li>All parking structures must be designed in accordance with Section 8.3.4.</li>
+    </ol>
+  </li>
+  <li>Passenger Terminal. A facility for handling, receiving, and transferring intercity passenger traffic, including by air, train, ferry, and bus.</li>
+  <li>Pedestrian or Bicycle Path. A public off-road path that connects places of activity, constructed for pedestrian or bicycle travel, or both.
+    <ol>
+      <li>A pedestrian or bicycle path must comply with the Manual on Uniform Traffic Control Devices (MUTCD), plus New York State Supplement, and the AASHTO Guide for the Development of Bicycle Facilities.</li>
+      <li>If a pedestrian or bicycle path exists adjacent to an active rail right-of-way, the path must be separated from the active rail tracks per the FHWA Rails-with-Trails Best Practices Report.</li>
+    </ol>
+  </li>
+  <li>Railway Facilities. Facilities for switches, spurs, tracks, structures, rail yards, and other facilities used in connection with the transportation of persons or goods by rail, including related equipment such as locomotives and shipping containers.</li>
+  <li>Truck Stop. A business that offers the sale of fuel for trucks, incidental service and repair of trucks, and eating, sleeping, or truck parking facilities.
+    <ol>
+      <li>A Type B buffer yard, designed per Section 7.1.6, is required along interior side and rear lot lines that abut any lot in an N-2R, N-3R, N-4-30, N-4-50, D-R, D-OS, D-OG, or D-ON zone.</li>
+      <li>A truck stop may not be located in a C-W zone.</li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="619-infrastructure">6.1.9 Infrastructure</h2>
+
+<ol>
+  <li>District Energy System. A community-based energy system shared by property owners for common use, or managed by a homeowners’ association, institution, or similar organization.
+    <ol>
+      <li>District energy systems must be built in accordance with accessory use standards for each type of energy system, as applicable, per Section 6.2.</li>
+    </ol>
+  </li>
+  <li>Solar Farm. A site at which photovoltaic cells and generators are used to generate and produce electric power for distribution to consumers, typically managed by a single entity.</li>
+  <li>Utilities and Services, Major. Large-scale facilities that primarily serve a regional need, which because of their scale or method of operation  are more likely to produce external impacts that are detectable beyond the property lines of the subject property. Such facilities include, but are not limited to, sewage treatment plants, electric or gas generation plants, high voltage transmission lines, water pumping stations, and water towers and tanks.
+    <ol>
+      <li>A Type C buffer yard, designed per Section 7.1.6, is required along interior side and rear lot lines that abut any lot in an N-2R, N-3R, N-4-30, N-4-50, D-R, D-OS, D-OG, or D-ON zone.</li>
+    </ol>
+  </li>
+  <li>Utilities and Services, Minor. Facilities and services that primarily serve local distribution needs, including, but not limited to, water and sewer pump stations, electrical transforming substations, water conveyance stations, gas regulating stations, telephone exchange/switching centers, and emergency communication warning/ broadcast facilities.</li>
+  <li>Wind Farm. A site at which wind turbines are erected to generate and produce electric power for distribution to consumers, typically managed by a single entity, and exceeding a rated capacity of 500 kW.
+    <ol>
+      <li>Construction
+        <ol>
+          <li>The design of the wind farm must conform to applicable industry standards, including those of the American National  Standards Institute. The facility owner or operator must submit certificates of design compliance obtained by the equipment manufacturers from Underwriters Laboratories, Det Norske Veritas, Germanishcer Lloyd Wind Energies, or other similar certifying organizations.</li>
+          <li>An engineer’s certificate must be completed by a structural engineer, licensed in New York State, certifying that the tower and foundation of the wind turbines are compatible with, and are appropriate for, the particular model of wind turbine used, and that the specific soils at the site can support the wind turbine.</li>
+        </ol>
+      </li>
+      <li>Setbacks
+        <ol>
+          <li>Wind turbines must be set back from  all buildings and all lot lines a distance of 110% of the turbine tip height, as measured from the nearest point on the foundation of the occupied building to the nearest point on the outside edge of a tower. Turbine tip height is measured from the base of the tower to the tip of a prop at maximum vertical rotation.</li>
+          <li>Accessory operation and maintenance buildings and substations must be set back in accord with the underlying zone standards.</li>
+        </ol>
+      </li>
+      <li>Design
+        <ol>
+          <li>Wind turbines must be a non-obtrusive and non-reflective color, such as white or off-white. The facility owner or operator must maintain the paint on wind turbines at all times in good repair.</li>
+          <li>Wind turbines may not be artificially lighted unless otherwise required by the Federal Aviation Administration (FAA)
+ or any other governmental authority. If lighting is required, the lighting must, to the extent feasible, cause the least disturbance to the surrounding areas.</li>
+          <li>Non-essential appurtenances may not be affixed to any wind turbine, including, but not limited to, wireless or radio antennae.</li>
+          <li>A “Danger, High Voltage” sign must be installed where it is clearly visible by persons standing near the base of all pad-mounted transformers and substations. No additional signs or
+ advertising are permitted on the turbine aside from identification of the turbine manufacturer or the facility owner and operator.</li>
+          <li>To prevent unauthorized climbing, climbing pegs must be removed from the lower ten feet of the turbine, or ladder access must be restricted. All access doors to wind turbines and electrical equipment must be locked or fenced, as appropriate, to prevent entry by unauthorized persons.</li>
+        </ol>
+      </li>
+      <li>Operation
+        <ol>
+          <li>The facility owner or operator must make reasonable efforts to avoid disruptio or loss of radio, telephone, television, or similar signals, and must mitigate signal disruption caused by the  wind farm in a manner reasonably calculated to remedy such disruption,  including, but not limited to, providing alternative methods of signal delivery to affected property owners at the facility owner or operator’s expense. This provision may not be interpreted to excuse compliance with any regulations governing electronic transmissions.</li>
+          <li>During normal operation, wind turbines may not exceed five dBA over ambient sound as measured at the closest neighboring inhabited dwelling in existence at the time of application for  the wind farm. This sound level may be exceeded during short-term events, such as utility outages and storms.</li>
+          <li>A wind turbine may not cause shadow flicker to fall upon any window of an inhabited dwelling that exists at the time of application for the wind farm.</li>
+          <li>A wind turbine must employ preventive measures to eliminate any deleterious effects of ice throw in compliance with specifications contained in the latest edition of the Germanischer Lloyd Guideline for the Certification of Wind Turbines.</li>
+        </ol>
+      </li>
+      <li>Termination of Use. A wind farm or wind turbine that has reached the end of its useful life must be removed within six months of such determination. A wind energy system  is considered to have reached the end of its useful life when it has been inoperable for six consecutive months. Time extensions  may be granted by the Commissioner of Permit and Inspection Services when good faith efforts to repair the turbine are demonstrated. Foundations must be removed, unless an exception is granted by the Commissioner of Permit and Inspection Services. The City may ensure and enforce removal by means of its existing regulatory authority.</li>
+    </ol>
+  </li>
+  <li>Wireless Communication. Towers, antennas, and ancillary structures used to transmit and receive radio-frequency signals, microwave signals, or other signals.
+    <ol>
+      <li>Application Requirements. In addition to any other submittal requirements, all applications to erect, construct, or modify any part of a wireless communication tower, antenna, or ancillary structure must include the following items, unless waived by the Commissioner of Permit and Inspection Services:
+        <ol>
+          <li>A site plan showing the location, height, size, color, lighting, landscaping, screening, and design of all structures and equipment, including fences.
+ If the site plan is for a new wireless communication tower, the site plan must indicate the fall zone by a shaded circle.</li>
+          <li>A demonstration of the need for, and service area of, the wireless
+ communication tower, antenna, or related structure, with specific reference to
+ the provider’s coverage, capacity, and quality needs and objectives.</li>
+          <li>The service area of the proposed wireless communications tower, antennas, and ancillary structures.</li>
+          <li>If the proposal is for a wireless communication tower, a written report proving that collocation is not feasible.</li>
+          <li>Certification by a licensed and registered professional engineer regarding the manner in which the proposed structure could fail.</li>
+        </ol>
+      </li>
+      <li>Wireless Communication Tower. Any structure that is designed and constructed  for the purpose of supporting one or more antennas intended for transmitting or receiving television, AM/FM radio, digital, microwave, cellular, telephone, or similar forms of electronic communication, including without limit freestanding towers, guyed towers, lattice towers, monopole towers, self-supporting towers, and similar structures. The term includes the structure and any support elements, such as guy wires.
+        <ol>
+          <li>Wireless communication towers must be designed to provide for collocation by additional providers.</li>
+          <li>A Type C buffer yard, designed per Section 7.1.6, is required surrounding the base of a ground-mounted wireless communications tower.</li>
+          <li>A wireless communication tower  must be white or off-white, galvanized silver, or gray in color or be finished or painted so as to reduce visual obtrusiveness, unless otherwise required by the Federal Aviation Administration (FAA) or any other governmental authority.</li>
+          <li>No signs or advertising materials of any nature may be allowed on any
+ communication tower, except for warning signs or other notifications designed to alert the public to safety concerns.</li>
+          <li>Wireless communication towers must not be artificially lighted unless otherwise required by the Federal
+ Aviation Administration (FAA) or another governmental authority. If lighting is required, the lighting must, to the greatest extent feasible, cause the least disturbance to the surrounding areas.</li>
+        </ol>
+      </li>
+      <li>Wireless Communication Antenna. Any device or exterior apparatus mounted on a tower, building, utility pole, light pole,  or other structure to transmit or receive communication signals or electromagnetic waves for the purpose of telephonic, radio, data, Internet, or television communication, and its attendant base station. If the following standards are met, a wireless communication antenna does not require a special use permit:
+        <ol>
+          <li>The antennas are enclosed, camouflaged, screened,  obscured, or otherwise not readily apparent to a casual observer; or</li>
+          <li>The antennas are mounted on or in a structure that is already allowed within the zone, such as a water tower, belfry, elevator penthouse, steeple, or existing wireless communication tower, and do not increase the overall height of the structure.</li>
+        </ol>
+      </li>
+      <li>Ancillary Communication Structure. Any ancillary facility or structure serving or  being used in conjunction with a wireless communication tower or antenna. Examples include utility or transmission equipment storage sheds or cabinets. An ancillary communication structure does not require a special use permit when installed in conjunction with an approved wireless communication tower or antenna.
+        <ol>
+          <li>Any buildings, cabinets, or shelters may house only equipment and supplies for operation of the wireless communication tower or antenna. Any equipment not used in direct support of such operation must not be stored on the site. The facility must be unstaffed.</li>
+          <li>Signs for the ancillary communication structure are limited to ownership and contact information, FCC antenna registration number (if required), and any other information required by a governmental authority. Commercial advertising is prohibited.</li>
+        </ol>
+      </li>
+      <li>Termination of Use. A wireless communication tower or antenna that has reached the end of its useful life must be removed  within six months of such determination. A wireless communication tower or antenna is considered to have reached the end of its useful life when it has not operated for six consecutive months. Time extensions may be granted by the Commissioner of Permit and Inspection Services when good faith efforts  to repair the wireless communication tower or antenna are demonstrated. Foundations and support structures must be removed, unless granted an exception by the Commissioner of Permit and Inspection Services. The City may ensure and enforce removal by means of its existing regulatory authority.</li>
+    </ol>
+  </li>
+</ol>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <nav class="d-none d-xl-block col-xl-2 sidebar-right toc" id="toc-scrollspy">
+        <div class="sidebar-sticky">
+            <div class="border-left"><ul class="nav toc-list">
+<li class="toc-entry toc-h2"><a href="#611-general">6.1.1 General</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#residential">Residential</a></li>
+<li class="toc-entry toc-h3"><a href="#civic">Civic</a></li>
+<li class="toc-entry toc-h3"><a href="#lodging">Lodging</a></li>
+<li class="toc-entry toc-h3"><a href="#retail--service">Retail &amp; Service</a></li>
+<li class="toc-entry toc-h3"><a href="#employment">Employment</a></li>
+<li class="toc-entry toc-h3"><a href="#agriculture">Agriculture</a></li>
+<li class="toc-entry toc-h3"><a href="#transportation">Transportation</a></li>
+<li class="toc-entry toc-h3"><a href="#infrastructure">Infrastructure</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#612-residential">6.1.2 Residential</a></li>
+<li class="toc-entry toc-h2"><a href="#613-civic-uses">6.1.3 Civic Uses</a></li>
+<li class="toc-entry toc-h2"><a href="#614-lodging">6.1.4 Lodging</a></li>
+<li class="toc-entry toc-h2"><a href="#615-retail-and-service">6.1.5 Retail and Service</a></li>
+<li class="toc-entry toc-h2"><a href="#616-employment">6.1.6 Employment</a></li>
+<li class="toc-entry toc-h2"><a href="#617-agriculture">6.1.7 Agriculture</a></li>
+<li class="toc-entry toc-h2"><a href="#618-transportation">6.1.8 Transportation</a></li>
+<li class="toc-entry toc-h2"><a href="#619-infrastructure">6.1.9 Infrastructure</a></li>
+</ul></div>
+        </div>
+    </nav>
+</body>
+
+</html>
