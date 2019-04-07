@@ -22,7 +22,7 @@ group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.6"
   gem 'jekyll-algolia', '~> 1.0'
   gem 'jekyll-toc', '~> 0.11.0'
-  gem 'bootstrap', '~> 4.3.1'
+  gem 'jekyll-seo-tag'
   gem 'scss_lint'
   gem 'html-proofer'
 end

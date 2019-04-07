@@ -20,6 +20,7 @@ kramdown:
 plugins:
   - jekyll-feed
   - jekyll-toc
+  - jekyll-seo-tag
   
 toc:
   list_class: nav toc-list
