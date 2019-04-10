@@ -9,7 +9,7 @@ article: 2
 {% for section in site.sections %}
     {% if section.article == page.article %}
         <ul>
-            <li><a href="{{ section.url | relative_url }}">{{ section.title }} - {{section.article}}.{{section.section}}</a></li>
+            <li><a href="{{ section.url }}">{{ section.title }} - {{section.article}}.{{section.section}}</a></li>
         </ul>
     {% endif %}
 {% endfor %}
