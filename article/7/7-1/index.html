@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="cache-control" content="public">
+    <meta http-equiv="expires" content="86400">
+  
+    <title>Landscape | BufGreenCode</title>
+    <meta name="description" content="7.1.1 General">
+<!--    <link rel="icon" type="image/png" href="/favicon.png">-->
+    <link rel="canonical" href="http://bufgreencode.com/article/7/7-1/">
+
+    <!-- Google Analytics. -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-138074552-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-138074552-1');
+</script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    <!-- Load main CSS file asynchronously via loadCSS. -->
+<!--
+    <script>
+        !function(e){"use strict";var t=function(t,n,r){function o(e){return i.body?e():void setTimeout(function(){o(e)})}function l(){d.addEventListener&&d.removeEventListener("load",l),d.media=r||"all"}var a,i=e.document,d=i.createElement("link");if(n)a=n;else{var s=(i.body||i.getElementsByTagName("head")[0]).childNodes;a=s[s.length-1]}var u=i.styleSheets;d.rel="stylesheet",d.href=t,d.media="only x",o(function(){a.parentNode.insertBefore(d,n?a:a.nextSibling)});var f=function(e){for(var t=d.href,n=u.length;n--;)if(u[n].href===t)return e();setTimeout(function(){f(e)})};return d.addEventListener&&d.addEventListener("load",l),d.onloadcssdefined=f,f(l),d};"undefined"!=typeof exports?exports.loadCSS=t:e.loadCSS=t}("undefined"!=typeof global?global:this),function(e){if(e.loadCSS){var t=loadCSS.relpreload={};if(t.support=function(){try{return e.document.createElement("link").relList.supports("preload")}catch(t){}},t.poly=function(){for(var t=e.document.getElementsByTagName("link"),n=0;n<t.length;n++){var r=t[n];"preload"===r.rel&&"style"===r.getAttribute("as")&&(e.loadCSS(r.href,r),r.rel=null)}},!t.support()){t.poly();var n=e.setInterval(t.poly,300);e.addEventListener&&e.addEventListener("load",function(){e.clearInterval(n)})}}}(this);
+    loadCSS('/assets/styles/main.css');
+    loadCSS('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|Roboto+Slab:300,400|Roboto:400,400i,700,700i');
+  </script>
+-->
+
+    <link href="/assets/styles/main.css" rel='stylesheet' type='text/css'>
+    <!-- Begin Jekyll SEO tag v2.6.0 -->
+<title>Landscape | BufGreenCode</title>
+<meta name="generator" content="Jekyll v3.7.4" />
+<meta property="og:title" content="Landscape" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="7.1.1 General" />
+<meta property="og:description" content="7.1.1 General" />
+<meta property="og:site_name" content="BufGreenCode" />
+<meta property="og:image" content="/http://bufgreencode.com/assets/img/logo.svg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-04-11T01:56:23+00:00" />
+<script type="application/ld+json">
+{"description":"7.1.1 General","@type":"BlogPosting","url":"/http://bufgreencode.com/article/7/7-1/","image":"/http://bufgreencode.com/assets/img/logo.svg","headline":"Landscape","dateModified":"2019-04-11T01:56:23+00:00","datePublished":"2019-04-11T01:56:23+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/http://bufgreencode.com/article/7/7-1/"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+
+<style>
+    body{
+        position: relative
+    }
+    </style>
+
+<body data-spy="scroll" data-target="#toc-scrollspy"  class="page--glossary" >
+
+    <nav class="col-md-4 col-lg-2 d-none d-md-block bg-light sidebar-left">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.1.1/themes/reset-min.css" integrity="sha256-JQ2nnTmybhOWSjfV3sa8mG0ZVhTCcORER4cyXc5HL10=" crossorigin="anonymous">
+
+<div class="px-3">
+    <input class="form-control" id="search-input" type="search" placeholder='Search...' />
+</div>
+
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+
+<script>
+    var client = algoliasearch('ZXR82DO3QZ', 'af7cc1f834c7c7de6ac6b92670775a89');
+    var index = client.initIndex('bufgreencode');
+
+    const hitTemplate = function(hit) {
+
+        function getOrigin() {
+            var location = window.location
+            var origin = location.origin
+
+            if (!origin) {
+            var port = location.port ? ':' + location.port : ''
+
+            origin = location.protocol + '//' + location.hostname + port
+            }
+
+            return origin
+        }
+
+        var currentUrl = getOrigin()
+        var liveUrl = 'https://ihiutch.github.io'
+
+        var url = '';
+
+        if(currentUrl.indexOf(liveUrl) !== -1){
+            url = `/http://bufgreencode.com${hit.url}#${hit.anchor}`;
+        }else{
+            url = `${hit.url}#${hit.anchor}`;
+        }
+
+        const title = hit._highlightResult.title.value;
+        const content = hit._snippetResult.content.value
+
+        let breadcrumbs = '';
+        if (hit._highlightResult.hierarchy) {
+            var array = [];
+            for (const [key, value] of Object.entries(hit._highlightResult.hierarchy)) {
+                if (value) {
+                    array.push(value.value);
+                }
+            }
+            breadcrumbs = array.map(match => {
+                return `<span class="post-breadcrumb">${match}</span>`
+            }).join(' / ')
+        }
+
+        let article = '';
+        if (hit.article) {
+            article = hit.article + '.';
+        }
+
+        let section = '';
+        if (hit.section) {
+            section = hit.section + ' - ';
+        }
+
+        return `
+            <a class="post-link" href="${url}">
+              <h6>${article}${section}${title}</h6>
+              <div class="post-breadcrumbs">${breadcrumbs}</div>
+              <span>${content}</span>
+            </a>
+          `;
+    }
+
+    autocomplete('#search-input', {
+        debug: true,
+        searchParameters: {
+            attributesToSnippet: ['content']
+        }
+    }, [{
+        source: autocomplete.sources.hits(index, {
+            hitsPerPage: 5
+        }),
+        displayKey: 'title',
+        templates: {
+            //            header: '<div class="aa-suggestions-category">Results</div>',
+            suggestion: hitTemplate,
+            footer: '<div class="aa-suggestions-footer">Algolia Search</div>',
+            empty: '<div class="aa-empty">No matching results</div>',
+        }
+    }]);
+
+</script>
+
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column mb-2">
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/article/1/">1. Introductory Provisions</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/article/2/">2. Definitions &amp; Measurements</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/article/3/">3. Neighborhood Zones</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/article/4/">4. District Zones</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/article/5/">5. Section 5</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/article/6/">6. Uses</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link active" href="/article/7/">7. Site Development</a>
+            </li>
+            <ul>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/article/7/7-1/">7.1 Landscape</a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="/article/7/7-2/">7.2 Fences and Walls</a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="/article/7/7-3/">7.3 Stormwater</a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="/article/7/7-4/">7.4 Outdoor Lighting</a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="/article/7/7-5/">7.5 Corner Visibility</a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="/article/7/7-6/">7.6 Site Impacts</a>
+                </li>
+                
+                
+                
+            </ul>
+            
+            
+        </ul>
+    </div>
+</nav>
+
+    <div class="col-md-5 col-lg-10 col-xl-8 ml-sm-auto mx-xl-auto">
+        <main role="main" class="px-md-4">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Landscape</h1>
+                </div>
+                <div class="col-12">
+                    <div class="page-content">
+                        <h2 id="711-general">7.1.1 General</h2>
+
+<ol>
+  <li>Applicability. All development that involves new construction of a principal structure, expansion of an existing principal building by 2,500 square feet or more, or new construction or reconstruction of a parking lot, or expansion of a parking lot by 20 or more spaces, must comply with the requirements of this section. Resealing or re-striping of a parking lot, which does not entail paving, resurfacing, or replacement of the asphalt, concrete, or other surface paving material, is not considered reconstruction.</li>
+  <li>Landscape Plan. All developments subject to site plan review per Section 11.3.6 or
+11.3.7 must submit a landscape plan. Where developments involve either 10,000 square feet or more of development area or construction
+or reconstruction of a parking lot containing 20 or more spaces, the landscape plan must be
+stamped by a New York State licensed landscape architect. Single-unit dwellings, double-unit dwellings, and multi-unit dwellings of 6 units or less, are exempt from this requirement.</li>
+  <li>Landscape Installation. Prior to a certificate of occupancy being granted, all landscape required by this section must be installed. However,
+where required landscape cannot be installed because of seasonal weather conditions, a certificate of occupancy may be issued by the Commissioner of Permit and Inspection Services provided that the applicant produces a contract for the landscape work to be completed within nine months of the issuance of the certificate of occupancy.</li>
+  <li>Selection
+    <ol>
+      <li>Plant materials must be hardy to regional climate conditions per the U.S. Department of Agriculture’s Plant Hardiness Zone Map, as well as to individual site microclimates.</li>
+      <li>No plant material may be installed that is listed by the New York Invasive Species Council as an invasive species, defined by New York State statute to be any species that is non-native to the ecosystem under consideration, whose introduction causes or is likely to cause economic or environmental harm or harm to human health, and whose harm significantly outweighs any benefits.</li>
+    </ol>
+  </li>
+  <li>Installation
+    <ol>
+      <li>Plant materials must be installed in accordance with the latest edition of the American Standard for Nursery Stock published by the American Nursery and Landscape Association (ANLA).</li>
+      <li>Plant materials must be installed in soil of sufficient volume, composition, and nutrient balance to sustain healthy growth.</li>
+    </ol>
+  </li>
+  <li>Irrigation
+    <ol>
+      <li>Irrigation, beyond establishment, is not required. Where installed, permanent irrigation systems must:
+        <ol>
+          <li>Utilize low-volume irrigation emitters such as bubbler, drip irrigation, and soaker hose emitters.</li>
+          <li>Be equipped with a meter, backflow preventer, and weather-based irrigation controller.</li>
+        </ol>
+      </li>
+      <li>Temporary spray irrigation systems may be used to establish seeded areas for grass and groundcover.</li>
+    </ol>
+  </li>
+  <li>Maintenance
+    <ol>
+      <li>All plant materials must be maintained in a healthy, growing condition.</li>
+      <li>Any plant material that is significantly damaged, missing, disease-ridden, or dead must be abated by the property owner within one year or the next planting season, whichever occurs first, except in the D-ON zone and other areas of naturally occurring vegetation and undergrowth.</li>
+      <li>Any landscape that is considered hazardous or unsafe, interferes with public utilities, is in conflict with required corner visibility, obstructs pedestrian or vehicular access, constitutes a traffic hazard, or is listed as an invasive species by the New York Invasive Species Council, must be abated by the property owner as soon as practicable or within 30 days of notice by the Commissioner of Permit and Inspection Services. The Commissioner of Permit and Inspection Services may remove any landscape that is an immediate peril to persons or property summarily, without notice, and at the property owner’s expense.</li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="712-site-landscape">7.1.2 Site Landscape</h2>
+
+<ol>
+  <li>
+    <p>All non-paved and non-built land areas of the site must consist of living vegetation, such as grass, ornamental grass, groundcover, edible plants, shrubs, vines, annuals, perennials, or native or naturalized trees, with the exception of the following areas:</p>
+
+    <ol>
+      <li>Agricultural fields or planting areas seasonally tilled for cultivation.</li>
+      <li>Trails.</li>
+      <li>Naturally occurring dunes, creek beds, rock outcroppings, or similar landscape features typically lacking in vegetation.</li>
+      <li>
+        <p>Recreational fields and facilities.</p>
+      </li>
+      <li>Rock or gravel, wood chips, bark, or other non-living material typically used as a landscape ornament.</li>
+      <li>Water features.</li>
+    </ol>
+  </li>
+  <li>Any development, with the exception of single- unit and double-unit dwellings, that involves new construction of a principal structure must include the installation of at least one shade tree of a caliper of at least two inches for every 1,000 square feet of non-paved and non-built area
+of the site. The following are exceptions to this requirement:</li>
+  <li>An existing shade tree may fulfill this requirement, so long as the tree is a minimum of four inches diameter at breast height (DBH), possesses a healthy and full canopy, has an unmolested critical root zone, and has incurred no damage that would undermine its long-term vitality and quality.</li>
+  <li>In lieu of one required shade tree, three ornamental trees of a minimum caliper of one and one-half inch may be installed.</li>
+</ol>
+
+<h2 id="713-tree-conservation">7.1.3 Tree Conservation</h2>
+
+<ol>
+  <li>All proposed development must conserve on-site established trees, defined as any tree with a diameter at breast height of six inches or more.
+    <ol>
+      <li>Removal. An on-site established tree may be removed only if at least one of the following conditions are satisfied:
+        <ol>
+          <li>The tree interferes with the construction of a structure or other site improvement, no feasible and prudent location alternative exists on-site for the proposed structure or other site improvement, and no possibility exists for incorporation of the tree into the proposed development.</li>
+          <li>The tree is causing damage to an existing structure or site improvement and no feasible remedy exists other than removing the tree.</li>
+          <li>The tree is diseased or injured beyond restoration, as determined by a registered forester or certified arborist.</li>
+          <li>The tree is dead, is in danger of falling, is located so as to pose a threat to existing structures, interferes with existing
+utility infrastructure, is in conflict with required corner visibility, or is otherwise considered hazardous or unsafe.</li>
+        </ol>
+      </li>
+      <li>Replacement. In the event that an on-site established tree of a minimum of six inches DBH is removed under any circumstances, including the accidental killing of a tree during the course of construction activity, the following requirements apply:
+        <ol>
+          <li>For each established tree that is removed, on-site replacement trees of the same or similar species must be installed for which the combined DBH is equal to or greater than the DBH of the tree that is removed. The replacement trees must be planted within nine months of the date of removal or, if the removal was made to facilitate on-site construction, within nine months of the issuance of a certificate of occupancy.</li>
+          <li>If the site cannot accommodate the number of trees required as replacements, the replacement trees may be installed off-site so long as the site is within the corporate boundaries of the City of Buffalo.</li>
+          <li>A replacement tree may be planted in a public park or public right-of-way with the authorization of the Commissioner of Public Works, Parks, and Streets.</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="714-street-trees">7.1.4 Street Trees</h2>
+
+<ol>
+  <li>
+    <p>Street Trees Required. Any development that involves construction of a new principal building, expansion of an existing principal building by 2,500 square feet or more, or a substantial renovation of an existing principal building, except for single unit dwellings, double unit dwellings, and multiple unit dwellings of six units or less, must include the installation of street trees as follows:</p>
+
+    <ol>
+      <li>A minimum of one street tree must be installed on the adjacent public rights-of-way, excluding alleys, for each 30 feet of right-of- way frontage.</li>
+      <li>All street trees must be installed in accordance with the Street Tree Planting Standards that are on file with the Commissioner of Public Works, Parks, and Streets.</li>
+      <li>All required street trees must be installed within nine months of the issuance of a certificate of occupancy, and maintained in a healthy, growing condition until fully established, or replaced as necessary.</li>
+    </ol>
+  </li>
+  <li>Exceptions. The Commissioner of Public Works, Parks, and Streets may grant a waiver to the street tree requirement where:
+    <ol>
+      <li>Street trees of the minimum required number are already installed and maintained in a healthy, growing condition.</li>
+      <li>There is already a well-established tree planted on-site and adjacent to the outer edge of the property, whose crown reaches over the public right-of-way area to be planted, and would cause overcrowding of the new street tree, and may result in deforming the symmetry of the street tree crowns as it approaches maturity.</li>
+      <li>The specific location of a curb cut, utility line, underground vault, transit stop or station, or other feature conflicts with the placement of a tree.</li>
+    </ol>
+  </li>
+  <li>Alternative Planting Locations. The Commissioner of Public Works, Parks, and Streets may require tree installation in alternative locations within
+the City of Buffalo when installation cannot be accommodated in the immediately adjacent public right-of-way.</li>
+</ol>
+
+<h2 id="715-parking-lot-landscape">7.1.5 Parking Lot Landscape</h2>
+
+<ol>
+  <li>Any new construction of a parking lot, expansion of an existing parking lot by 20 or more spaces, or reconstruction of an existing parking lot must be landscaped in accordance with this section.</li>
+  <li>Parking Lot Perimeter. Parking lot perimeters must be landscaped as follows:
+    <ol>
+      <li>Where any parking lot is located along, within 50 feet of, and visible from a public right- of-way other than an alley, the parking lot must be screened by a Type D buffer yard, designed per Section 7.1.6. The following are exceptions:
+        <ol>
+          <li>In lieu of a Type D buffer yard, a solid masonry wall may be installed at the right-of-way line of between two feet and three and one-half feet in height.</li>
+          <li>In lieu of a Type D buffer yard, in the N-1D, N-1C, and N-1S zones only, dedicated spaces for market stalls or mobile food vendors may be provided adjacent to the right-of-way line.</li>
+        </ol>
+      </li>
+      <li>Where any parking lot is located along, within 50 feet of, and visible from an interior side or rear lot line that abuts any lot in an N-2R, N-3R, N-4-30, N-4-50, D-R, D-OS, D-OG, or D-ON zone, the parking lot must be screened by a Type C buffer yard, designed per Section 7.1.6.</li>
+      <li>Parking lot perimeter landscape must be integral, where possible, with on-site stormwater management facilities installed in accordance with Section 7.3.</li>
+    </ol>
+  </li>
+  <li>Parking Lot Interior. With the exception of parking lots in the D-IL and D-IH zones, the interior of parking lots containing 20 or more parking spaces must be landscaped as follows:
+    <ol>
+      <li>At least 10% of the interior of the parking lot, calculated as the total surface area of all parking spaces, drive aisles, and interior landscape, must be planted with landscape. Parking lot perimeter landscape required by Section 7.1.5.B is not counted toward the minimum interior landscape requirement.</li>
+      <li>At least one shade tree of a minimum caliper of two inches must be installed within the parking lot interior for every 20 parking spaces, and distributed so that no parking space is more than 150 feet from a tree. The following are exceptions to this requirement:
+        <ol>
+          <li>An existing shade tree may fulfill this requirement, so long as the existing shade tree is a minimum of four inches diameter at breast height, possesses a healthy and full canopy, has an unmolested critical root zone, and has incurred no damage that would undermine its long-term vitality and quality.</li>
+          <li>In lieu of one required shade tree, three ornamental trees of a minimum caliper of one and one-half inch may be installed.</li>
+        </ol>
+      </li>
+      <li>Landscape islands must be installed as follows:
+        <ol>
+          <li>A terminal island must be provided at the beginning and end of each parking row.
+No more than 40 parking spaces may be located between terminal islands.
+Interior islands must be used to break up parking spaces into groups of no more than 20 contiguous spaces.</li>
+          <li>Interior islands and terminal islands must extend across the depth of the parking row. An interior or terminal island must be at least eight feet in width and 150 square feet in area in the case of a single parking row or, in the case of a double parking row, at least eight feet in width and 300 square feet in area.</li>
+          <li>At least one shade tree is required in each interior or terminal island that extends the length of a single parking row or, in the case of a double parking row, at least two shade trees are required.</li>
+          <li>Landscape islands may be consolidated or intervals may be adjusted as necessary to preserve existing trees or facilitate stormwater management.</li>
+        </ol>
+      </li>
+      <li>Landscape medians must be installed as follows:
+        <ol>
+          <li>A landscape median must be provided between every six parking rows.</li>
+          <li>A landscape median must be at least seven feet in width and planted with landscape, including at least one shade tree for every 30 feet of median length. In lieu of one shade tree, three ornamental trees may be planted.</li>
+          <li>A landscape median may also serve as the location for a sidewalk connecting the parking and the use served by the parking area, in which case the width must be at least 12 feet.</li>
+          <li>Landscape medians may be consolidated or intervals may be adjusted where necessary to preserve existing trees or facilitate stormwater management.</li>
+        </ol>
+      </li>
+      <li>Parking lot interior landscape must be integral, where possible, with on-site stormwater management facilities per Section 7.3.</li>
+      <li>All required plant materials within the parking lot interior must be maintained in a healthy, growing condition over their lifetime, or replaced as necessary.</li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="716-buffer-yards">7.1.6 Buffer Yards</h2>
+
+<ol>
+  <li>
+    <p>Required Buffer Yards</p>
+
+    <ol>
+      <li>
+        <p>A buffer yard must be installed per Table 7A: Buffer Yards, where the below uses are introduced as part of any new development or as the result of a change of use. Refer to the applicable sections for more information.</p>
+
+        <ol>
+          <li>Car wash. Refer to Section 6.1.5.F.</li>
+          <li>Drive-through facility. Refer to Section 6.1.5.I.</li>
+          <li>Gas station. Refer to Section 6.1.5.M.</li>
+          <li>Retail and service, heavy. Refer to Section 6.1.5.U.</li>
+          <li>Self-storage facility. Refer to Section 6.1.5.V.</li>
+          <li>Vehicle rental or sales. Refer to Section 6.1.5.Z.</li>
+          <li>Vehicle Repair, Major. Refer to Section 6.1.5.AA.</li>
+          <li>Industrial, heavy. Refer to Section 6.1.6.B.</li>
+          <li>Industrial, light. Refer to Section 6.1.6.C.</li>
+          <li>Junk/salvage yard. Refer to Section 6.1.6.D.</li>
+          <li>Recycling facility. Refer to Section 6.1.6.F.</li>
+          <li>Storage yard. Refer to Section 6.1.6.H.</li>
+          <li>Warehouse/distribution. Refer to Section 6.1.6.I.</li>
+          <li>Waste transfer station. Refer to Section 6.1.6.J.</li>
+          <li>Truck stop. Refer to Section 6.1.8.O.</li>
+          <li>Wireless communication tower. Refer to Section 6.1.9.F.</li>
+          <li>Parking lot perimeter. Refer to Section 7.1.5.B.</li>
+          <li>Loading areas. Refer to Section 8.3.7.B.</li>
+        </ol>
+      </li>
+      <li>
+        <p>Where a proposed project is subject to major site plan review per Section 11.3.7, the City Planning Board, where it finds that the project may have an adverse impact on any adjacent property or the surrounding neighborhood, may require the installation of a buffer yard, of a type described in Table 7A: Buffer Yards, to mitigate such impacts.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Buffer Yard Parameters</p>
+
+    <ol>
+      <li>A buffer yard is determined exclusive of any required front, corner side, interior side, rear, or waterfront yard. However, the buffer yard may be located wholly or partially within required yards.</li>
+      <li>A buffer yard must be located within the outer perimeter of the lot, parallel to and extending to the applicable lot line. A buffer yard may not be located within the adjacent public right-of-way.</li>
+      <li>Where a fence and landscaping are required within the buffer yard in accordance with Table 7A: Buffer Yards, the fence must be positioned interior to the landscaping, except for buffer yards along an interior side or rear lot line, where fences must be positioned exterior to the landscaping. However, the City Planning Board may adjust the positioning of a fence within a buffer yard to better mitigate potential impacts between the proposed project and adjacent properties.</li>
+      <li>No building, accessory structure, or vehicle parking, may encroach upon a buffer yard, with the following exceptions:
+        <ol>
+          <li>Pedestrian and vehicle access points, plus related signs, may encroach upon a buffer yard.</li>
+          <li>Where a proposed project is subject to major site plan review, per Section 11.3.7, the City Planning Board may allow a building or other structure to be located within a required buffer yard, where it finds the building or other structure would better mitigate potential impacts between the proposed project and adjacent properties. This exception does not allow for the waiver by the City Planning Board of any other required yard, per the applicable zone regulations.</li>
+        </ol>
+      </li>
+      <li>A natural, pre-existing grade separation may be conserved, or a man-made berm retained or installed, in lieu of a fence or wall to the extent that the height of the berm or pre- existing grade separation meets the minimum required height of the fence or wall.</li>
+    </ol>
+  </li>
+  <li>
+    <p>Buffer Yard Landscape</p>
+
+    <ol>
+      <li>Required buffer yard landscape must be of the following dimensions at installation:
+        <ol>
+          <li>Shade trees must be of a minimum caliper of two inches.</li>
+          <li>Ornamental trees must be of a minimum caliper of one and one-half inches.</li>
+          <li>Shrubs must be of a five gallon container minimum.</li>
+        </ol>
+      </li>
+      <li>Pre-existing, equivalent vegetation that is conserved within the buffer yard may substitute for any required landscape installation, so long as the pre-existing vegetation is healthy and growing.</li>
+      <li>Any required trees or shrubs may be installed at varying distances to create a naturalistic landscape design, so long as the per linear foot requirement is applied as an average, and the landscape is arranged so as to provide sufficient screening.</li>
+      <li>Buffer yards must be integral, where possible, with on-site stormwater management facilities.</li>
+      <li>All required plant materials within the buffer yard must be maintained in a healthy, growing condition over their lifetime, or replaced where necessary.</li>
+      <li>Except as it relates to the required height of fences and walls for buffer yards, fences and walls must be installed and maintained in accordance with Section 7.2.</li>
+    </ol>
+  </li>
+</ol>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <nav class="d-none d-xl-block col-xl-2 sidebar-right toc" id="toc-scrollspy">
+        <div class="sidebar-sticky">
+            <div class="border-left"><ul class="nav toc-list">
+<li class="toc-entry toc-h2"><a href="#711-general">7.1.1 General</a></li>
+<li class="toc-entry toc-h2"><a href="#712-site-landscape">7.1.2 Site Landscape</a></li>
+<li class="toc-entry toc-h2"><a href="#713-tree-conservation">7.1.3 Tree Conservation</a></li>
+<li class="toc-entry toc-h2"><a href="#714-street-trees">7.1.4 Street Trees</a></li>
+<li class="toc-entry toc-h2"><a href="#715-parking-lot-landscape">7.1.5 Parking Lot Landscape</a></li>
+<li class="toc-entry toc-h2"><a href="#716-buffer-yards">7.1.6 Buffer Yards</a></li>
+</ul></div>
+        </div>
+    </nav>
+</body>
+
+</html>
