@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="cache-control" content="public">
+    <meta http-equiv="expires" content="86400">
+  
+    <title>Bicycle Access and Parking | BufGreenCode</title>
+    <meta name="description" content="8.2.1 General">
+<!--    <link rel="icon" type="image/png" href="/favicon.png">-->
+    <link rel="canonical" href="http://bufgreencode.com/article/8/8-2/">
+
+    <!-- Google Analytics. -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-138074552-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-138074552-1');
+</script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    <!-- Load main CSS file asynchronously via loadCSS. -->
+<!--
+    <script>
+        !function(e){"use strict";var t=function(t,n,r){function o(e){return i.body?e():void setTimeout(function(){o(e)})}function l(){d.addEventListener&&d.removeEventListener("load",l),d.media=r||"all"}var a,i=e.document,d=i.createElement("link");if(n)a=n;else{var s=(i.body||i.getElementsByTagName("head")[0]).childNodes;a=s[s.length-1]}var u=i.styleSheets;d.rel="stylesheet",d.href=t,d.media="only x",o(function(){a.parentNode.insertBefore(d,n?a:a.nextSibling)});var f=function(e){for(var t=d.href,n=u.length;n--;)if(u[n].href===t)return e();setTimeout(function(){f(e)})};return d.addEventListener&&d.addEventListener("load",l),d.onloadcssdefined=f,f(l),d};"undefined"!=typeof exports?exports.loadCSS=t:e.loadCSS=t}("undefined"!=typeof global?global:this),function(e){if(e.loadCSS){var t=loadCSS.relpreload={};if(t.support=function(){try{return e.document.createElement("link").relList.supports("preload")}catch(t){}},t.poly=function(){for(var t=e.document.getElementsByTagName("link"),n=0;n<t.length;n++){var r=t[n];"preload"===r.rel&&"style"===r.getAttribute("as")&&(e.loadCSS(r.href,r),r.rel=null)}},!t.support()){t.poly();var n=e.setInterval(t.poly,300);e.addEventListener&&e.addEventListener("load",function(){e.clearInterval(n)})}}}(this);
+    loadCSS('/assets/styles/main.css');
+    loadCSS('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|Roboto+Slab:300,400|Roboto:400,400i,700,700i');
+  </script>
+-->
+
+    <link href="/assets/styles/main.css" rel='stylesheet' type='text/css'>
+    <!-- Begin Jekyll SEO tag v2.6.0 -->
+<title>Bicycle Access and Parking | BufGreenCode</title>
+<meta name="generator" content="Jekyll v3.7.4" />
+<meta property="og:title" content="Bicycle Access and Parking" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="8.2.1 General" />
+<meta property="og:description" content="8.2.1 General" />
+<meta property="og:site_name" content="BufGreenCode" />
+<meta property="og:image" content="/http://bufgreencode.com/assets/img/logo.svg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-04-14T19:15:46+00:00" />
+<script type="application/ld+json">
+{"description":"8.2.1 General","@type":"BlogPosting","url":"/http://bufgreencode.com/article/8/8-2/","image":"/http://bufgreencode.com/assets/img/logo.svg","headline":"Bicycle Access and Parking","dateModified":"2019-04-14T19:15:46+00:00","datePublished":"2019-04-14T19:15:46+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/http://bufgreencode.com/article/8/8-2/"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+
+<style>
+    body{
+        position: relative
+    }
+    </style>
+
+<body data-spy="scroll" data-target="#toc-scrollspy"  class="page--glossary" >
+
+    <nav class="col-md-4 col-lg-2 d-none d-md-block bg-light sidebar-left">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.1.1/themes/reset-min.css" integrity="sha256-JQ2nnTmybhOWSjfV3sa8mG0ZVhTCcORER4cyXc5HL10=" crossorigin="anonymous">
+
+<div class="px-3">
+    <input class="form-control" id="search-input" type="search" placeholder='Search...' />
+</div>
+
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+
+<script>
+    var client = algoliasearch('ZXR82DO3QZ', 'af7cc1f834c7c7de6ac6b92670775a89');
+    var index = client.initIndex('bufgreencode');
+
+    const hitTemplate = function(hit) {
+
+        function getOrigin() {
+            var location = window.location
+            var origin = location.origin
+
+            if (!origin) {
+            var port = location.port ? ':' + location.port : ''
+
+            origin = location.protocol + '//' + location.hostname + port
+            }
+
+            return origin
+        }
+
+        var currentUrl = getOrigin()
+        var liveUrl = 'https://ihiutch.github.io'
+
+        var url = '';
+
+        if(currentUrl.indexOf(liveUrl) !== -1){
+            url = `/http://bufgreencode.com${hit.url}#${hit.anchor}`;
+        }else{
+            url = `${hit.url}#${hit.anchor}`;
+        }
+
+        const title = hit._highlightResult.title.value;
+        const content = hit._snippetResult.content.value
+
+        let breadcrumbs = '';
+        if (hit._highlightResult.hierarchy) {
+            var array = [];
+            for (const [key, value] of Object.entries(hit._highlightResult.hierarchy)) {
+                if (value) {
+                    array.push(value.value);
+                }
+            }
+            breadcrumbs = array.map(match => {
+                return `<span class="post-breadcrumb">${match}</span>`
+            }).join(' / ')
+        }
+
+        let article = '';
+        if (hit.article) {
+            article = hit.article + '.';
+        }
+
+        let section = '';
+        if (hit.section) {
+            section = hit.section + ' - ';
+        }
+
+        return `
+            <a class="post-link" href="${url}">
+              <h6>${article}${section}${title}</h6>
+              <div class="post-breadcrumbs">${breadcrumbs}</div>
+              <span>${content}</span>
+            </a>
+          `;
+    }
+
+    autocomplete('#search-input', {
+        debug: true,
+        searchParameters: {
+            attributesToSnippet: ['content']
+        }
+    }, [{
+        source: autocomplete.sources.hits(index, {
+            hitsPerPage: 5
+        }),
+        displayKey: 'title',
+        templates: {
+            //            header: '<div class="aa-suggestions-category">Results</div>',
+            suggestion: hitTemplate,
+            footer: '<div class="aa-suggestions-footer">Algolia Search</div>',
+            empty: '<div class="aa-empty">No matching results</div>',
+        }
+    }]);
+
+</script>
+
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column mb-2">
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/article/1/">1. Introductory Provisions</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/article/10/">10. Transportation Network</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/article/11/">11. Administration & Approvals</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/article/12/">12. Nonconformities & Enforcement</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/article/13/">13. Zoning Board of Appeals</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/article/14/">14. Planned Unit Developments</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/article/2/">2. Definitions &amp; Measurements</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/article/3/">3. Neighborhood Zones</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/article/4/">4. District Zones</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/article/5/">5. Section 5</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/article/6/">6. Uses</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/article/7/">7. Site Development</a>
+            </li>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link active" href="/article/8/">8. Access &amp; Parking</a>
+            </li>
+            <ul>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="/article/8/8-1/">8.1 Pedestrian Access</a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/article/8/8-2/">8.2 Bicycle Access and Parking</a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="/article/8/8-3/">8.3 Access Access and Parking</a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="/article/8/8-4/">8.4 Transportation Demand Management</a>
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </ul>
+            
+            
+            
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="/article/9/">9. Signs</a>
+            </li>
+            
+            
+        </ul>
+    </div>
+</nav>
+
+    <div class="col-md-5 col-lg-10 col-xl-8 ml-sm-auto mx-xl-auto">
+        <main role="main" class="px-md-4">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Bicycle Access and Parking</h1>
+                </div>
+                <div class="col-12">
+                    <div class="page-content">
+                        <h2 id="821-general">8.2.1 General</h2>
+
+<ol>
+  <li>Any development which involves new construction of a principal building, expansion of an existing principal building by 2,500 square feet or more, or substantial renovation of an existing principal building, must provide bicycle parking in accordance with this section.</li>
+  <li>Table 8A: Bicycle Parking identifies the minimum number of bicycle parking spaces required
+per principal use, plus the percentage of these spaces that must be designed for long-term parking, versus short-term. If the principal use is not listed, no bicycle parking is required.
+The required minimum number of spaces is calculated as follows: 1. The number of bicycle parking spaces, not the number of bicycle parking fixtures, is calculated to determine compliance; i.e., a single bicycle rack that is designed for parking two bicycles is counted as two bicycle parking spaces. 2. A minimum of two bicycle parking spaces must be provided for each principal use where bicycle parking is required. 3. After the first 20 bicycle parking spaces, no additional bicycle parking is required for a principal use. 4. When there is more than one principal use on a site, the required bicycle parking for the site is the sum of the required parking for the individual principal uses.</li>
+  <li>Short-Term and Long-Term Parking. Short-term bicycle parking and long-term bicycle parking are described as follows:
+    <ol>
+      <li>Short-term bicycle parking accommodates visitors, customers, messengers, and other persons who intend to depart within two hours or less. Fixtures include bicycle racks, which may be unsheltered. Standards for the design of short-term bicycle parking are found in Section 8.2.2.</li>
+      <li>Long-term bicycle parking accommodates employees, students, residents, commuters, and other persons who intend to leave their bicycle parked for more than two hours. Fixtures include lockers and bicycle racks in secured areas, and are always sheltered or enclosed. Standards for the design of long-term bicycle parking are found in Section 8.2.3.</li>
+    </ol>
+  </li>
+  <li>Bicycle Parking Fixtures. The following standards apply to all bicycle parking fixtures, whether short- term or long-term parking:
+    <ol>
+      <li>A bicycle parking space must be at least six feet long and two feet wide with a five foot access aisle.</li>
+      <li>All bicycle parking spaces must be constructed in accordance with the latest version of the Association of Pedestrian and Bicycle Professionals Bicycle Parking Guidelines.</li>
+      <li>Where 50% or more of vehicle parking spaces on site are provided in a structure, all required long-term bicycle spaces must be located inside that structure or in other areas protected from the weather.</li>
+    </ol>
+  </li>
+  <li>Signs. If required bicycle parking is not visible from the street or public entrance, a sign must be posted at the public entrance indicating the location of the parking. The D4-3 sign of the Manual On Uniform Traffic Control Devices (MUTCD) is recommended.</li>
+  <li>Bicycle Parking Stations. Property owners may cooperate to install a bicycle parking station, defined as a structure designed for use as a long-term bicycle parking facility, and which may include ancillary uses such as bicycle repairs and showers or lockers for bicycle commuters. Such a facility, when within 1,320 feet of the uses served, may furnish required long-term bicycle parking in lieu of site-by-site compliance.</li>
+</ol>
+
+<h2 id="822-short-term-bicycle-parking">8.2.2 Short-Term Bicycle Parking</h2>
+
+<ol>
+  <li>A short-term bicycle parking area must be placed within 100 feet of, and clearly visible from, the main entrance to the use served.</li>
+  <li>All bicycle racks must be:
+    <ol>
+      <li>Securely anchored.</li>
+      <li>Able to support the bicycle frame in at least two places to prevent the bicycle from falling over.</li>
+      <li>Configured to allow locking of the frame and at least one wheel with a U-lock.</li>
+      <li>Constructed of materials that resist cutting, rusting, bending, or deformation.</li>
+    </ol>
+  </li>
+  <li>A bicycle rack may be erected on a public sidewalk, provided that the bicycle rack is situated wholly within the furnishings zone of the sidewalk and an encroachment permit is granted by the Commissioner of Public Works, Parks, and Streets per Section 11.4.1. A bicycle rack may also consist of a hoop affixed to a parking meter, provided that permission is granted by the Commissioner of Parking.</li>
+  <li>Any required short-term bicycle parking provided in a structure or under cover must be:
+    <ol>
+      <li>Provided at ground level.</li>
+      <li>Provided free of charge.</li>
+      <li>Clearly marked as bicycle parking.</li>
+      <li>Separated from vehicle parking by a physical barrier to minimize the possibility of parked bicycles being hit by a vehicle.</li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="823-long-term-bicycle-parking">8.2.3 Long-Term Bicycle Parking</h2>
+
+<ol>
+  <li>Long-term bicycle parking must be provided in a well-lit, secure location within convenient distance of a public entrance, building lobby, or other common area.</li>
+  <li>Examples of long-term bicycle parking design include:
+    <ol>
+      <li>A bicycle locker.</li>
+      <li>A lockable bicycle cage or other enclosure.</li>
+      <li>A lockable bicycle room.</li>
+      <li>A designated space visible from employee workstations.</li>
+    </ol>
+  </li>
+  <li>All required long-term bicycle parking spaces must be designed to provide continuous shelter from the elements.</li>
+</ol>
+
+<h2 id="824-waivers">8.2.4 Waivers</h2>
+
+<p>The City Planning Board may issue a written waiver of bicycle parking minimums, in whole or part, if an applicant shows, through a letter of concurrence
+furnished by a qualified professional, that the minimum required number of bicycle parking spaces exceeds the probable demand.</p>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <nav class="d-none d-xl-block col-xl-2 sidebar-right toc" id="toc-scrollspy">
+        <div class="sidebar-sticky">
+            <div class="border-left"><ul class="nav toc-list">
+<li class="toc-entry toc-h2"><a href="#821-general">8.2.1 General</a></li>
+<li class="toc-entry toc-h2"><a href="#822-short-term-bicycle-parking">8.2.2 Short-Term Bicycle Parking</a></li>
+<li class="toc-entry toc-h2"><a href="#823-long-term-bicycle-parking">8.2.3 Long-Term Bicycle Parking</a></li>
+<li class="toc-entry toc-h2"><a href="#824-waivers">8.2.4 Waivers</a></li>
+</ul></div>
+        </div>
+    </nav>
+</body>
+
+</html>
