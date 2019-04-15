@@ -1,6 +1,6 @@
 ---
 layout: sidebar
-title: Section 5
+title: Corridor Zones
 article: 5
 ---
 
@@ -8,10 +8,10 @@ article: 5
 
 {% for section in site.sections %}
 <ul>
-    {% if section.article == page.article %}
-    <li>
-        <a href="{{ section.url }}">{{ section.title }} - {{section.article}}.{{section.section}}</a>
-    </li>
-    {% endif %}
+  {% if section.article == page.article %}
+  <li>
+    <a href="{{ section.url }}">{{ section.title }} - {{section.article}}.{{section.section}}</a>
+  </li>
+  {% endif %}
 </ul>
 {% endfor %}

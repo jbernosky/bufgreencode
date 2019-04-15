@@ -2,7 +2,8 @@
     {% include search.html %}
     <div class="sidebar-sticky">
         <ul class="nav flex-column mb-2">
-            {% for article in site.articles %}
+            {% assign sorted_articles = (site.articles | sort: 'article') %}
+            {% for article in sorted_articles %}
             {% if article.article == page.article %}
             <li class="nav-item">
                 <a class="nav-link active" href="{{ article.url }}">{{ article.article }}. {{ article.title }}</a>
