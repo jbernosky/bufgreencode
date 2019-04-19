@@ -1,8 +1,10 @@
-@import "scss/variables";  // <--------- Add your variables into this file. Also add variables to overwrite Bootstrap variables here
-@import "scss/external/bootstrap4/bootstrap";// <--------- Loads Bootstrap3 or Bootstrap4. Change from /bootstrap3 to /bootstrap4 Watch out! just for testing in the moment!
+@import "scss/external/inter-ui";
+
+@import "scss/variables"; // <--------- Add your variables into this file. Also add variables to overwrite Bootstrap variables here
+@import "scss/external/bootstrap4/bootstrap"; // <--------- Loads Bootstrap3 or Bootstrap4. Change from /bootstrap3 to /bootstrap4 Watch out! just for testing in the moment!
 @import "scss/external/fontawesome/fontawesome"; // <------- Font Awesome Icon font
 
 @import "scss/sidebar";
 @import "scss/search";
 // Any additional imported files //
-@import "scss/main";  // <--------- Add your styles into this file
+@import "scss/main"; // <--------- Add your styles into this file

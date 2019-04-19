@@ -89,9 +89,9 @@ gulp.task("clean:images", function(callback) {
 });
 
 // Places Font Awesome fonts in proper location.
-gulp.task("fontawesome", function() {
+gulp.task("fonts", function() {
   return gulp
-    .src(paths.fontFiles + "/font-awesome/**.*")
+    .src(paths.fontFiles + "/**/**.*")
     .pipe(
       rename(function(path) {
         path.dirname = "";
@@ -104,7 +104,7 @@ gulp.task("fontawesome", function() {
 });
 
 // Copies fonts.
-gulp.task("build:fonts", gulp.series("fontawesome"));
+gulp.task("build:fonts", gulp.series("fonts"));
 
 gulp.task("clean:fonts", function(callback) {
   del([paths.jekyllFontFiles, paths.siteFontFiles]);
