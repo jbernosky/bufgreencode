@@ -1,15 +1,15 @@
-body{
-    position: relative;
+body {
+  position: relative;
 }
 
-.toc{
-    font-size: .875rem;
+.toc {
+  font-size: 0.875rem;
 }
 
-.toc-list{
-    list-style: none;
-    padding: 0;
-    display: block;
+.toc-list {
+  list-style: none;
+  padding: 0;
+  display: block;
 }
 
 .toc-entry {
@@ -17,12 +17,39 @@ body{
 
   a {
     display: block;
-    padding: .125rem 1.5rem;
+    padding: 0.125rem 1.5rem;
     color: #77757a;
 
     &:hover {
       color: $blue;
       text-decoration: none;
+    }
+  }
+}
+
+.sidebar-nav {
+  ul {
+    list-style: none;
+    & ul {
+      padding-left: 20px;
+    }
+  }
+}
+
+ol {
+  list-style: upper-alpha;
+  li {
+    margin-bottom: 1rem;
+  }
+  ol {
+    margin-top: 0.5rem;
+    list-style: decimal;
+    margin-bottom: 1.5rem;
+    ol {
+      list-style: lower-alpha;
+      ol {
+        list-style: lower-roman;
+      }
     }
   }
 }

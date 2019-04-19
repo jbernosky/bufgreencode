@@ -1,34 +1,36 @@
 <nav class="col-md-4 col-lg-2 d-none d-md-block bg-light sidebar-left">
-    {% include search.html %}
-    <div class="sidebar-sticky">
-        <ul class="nav flex-column mb-2">
-            {% assign sorted_articles = (site.articles | sort: 'article') %}
-            {% for article in sorted_articles %}
-            {% if article.article == page.article %}
-            <li class="nav-item">
-                <a class="nav-link active" href="{{ article.url }}">{{ article.article }}. {{ article.title }}</a>
-            </li>
-            <ul>
-                {% for section in site.sections %}
-                {% if section.article == page.article %}
-                {% if section.section == page.section %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ section.url }}">{{ article.article }}.{{ section.section }} {{ section.title }}</a>
-                </li>
-                {% else %}
-                <li class="nav-item">
-                    <a class="nav-link text-secondary" href="{{ section.url }}">{{ article.article }}.{{ section.section }} {{ section.title }}</a>
-                </li>
-                {% endif %}
-                {% endif %}
-                {% endfor %}
-            </ul>
-            {% else %}
-            <li class="nav-item">
-                <a class="nav-link text-secondary" href="{{ article.url }}">{{ article.article }}. {{ article.title }}</a>
-            </li>
-            {% endif %}
-            {% endfor %}
-        </ul>
-    </div>
+  {% include search.html %}
+  <div class="sidebar-sticky sidebar-nav">
+    <ul class="nav flex-column pb-3 mb-5">
+      {% assign sorted_articles = (site.articles | sort: 'article') %}
+      {% for article in sorted_articles %}
+      {% if article.article == page.article %}
+      <li class="nav-item">
+        <a class="nav-link active" href="{{ article.url }}">{{ article.article }}. {{ article.title }}</a>
+      </li>
+      <ul>
+        {% for section in site.sections %}
+        {% if section.article == page.article %}
+        {% if section.section == page.section %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ section.url }}">{{ article.article }}.{{ section.section }}
+            {{ section.title }}</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link text-secondary" href="{{ section.url }}">{{ article.article }}.{{ section.section }}
+            {{ section.title }}</a>
+        </li>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+      </ul>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link text-secondary" href="{{ article.url }}">{{ article.article }}. {{ article.title }}</a>
+      </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
 </nav>
