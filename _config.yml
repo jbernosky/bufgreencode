@@ -1,5 +1,5 @@
 # Basic Info
-title: BufGreenCode
+title: Buffalo Green Code
 description: >
   We design digital products that users love
 # Base URL is used in the manner that is specified by this guide
@@ -20,7 +20,8 @@ plugins:
   - jekyll-feed
   - jekyll-toc
   - jekyll-seo-tag
-  
+  - jekyll-sitemap
+
 toc:
   list_class: nav toc-list
   item_class: toc-entry
@@ -36,16 +37,16 @@ exclude:
   - gulpfile.js
   - node_modules
   - package.json
-  
+
 # Include static pages.
 include: ["_pages"]
 
 #Algolia
 algolia:
-  application_id: 'ZXR82DO3QZ'
-  index_name: 'bufgreencode'
-  search_only_api_key: 'af7cc1f834c7c7de6ac6b92670775a89'
-  
+  application_id: "ZXR82DO3QZ"
+  index_name: "bufgreencode"
+  search_only_api_key: "af7cc1f834c7c7de6ac6b92670775a89"
+
 collections:
   articles:
     output: true
@@ -126,5 +127,4 @@ defaults:
   - scope:
       path: ""
     values:
-      image: "/assets/img/logo.svg"
-
+      image: "../../assets/img/meta/meta-img.png"

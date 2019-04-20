@@ -25,5 +25,6 @@ group :jekyll_plugins do
   gem 'jekyll-seo-tag'
   gem 'scss_lint'
   gem 'html-proofer'
+  gem 'jekyll-sitemap'
 end
 

@@ -27,17 +27,9 @@ body {
   }
 }
 
-.sidebar-nav {
-  ul {
-    list-style: none;
-    & ul {
-      padding-left: 20px;
-    }
-  }
-}
-
 ol {
   list-style: upper-alpha;
+  padding-left: 1.25rem;
   li {
     margin-bottom: 1rem;
   }
@@ -52,4 +44,14 @@ ol {
       }
     }
   }
+}
+
+ul {
+  li {
+    margin-bottom: 0.25rem;
+  }
+}
+
+table {
+  margin-bottom: 1rem;
 }

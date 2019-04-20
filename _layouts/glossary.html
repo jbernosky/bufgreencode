@@ -4,33 +4,36 @@
 {% include head.html %}
 
 <style>
-    body{
-        position: relative
-    }
-    </style>
+  body {
+    position: relative
+  }
 
-<body data-spy="scroll" data-target="#toc-scrollspy" {% if page.class %} class="{{ page.class | prepend: 'page--'  }}" {% else %} class="{{ page.layout | prepend: 'page--' }}" {% endif %}>
+</style>
 
-    {% include sidebar.html %}
-    <div class="col-md-5 col-lg-10 col-xl-8 ml-sm-auto mx-xl-auto">
-        <main role="main" class="px-md-4">
-            <div class="row">
-                <div class="col-12">
-                    <h1>{{ page.title }}</h1>
-                </div>
-                <div class="col-12">
-                    <div class="page-content">
-                        {{ content }}
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-    <nav class="d-none d-xl-block col-xl-2 sidebar-right toc" id="toc-scrollspy">
-        <div class="sidebar-sticky">
-            <div class="border-left">{{ content | toc_only }}</div>
+<body data-spy="scroll" data-target="#toc-scrollspy" {% if page.class %} class="{{ page.class | prepend: 'page--'  }}"
+  {% else %} class="{{ page.layout | prepend: 'page--' }}" {% endif %}>
+
+  {% include sidebar.html %}
+  <div class="col-md-9 col-lg-10 col-xl-8 ml-sm-auto mx-xl-auto">
+    <main role="main" class="px-md-4">
+      <div class="row">
+        <div class="col-12 mb-4">
+          <h1 class="display-4">{{ page.title }}</h1>
+          <p class="lead">{{ page.lead }}</p>
         </div>
-    </nav>
+        <div class="col-12">
+          <div class="page-content">
+            {{ content }}
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <nav class="d-none d-xl-block col-xl-2 sidebar-right toc" id="toc-scrollspy">
+    <div class="sidebar-sticky">
+      <div class="border-left">{{ content | toc_only }}</div>
+    </div>
+  </nav>
 </body>
 
 </html>
