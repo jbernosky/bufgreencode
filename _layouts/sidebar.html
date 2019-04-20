@@ -5,10 +5,10 @@
 
 <body {% if page.class %} class="{{ page.class | prepend: 'page--'  }}" {% else %}
   class="{{ page.layout | prepend: 'page--' }}" {% endif %}>
-
+  {% include navbar.html %}
   {% include sidebar.html %}
   <div class="col-md-9 col-lg-10 ml-md-auto">
-    <main role="main" class="px-md-4">
+    <main role="main" class="px-md-4 pt-4">
       <div class="row">
         <div class="col-12">
           <h1>{{ page.title }}</h1>

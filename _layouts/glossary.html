@@ -3,25 +3,20 @@
 
 {% include head.html %}
 
-<style>
-  body {
-    position: relative
-  }
+<body data-spy="scroll" data-target="#toc-scrollspy" {% if page.class %}
+  class="{{ page.class | prepend: 'page--'  }}" {% else %} class="{{ page.layout | prepend: 'page--' }}" {% endif %}>
 
-</style>
-
-<body data-spy="scroll" data-target="#toc-scrollspy" {% if page.class %} class="{{ page.class | prepend: 'page--'  }}"
-  {% else %} class="{{ page.layout | prepend: 'page--' }}" {% endif %}>
-
+  {% include navbar.html %}
   {% include sidebar.html %}
   <div class="col-md-9 col-lg-10 col-xl-8 ml-sm-auto mx-xl-auto">
-    <main role="main" class="px-md-4">
+    <main role="main" class="px-md-4 pt-4">
       <div class="row">
-        <div class="col-12 mb-4">
+        <div class="col-12 mb-4 px-5">
+          {% include breadcrumb.html %}
           <h1 class="display-4">{{ page.title }}</h1>
           <p class="lead">{{ page.lead }}</p>
         </div>
-        <div class="col-12">
+        <div class="col-12 px-5">
           <div class="page-content">
             {{ content }}
           </div>
@@ -29,9 +24,9 @@
       </div>
     </main>
   </div>
-  <nav class="d-none d-xl-block col-xl-2 sidebar-right toc" id="toc-scrollspy">
+  <nav class="d-none d-xl-block col-xl-2 sidebar-right toc">
     <div class="sidebar-sticky">
-      <div class="border-left">{{ content | toc_only }}</div>
+      <div class="border-left mt-4" id="toc-scrollspy">{{ content | toc_only }}</div>
     </div>
   </nav>
 </body>

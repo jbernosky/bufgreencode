@@ -53,7 +53,8 @@
 }
 
 .aa-suggestions-footer{
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
   img{
     height: 16px;
   }

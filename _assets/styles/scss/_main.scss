@@ -1,5 +1,6 @@
 body {
   position: relative;
+  padding-top: $navbar-height;
 }
 
 .toc {
@@ -54,4 +55,19 @@ ul {
 
 table {
   margin-bottom: 1rem;
+}
+
+.page-content > h2:not(:first-child) {
+  margin-top: 3rem;
+}
+
+.page-content > h2[id]::before,
+.page-content > h3[id]::before,
+.page-content > h4[id]::before,
+.page-content > h5[id]::before,
+.page-content > h6[id]::before {
+  display: block;
+  height: 6rem;
+  margin-top: -6rem;
+  content: "";
 }
