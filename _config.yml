@@ -5,7 +5,7 @@ description: >
 # Base URL is used in the manner that is specified by this guide
 # (http://jekyllrb.com/docs/github-pages/) which is to say, it's
 # not used at all.
-baseurl: "http://bufgreencode.com"
+baseurl: "https://bufgreencode.com"
 
 # Used to determine if Google Analytics should be tracking
 google_analytics: true
@@ -127,4 +127,9 @@ defaults:
   - scope:
       path: ""
     values:
-      image: "assets/img/meta/meta-img.png"
+      image: "/assets/img/meta/meta-img.png"
+
+webmaster_verifications:
+  google: 2uJ6hXsUDukLmTfNK7Y7jCmnaqyiLptsVDmZ2Ct7Zzk
+  # bing: 1234
+  # alexa: 1234
