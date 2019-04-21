@@ -127,4 +127,4 @@ defaults:
   - scope:
       path: ""
     values:
-      image: "/assets/img/meta/meta-img.png"
+      image: "assets/img/meta/meta-img.png"
