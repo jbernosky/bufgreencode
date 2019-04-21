@@ -6,7 +6,7 @@ description: >
 # (http://jekyllrb.com/docs/github-pages/) which is to say, it's
 # not used at all.
 url: "https://bufgreencode.com"
-baseurl: "https://bufgreencode.com"
+baseurl: ""
 
 # Used to determine if Google Analytics should be tracking
 google_analytics: true
