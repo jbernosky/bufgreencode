@@ -1,1 +1,1 @@
-Sitemap: /https://bufgreencode.com/sitemap.xml
+Sitemap: https://bufgreencode.com/https://bufgreencode.com/sitemap.xml
