@@ -1,7 +1,11 @@
-<nav class="col-md-3 col-lg-2 d-none d-md-block bg-light sidebar-left">
+<nav class="navbar navbar-expand-md navbar-light bg-light d-lg-none">
   {% include search.html %}
-  <div class="sidebar-sticky sidebar border-top">
-    <ul class="nav flex-column pb-5 mb-5">
+  <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#mobileNav"
+    aria-controls="mobileNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="mobileNav">
+    <ul class="nav flex-column">
       {% assign sorted_articles = (site.articles | sort: 'article') %}
       {% for article in sorted_articles %}
       {% if article.article == page.article %}

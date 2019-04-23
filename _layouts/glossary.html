@@ -3,20 +3,21 @@
 
 {% include head.html %}
 
-<body data-spy="scroll" data-target="#toc-scrollspy" {% if page.class %}
-  class="{{ page.class | prepend: 'page--'  }}" {% else %} class="{{ page.layout | prepend: 'page--' }}" {% endif %}>
+<body data-spy="scroll" data-target="#toc-scrollspy" {% if page.class %} class="{{ page.class | prepend: 'page--'  }}"
+  {% else %} class="{{ page.layout | prepend: 'page--' }}" {% endif %}>
 
   {% include navbar.html %}
+  {% include mobile_navbar.html %}
   {% include sidebar.html %}
   <div class="col-md-9 col-lg-10 col-xl-8 ml-sm-auto mx-xl-auto">
     <main role="main" class="px-md-4 pt-4">
       <div class="row">
-        <div class="col-12 mb-4 px-5">
+        <div class="col-12 mb-4 px-md-5">
           {% include breadcrumb.html %}
           <h1 class="display-4">{{ page.title }}</h1>
           <p class="lead">{{ page.lead }}</p>
         </div>
-        <div class="col-12 px-5">
+        <div class="col-12 px-md-5">
           <div class="page-content">
             {{ content }}
           </div>
@@ -29,6 +30,5 @@
       <div class="border-left mt-4" id="toc-scrollspy">{{ content | toc_only }}</div>
     </div>
   </nav>
-</body>
 
-</html>
+  {% include footer.html %}

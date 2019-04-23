@@ -6,8 +6,9 @@
 <body {% if page.class %} class="{{ page.class | prepend: 'page--'  }}" {% else %}
   class="{{ page.layout | prepend: 'page--' }}" {% endif %}>
   {% include navbar.html %}
+  {% include mobile_navbar.html %}
   {% include sidebar.html %}
-  <div class="col-md-9 col-lg-10 ml-md-auto">
+  <div class="col-md-9 col-lg-10 ml-md-auto border-top">
     <main role="main" class="px-md-4 pt-4">
       <div class="row">
         <div class="col-12 col-md-8 offset-md-1">
@@ -24,7 +25,4 @@
     </main>
   </div>
 
-
-</body>
-
-</html>
+  {% include footer.html %}
