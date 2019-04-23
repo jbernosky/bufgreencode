@@ -26,7 +26,7 @@
     var url = '';
 
     if (currentUrl.indexOf(liveUrl) !== -1) {
-      url = `${hit.url}#${hit.anchor}`;
+      url = `{{ site.url }}${hit.url}#${hit.anchor}`;
     } else {
       url = `${hit.url}#${hit.anchor}`;
     }
