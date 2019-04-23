@@ -26,5 +26,6 @@ group :jekyll_plugins do
   gem 'scss_lint'
   gem 'html-proofer'
   gem 'jekyll-sitemap'
+  gem 'jekyll-redirect-from'
 end
 

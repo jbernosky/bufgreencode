@@ -26,7 +26,7 @@
   position: relative;
   top: 0;
   height: calc(100vh - #{$navbar-height});
-  padding-top: 1rem 0;
+  padding-top: 1rem;
   overflow-x: hidden;
   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 }
@@ -44,6 +44,7 @@
     li {
       font-weight: 400;
       width: 100%;
+      margin-bottom: 0.25rem;
       &.active:not(:first-child) {
         margin-top: 1rem;
       }
@@ -67,7 +68,7 @@
         margin: 0;
         font-weight: 400;
         &.active {
-          margin-top: 0rem;
+          margin-top: 0rem !important;
         }
       }
     }
@@ -81,7 +82,7 @@
 .sidebar .nav-item {
   &.active {
     & > a {
-      color: #000;
+      color: $primary;
       font-weight: 500;
     }
   }

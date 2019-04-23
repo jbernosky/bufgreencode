@@ -64,7 +64,7 @@
   padding: 0.75rem 0;
   border-bottom: 1px solid $border-color;
   &:hover {
-    background-color: lighten($primary, 45);
+    background-color: lighten($primary, 65);
   }
   .post-link {
     &:hover {
@@ -73,7 +73,7 @@
   }
 
   .ais-Highlight {
-    border-bottom: 3px solid lighten($primary, 20);
+    border-bottom: 3px solid lighten($primary, 10);
     font-style: normal;
   }
 

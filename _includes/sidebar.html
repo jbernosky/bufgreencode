@@ -1,7 +1,7 @@
 <nav class="col-md-3 col-lg-2 d-none d-md-block bg-light sidebar-left">
   {% include search.html %}
   <div class="sidebar-sticky sidebar">
-    <ul class="nav flex-column pb-5 mb-5 pt-3">
+    <ul class="nav flex-column pb-5 mb-5">
       {% assign sorted_articles = (site.articles | sort: 'article') %}
       {% for article in sorted_articles %}
       {% if article.article == page.article %}

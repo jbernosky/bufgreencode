@@ -22,6 +22,7 @@ plugins:
   - jekyll-toc
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-redirect-from
 
 toc:
   list_class: nav toc-list

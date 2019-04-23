@@ -2,14 +2,17 @@
 layout: sidebar
 title: Definitions &amp; Measurements
 article: 2
+redirect_to: /article/2/2-1/
 ---
 
 <h1>Article {{ page.article }}</h1>
 
 {% for section in site.sections %}
-    {% if section.article == page.article %}
-        <ul>
-            <li><a href="{{ section.url }}">{{ section.title }} - {{section.article}}.{{section.section}}</a></li>
-        </ul>
-    {% endif %}
+<ul>
+  {% if section.article == page.article %}
+  <li>
+    <a href="{{ section.url }}">{{ section.title }} - {{section.article}}.{{section.section}}</a>
+  </li>
+  {% endif %}
+</ul>
 {% endfor %}

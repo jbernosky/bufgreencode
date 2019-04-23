@@ -12,9 +12,12 @@
 //$primary: #4cba7a;
 $font-family-base: "Inter";
 
+$primary: #138F69;
 $dark-grey: #555;
 
-$navbar-height: 60px;
+$link-color: $primary;
+
+$navbar-height: 56px;
 
 $theme-colors: (
   "dark-grey": $dark-grey

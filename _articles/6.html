@@ -2,16 +2,17 @@
 layout: sidebar
 title: Uses
 article: 6
+redirect_to: /article/6/6-1/
 ---
 
 <h1>Article {{ page.article }}</h1>
 
 {% for section in site.sections %}
 <ul>
-    {% if section.article == page.article %}
-    <li>
-        <a href="{{ section.url }}">{{ section.title }} - {{section.article}}.{{section.section}}</a>
-    </li>
-    {% endif %}
+  {% if section.article == page.article %}
+  <li>
+    <a href="{{ section.url }}">{{ section.title }} - {{section.article}}.{{section.section}}</a>
+  </li>
+  {% endif %}
 </ul>
 {% endfor %}
