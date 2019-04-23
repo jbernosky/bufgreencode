@@ -53,7 +53,7 @@
         // overflow: hidden;
         // white-space: nowrap;
         &:hover {
-          background-color: lighten($dark-grey, 60);
+          background-color: rgba($primary, 0.06);
         }
       }
     }
@@ -67,8 +67,18 @@
       li {
         margin: 0;
         font-weight: 400;
+        &.toc-entry {
+          > a {
+            padding-left: 2rem;
+          }
+        }
         &.active {
           margin-top: 0rem !important;
+          background-color: rgba($primary, 0.06);
+          border-left: 4px solid $primary;
+          & > a {
+            margin-left: -4px;
+          }
         }
       }
     }

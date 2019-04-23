@@ -1,7 +1,7 @@
 <div class="d-inline-flex align-items-center mb-3">
   {% for article in site.articles %}
   {% if article.article == page.article %}
-  <div class="mr-1 px-1 border rounded bg-light">
+  <div class="mr-1 px-1 border rounded">
     <a href="{{ article.url }}">
       <p class="small mb-0">{{ article.article }}. {{ article.title }}</p>
     </a>
@@ -9,7 +9,7 @@
   <div class="mr-1">
     <p class="small mb-0">/</p>
   </div>
-  <div class="px-1 border rounded bg-light">
+  <div class="px-1 border rounded">
     <a href="{{ page.url }}">
       <p class="small mb-0">{{ page.article }}.{{ page.section }} {{ page.title }}</p>
     </a>

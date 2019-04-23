@@ -10,12 +10,16 @@
   <div class="col-md-9 col-lg-10 ml-md-auto">
     <main role="main" class="px-md-4 pt-4">
       <div class="row">
-        <div class="col-12">
-          <h1>{{ page.title }}</h1>
+        <div class="col-12 col-md-8 offset-md-1">
+          <div class="mb-4">
+            {% if page.title != "Home" %}
+            <h1>{{ page.title }}</h1>
+            {% else %}
+            <h1>Welcome</h1>
+            {% endif %}
+          </div>
+          {{ content }}
         </div>
-      </div>
-      <div class="row">
-        <div class="col-12">{{ content }}</div>
       </div>
     </main>
   </div>

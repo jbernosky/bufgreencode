@@ -3,6 +3,10 @@ body {
   padding-top: $navbar-height;
 }
 
+.navbar img {
+  height: 40px;
+}
+
 .toc {
   font-size: 0.875rem;
 }
@@ -22,7 +26,7 @@ body {
     color: #77757a;
 
     &:hover {
-      color: $blue;
+      color: $primary;
       text-decoration: none;
     }
   }
