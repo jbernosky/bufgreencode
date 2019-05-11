@@ -9,7 +9,9 @@ url: "https://bufgreencode.com"
 baseurl: ""
 
 
-author: @jb_hutch
+author: "@jb_hutch"
+logo: "/assets/img/meta/meta-img.png"
+
 # Used to determine if Google Analytics should be tracking
 google_analytics: true
 
