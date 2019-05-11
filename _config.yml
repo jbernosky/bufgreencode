@@ -12,6 +12,10 @@ baseurl: ""
 author: "@jb_hutch"
 logo: "/assets/img/meta/meta-img.png"
 
+twitter:
+  username: newbuffalocode
+  card: summary
+
 # Used to determine if Google Analytics should be tracking
 google_analytics: true
 
