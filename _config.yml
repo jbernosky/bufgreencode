@@ -8,6 +8,8 @@ description: >
 url: "https://bufgreencode.com"
 baseurl: ""
 
+
+author: @jb_hutch
 # Used to determine if Google Analytics should be tracking
 google_analytics: true
 
