@@ -3,7 +3,7 @@ branches:
   except:
   - gh_pages
 node_js:
-- node
+- "11"
 cache:
 - directories:
   - bundler
